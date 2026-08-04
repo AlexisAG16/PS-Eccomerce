@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+const baseURL = import.meta.env.VITE_BASE_URL || null;
+
 const api = axios.create({
   // Asegúrate de que en tu .env VITE_BASE_URL termine en /api/v1 o lo que corresponda
-  baseURL: import.meta.env.VITE_BASE_URL,
+  baseURL,
   withCredentials: true, // <--- ESTO ES VITAL AQUÍ
   headers: {
     // 'Content-Type': 'application/json',
@@ -14,6 +16,14 @@ const api = axios.create({
 // Opcional: Esto ayuda si usas otras librerías que dependan del axios global,
 // pero lo más importante es que tu instancia 'api' lo tenga.
 axios.defaults.withCredentials = true;
+
+api.interceptors.request.use((config) => {
+  if (!baseURL) {
+    return Promise.reject(new Error("VITE_BASE_URL no esta configurada"));
+  }
+
+  return config;
+});
 
 // INTERCEPTOR PARA RELAJAR ERRORES
 api.interceptors.response.use(
