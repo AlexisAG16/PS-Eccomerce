@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router";
-import { useCategories } from "../hooks/useCategories";
 
-const FALLBACK_CATEGORIES = [
+const DISPLAY_CATEGORIES = [
   { _id: "fallback-servicios", categoryName: "Servicios", categorySlug: "servicios" },
   { _id: "fallback-catalogos", categoryName: "Catalogos", categorySlug: "catalogos" },
   { _id: "fallback-tiendas", categoryName: "Tiendas online", categorySlug: "tiendas-online" },
@@ -9,15 +8,10 @@ const FALLBACK_CATEGORIES = [
 ];
 
 const CategorySection = ({ isMobile, onNavigate }) => {
-  const { data: categories, isLoading, isError } = useCategories();
   const navigate = useNavigate();
 
-  const visibleCategories = (!isLoading && !isError && categories?.length > 0)
-    ? categories
-    : FALLBACK_CATEGORIES;
-
   const handleCategoryClick = (cat) => {
-    const targetUrl = `/catalogo?category=${cat.categorySlug}`;
+    const targetUrl = "/catalogo";
     if (onNavigate) {
       onNavigate(targetUrl);
     } else {
@@ -28,7 +22,7 @@ const CategorySection = ({ isMobile, onNavigate }) => {
   if (!isMobile) {
     return (
       <nav className="hidden md:flex items-center justify-center gap-2 py-2">
-        {visibleCategories.slice(0, 6).map((cat) => (
+        {DISPLAY_CATEGORIES.map((cat) => (
           <button
             type="button"
             key={cat._id}
@@ -55,7 +49,7 @@ const CategorySection = ({ isMobile, onNavigate }) => {
         Categorias
       </p>
       <ul className="space-y-3 font-bold text-brand-text uppercase text-xs tracking-widest">
-        {visibleCategories.map((cat) => (
+        {DISPLAY_CATEGORIES.map((cat) => (
           <li
             key={cat._id}
             onClick={() => handleCategoryClick(cat)}
