@@ -10,13 +10,12 @@ import CarritoCompras from "../pages/public/CarritoCompras";
 import CategorySection from "./CategorySection";
 import api from "../api/axiosConfig";
 import CartIcon from "./CartIcon";
-import logo from "/ps-icon.png";
+import logo from "/ps-logo-tr.svg";
 
 const Header = ({ isStaff, userRole }) => {
   const { user, logout } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   const [openCart, setOpenCart] = useState(false);
-  const [searching, setSearching] = useState(false);
   const searchRef = useRef(null);
 
   const [query, setQuery] = useState("");
@@ -31,14 +30,6 @@ const Header = ({ isStaff, userRole }) => {
     setOpen(false);
   };
 
-  const goToContact = () => {
-    navigate("/");
-    setOpen(false);
-    setTimeout(() => {
-      document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
-    }, 120);
-  };
-
   useEffect(() => {
     const delay = setTimeout(async () => {
       if (!query.trim()) {
@@ -49,10 +40,11 @@ const Header = ({ isStaff, userRole }) => {
       try {
         setLoading(true);
         const res = await api.get(`/products?limit=7&search=${query}`);
-        setResults(res.data.data.data);
+        setResults(res.data?.data?.data || []);
         setShowResults(true);
       } catch (error) {
         console.error("Error busqueda:", error);
+        setResults([]);
       } finally {
         setLoading(false);
       }
@@ -86,8 +78,6 @@ const Header = ({ isStaff, userRole }) => {
     }
   };
 
-  const navButtonClass = "px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.16em] text-brand-primary hover:bg-brand-primary hover:text-white transition-all cursor-pointer";
-
   return (
     <>
       <header className="fixed top-0 left-0 w-full z-50">
@@ -100,11 +90,7 @@ const Header = ({ isStaff, userRole }) => {
               className="relative cursor-pointer group transition-transform duration-300 hover:scale-105 active:scale-95"
               onClick={() => navigate("/")}
             >
-              <img
-                src={logo}
-                alt="Logo de tienda"
-                className="h-12 md:h-16 w-auto object-contain drop-shadow-lg"
-              />
+              <img src={logo} alt="Logo de tienda" className="h-12 md:h-16 w-auto object-contain drop-shadow-lg" />
             </div>
 
             <div ref={searchRef} className="hidden md:block flex-1 mx-8 relative z-50">
@@ -211,7 +197,7 @@ const Header = ({ isStaff, userRole }) => {
               <CartIcon onOpen={() => setOpenCart(true)} />
 
               <button
-                onClick={() => { setOpen(!open); setSearching(false); }}
+                onClick={() => setOpen(!open)}
                 className="w-10 h-10 flex items-center justify-center bg-white/20 border border-white/30 rounded-full text-white text-2xl"
               >
                 {open ? <VscChromeClose /> : <IoMdMenu />}
@@ -220,33 +206,9 @@ const Header = ({ isStaff, userRole }) => {
           </div>
         </div>
 
-        <CategorySection />
-
         <div className="bg-brand-highlight border-y border-brand-primary/10">
           <div className="max-w-7xl mx-auto px-2 md:px-4">
-            <nav className="hidden md:flex items-center justify-center gap-2 py-2">
-              <button type="button" onClick={() => navigate("/")} className={navButtonClass}>
-                Inicio
-              </button>
-              <button type="button" onClick={() => navigate("/catalogo")} className={navButtonClass}>
-                Catalogo
-              </button>
-              <button type="button" onClick={() => navigate(user ? "/mis-ordenes" : "/login")} className={navButtonClass}>
-                Mis ordenes
-              </button>
-              <button type="button" onClick={goToContact} className={navButtonClass}>
-                Contacto
-              </button>
-              {isStaff && (
-                <button
-                  type="button"
-                  onClick={() => navigate(getManagementPath())}
-                  className="px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.16em] bg-brand-primary text-white hover:bg-brand-primary-light transition-all cursor-pointer"
-                >
-                  Panel
-                </button>
-              )}
-            </nav>
+            <CategorySection />
           </div>
         </div>
 
@@ -280,42 +242,31 @@ const Header = ({ isStaff, userRole }) => {
               </div>
             )}
 
-            {!searching && (
-              <div className="flex flex-col">
-                <CategorySection
-                  isMobile={true}
-                  onNavigate={handleNavigation}
-                />
+            <div className="flex flex-col">
+              <CategorySection isMobile={true} onNavigate={handleNavigation} />
 
-                <p className="text-[10px] text-brand-text-muted font-black uppercase tracking-[0.3em] mb-4">Navegacion</p>
-                <ul className="space-y-4 font-bold text-brand-text uppercase text-xs tracking-widest">
-                  <li onClick={() => handleNavigation("/")}>Inicio</li>
-                  <li onClick={() => handleNavigation("/catalogo")}>Catalogo</li>
-                  <li onClick={() => handleNavigation(user ? "/mis-ordenes" : "/login")}>Mis ordenes</li>
-                  <li onClick={goToContact}>Contacto</li>
+              <p className="text-[10px] text-brand-text-muted font-black uppercase tracking-[0.3em] mt-6 mb-4">Navegacion</p>
+              <ul className="space-y-4 font-bold text-brand-text uppercase text-xs tracking-widest">
+                <li onClick={() => handleNavigation(user ? "/mis-ordenes" : "/login")}>Mis ordenes</li>
 
-                  {isStaff && (
-                    <li onClick={() => handleNavigation(getManagementPath())} className="text-brand-accent">
-                      Panel de {userRole === "carrier" ? "Envios" : userRole === "affiliate" ? "Afiliados" : "Administracion"}
-                    </li>
-                  )}
+                {isStaff && (
+                  <li onClick={() => handleNavigation(getManagementPath())} className="text-brand-accent">
+                    Panel de {userRole === "carrier" ? "Envios" : userRole === "affiliate" ? "Afiliados" : "Administracion"}
+                  </li>
+                )}
 
-                  {user ? (
-                    <li onClick={logout} className="text-red-400">Cerrar Sesion</li>
-                  ) : (
-                    <li onClick={() => handleNavigation("/login")}>Login</li>
-                  )}
-                </ul>
-              </div>
-            )}
+                {user ? (
+                  <li onClick={logout} className="text-red-400">Cerrar Sesion</li>
+                ) : (
+                  <li onClick={() => handleNavigation("/login")}>Login</li>
+                )}
+              </ul>
+            </div>
           </div>
         </div>
       </header>
 
-      <CarritoCompras
-        isOpen={openCart}
-        onClose={() => setOpenCart(false)}
-      />
+      <CarritoCompras isOpen={openCart} onClose={() => setOpenCart(false)} />
     </>
   );
 };

@@ -1,68 +1,48 @@
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa6";
-import { useNavigate } from "react-router";
-import logo from "/ps-logo-t.png";
+import logo from "/ps-logo-tr.svg";
 
 const Footer = () => {
-  const navigate = useNavigate();
-
   return (
     <>
-      <footer className="bg-brand-primary text-brand-text px-6 py-14 border-t border-brand-border">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
-          <div className="flex flex-col gap-6">
-            <div
-              className="cursor-pointer transition-opacity hover:opacity-80"
-              onClick={() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                navigate("/");
-              }}
-            >
-              <img
-                src={logo}
-                alt="Logo de tienda"
-                className="h-20 md:h-24 w-auto object-contain drop-shadow-[0_5px_15px_rgba(0,0,0,0.3)]"
-              />
-            </div>
-
-            <p className="text-sm leading-relaxed text-brand-text-muted max-w-xs">
-              Plantilla comercial para catalogos online, productos destacados y experiencia de compra adaptable a distintos rubros.
+      <footer className="bg-brand-primary text-brand-text px-6 py-12 border-t border-brand-border">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+          <div>
+            <p className="text-[10px] font-black uppercase tracking-[0.25em] text-brand-highlight mb-3">
+              E-commerce
             </p>
-
-            <div className="flex gap-3">
-              <a
-                href="#"
-                className="p-3 bg-brand-surface rounded-xl hover:bg-brand-accent transition text-brand-text border border-brand-border"
-              >
-                <FaInstagram />
-              </a>
-
-              <a
-                href="#"
-                className="p-3 bg-brand-surface rounded-xl hover:bg-brand-accent transition text-brand-text border border-brand-border"
-              >
-                <FaFacebookF />
-              </a>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4 text-sm text-brand-text-muted">
-            <h3 className="text-brand-text text-xs font-black uppercase tracking-[0.25em]">Navegacion</h3>
-            <button className="text-left hover:text-brand-highlight transition cursor-pointer" onClick={() => navigate("/")}>Inicio</button>
-            <button className="text-left hover:text-brand-highlight transition cursor-pointer" onClick={() => navigate("/catalogo")}>Catalogo</button>
-            <button className="text-left hover:text-brand-highlight transition cursor-pointer" onClick={() => navigate("/login")}>Login</button>
-          </div>
-
-          <div className="bg-brand-surface border border-brand-border rounded-2xl p-6">
-            <p className="text-[10px] font-black uppercase tracking-[0.25em] text-brand-highlight mb-3">E-commerce</p>
-            <p className="text-sm leading-relaxed text-brand-text-muted">
+            <p className="text-sm leading-relaxed text-brand-text-muted max-w-md">
               Diseno visual pensado para reutilizarse con el nombre, identidad y catalogo de cada cliente.
             </p>
           </div>
+
+          <div className="md:text-right">
+            <p className="text-[10px] font-black uppercase tracking-[0.25em] text-brand-highlight mb-4">
+              Redes
+            </p>
+            <div className="flex md:justify-end gap-5 text-2xl">
+              <a href="#" className="text-brand-text hover:text-brand-highlight transition" aria-label="Instagram">
+                <FaInstagram />
+              </a>
+              <a href="#" className="text-brand-text hover:text-brand-highlight transition" aria-label="Facebook">
+                <FaFacebookF />
+              </a>
+              <a
+                href="https://wa.me/5491122222266"
+                target="_blank"
+                rel="noreferrer"
+                className="text-brand-text hover:text-brand-highlight transition"
+                aria-label="WhatsApp"
+              >
+                <FaWhatsapp />
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div className="border-t border-brand-border mt-12 pt-6">
+        <div className="border-t border-brand-border mt-10 pt-6 flex flex-col md:flex-row items-center justify-center gap-3">
+          <img src={logo} alt="Patrician Software" className="h-8 w-auto object-contain" />
           <p className="text-center text-brand-text-muted text-sm">
-            © {new Date().getFullYear()} Catalogo e-commerce. Todos los derechos reservados.
+            2026 Patrician Software. Todos los derechos reservados.
           </p>
         </div>
       </footer>

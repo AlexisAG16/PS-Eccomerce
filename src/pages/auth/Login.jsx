@@ -1,5 +1,5 @@
 import { FaUser, FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import api from "../../api/axiosConfig";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
@@ -55,23 +55,26 @@ const Login = () => {
 
   return (
     <div className="relative w-full min-h-screen flex flex-col justify-center items-center py-12 px-4 overflow-hidden bg-[#4b5563]">
-      <div className="absolute inset-0 bg-linear-to-b from-[#111827]/45 via-transparent to-[#0b1325]/40" />
+      <div className="absolute inset-0 bg-linear-to-b from-[#111827]/55 via-[#4b5563]/70 to-[#0b1325]/70" />
 
-      <div className="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none select-none z-0">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
         <img
           src={logo}
           alt="Patrician Software"
-          className="w-[62vw] max-w-none opacity-10"
+          className="w-[120vw] md:w-[80vw] max-w-5xl opacity-10 object-contain"
         />
       </div>
 
-      <div className="relative z-10 w-full max-w-md md:max-w-lg min-h-[420px] rounded-[2.5rem] p-6 md:p-10 bg-brand-surface/90 backdrop-blur-xl border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
+      <div className="relative z-10 w-full max-w-md md:max-w-lg min-h-[420px] rounded-[2rem] p-6 md:p-10 bg-brand-surface/92 backdrop-blur-xl border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
         <div className="mb-6 text-center">
-          <img src={logo} alt="Patrician Software" className="h-24 w-auto mx-auto mb-5 object-contain" />
           <h1 className="text-[10px] font-bold text-brand-text tracking-[0.3em] uppercase mt-3">
-            Inicia sesion
+            Iniciar sesion
           </h1>
           <div className="w-10 h-[2px] bg-brand-highlight mx-auto mt-3 rounded-full opacity-80" />
+          <p className="mt-5 text-sm leading-relaxed text-brand-text-muted">
+            Acceso de demostracion para un usuario administrador con opciones restringidas,
+            pensado para probar el sistema sin exponer funciones sensibles.
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -115,48 +118,24 @@ const Login = () => {
                 type="button"
                 aria-label={showPassword ? "Ocultar contrasena" : "Mostrar contrasena"}
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-brand-text-muted hover:text-brand-accent transition-colors p-1"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-brand-text-muted hover:text-brand-accent transition-colors p-1 cursor-pointer"
               >
                 {showPassword ? <FaEyeSlash size={16} /> : <FaEye size={16} />}
               </button>
             </div>
           </div>
 
-          <div className="text-right pr-1">
-            <Link
-              to="/forgot-password"
-              className="text-[9px] font-black text-brand-text-muted uppercase tracking-widest hover:text-brand-highlight transition-colors"
-            >
-              Olvidaste tu contrasena?
-            </Link>
-          </div>
-
           <div className="flex justify-center my-4">
-            <Turnstile
-              siteKey={captcha_key}
-              onSuccess={(token) => setCaptchaToken(token)}
-            />
+            <Turnstile siteKey={captcha_key} onSuccess={(token) => setCaptchaToken(token)} />
           </div>
 
           <button
             type="submit"
             disabled={!captchaToken || isSubmitting}
-            className="w-full bg-brand-accent text-white hover:bg-brand-accent-hover active:scale-[0.97] transition-all duration-300 py-4 rounded-2xl font-black text-[13px] uppercase tracking-[0.3em] shadow-[0_15px_40px_rgba(59,130,246,0.25)] mt-2 cursor-pointer"
+            className="w-full bg-brand-accent text-white hover:bg-brand-accent-hover active:scale-[0.97] transition-all duration-300 py-4 rounded-2xl font-black text-[13px] uppercase tracking-[0.3em] shadow-[0_15px_40px_rgba(59,130,246,0.25)] mt-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? "CONECTANDO..." : "INGRESAR"}
           </button>
-
-          <div className="pt-5 border-t border-white/10 text-center">
-            <p className="text-[10px] font-bold text-brand-text-muted uppercase tracking-widest">
-              No tienes cuenta?
-              <Link
-                to="/register"
-                className="text-brand-highlight font-black hover:underline ml-1 transition-colors"
-              >
-                Registrate
-              </Link>
-            </p>
-          </div>
         </form>
       </div>
     </div>
