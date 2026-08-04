@@ -1,0 +1,16 @@
+# 🕹️ Configuración Global para Juegos de Unity WebGL en Netlify
+/minigames/*/Build/*.framework.js.br
+  Content-Type: application/javascript
+  Content-Encoding: br
+
+/minigames/*/Build/*.wasm.br
+  Content-Type: application/wasm
+  Content-Encoding: br
+
+/minigames/*/Build/*.data.br
+  Content-Type: application/octet-stream
+  Content-Encoding: br
+
+/minigames/*/Build/*.js.br
+  Content-Type: application/javascript
+  Content-Encoding: br
