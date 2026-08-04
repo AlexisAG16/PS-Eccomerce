@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
       // Pero no hace daño dejarlo.
       Cookies.remove('token');
       setUser(null);
-      window.location.href = '/login';
+      window.location.href = `${import.meta.env.BASE_URL}login`;
     }
   };
 

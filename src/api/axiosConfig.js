@@ -39,7 +39,7 @@ api.interceptors.response.use(
         toast.error("Sesión expirada. Redirigiendo...", { toastId: "expired" });
 
         setTimeout(() => {
-          window.location.href = '/login';
+          window.location.href = `${import.meta.env.BASE_URL}login`;
         }, 1500);
       }
     }

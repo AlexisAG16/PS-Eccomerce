@@ -43,7 +43,7 @@ const OrderTrackingPage = () => {
       }
 
       // Si puede jugar, abrimos el juego normalmente
-      setGameUrl(`${window.location.origin}/minigames/ruleta`);
+      setGameUrl(`${window.location.origin}${import.meta.env.BASE_URL}minigames/ruleta`);
       setIsGameOpen(true);
     } catch (err) {
       Swal.close();
@@ -151,7 +151,7 @@ const OrderTrackingPage = () => {
       <div className="fixed inset-0 z-100 bg-white flex flex-col items-center justify-center p-4">
         {/* Icono o Logo opcional */}
         <div className="mb-6 opacity-20">
-          <img src="/ps-icon.png" alt="Patrician Software" className="w-32" />
+          <img src={`${import.meta.env.BASE_URL}ps-icon.png`} alt="Patrician Software" className="w-32" />
         </div>
 
         <div className="text-center">

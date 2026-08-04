@@ -1,38 +1,40 @@
 import { useEffect, useState } from "react";
 
+const publicAsset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+
 const LOGO_SLIDES = [
   {
-    src: "/logos/cocacola_logo.png",
+    src: publicAsset("/logos/cocacola_logo.png"),
     alt: "Coca-Cola",
     title: "Catalogos para marcas de consumo",
     text: "Una estructura visual lista para productos, promociones y compra rapida."
   },
   {
-    src: "/logos/netflix_logo.png",
+    src: publicAsset("/logos/netflix_logo.png"),
     alt: "Netflix",
     title: "Experiencias digitales",
     text: "Un modelo adaptable para servicios, suscripciones y ofertas online."
   },
   {
-    src: "/logos/pepsi_logo.png",
+    src: publicAsset("/logos/pepsi_logo.png"),
     alt: "Pepsi",
     title: "Tiendas con identidad",
     text: "Colores, logos y productos pueden cambiar sin perder la base del e-commerce."
   },
   {
-    src: "/logos/electro_logo_hor.png",
+    src: publicAsset("/logos/electro_logo_hor.png"),
     alt: "Electro Hobby",
     title: "Catalogos tecnicos",
     text: "Ideal para rubros con productos, filtros, stock y detalle comercial."
   },
   {
-    src: "/logos/grupo_aluminium_logo_hor_white.png",
+    src: publicAsset("/logos/grupo_aluminium_logo_hor_white.png"),
     alt: "Grupo Aluminium",
     title: "Presentacion empresarial",
     text: "Una vidriera online para empresas que venden productos o servicios."
   },
   {
-    src: "/logos/manantial_logo.png",
+    src: publicAsset("/logos/manantial_logo.png"),
     alt: "El Manantial",
     title: "Marcas locales",
     text: "Pensado para negocios que necesitan vender mejor sin perder su identidad."
@@ -66,7 +68,7 @@ const Flyers = () => {
             <div className="absolute inset-0 bg-linear-to-br from-brand-bg via-brand-primary to-brand-primary-light" />
 
             <div className="absolute top-5 left-5 z-30 hidden sm:flex items-center gap-3">
-              <img src="/ps-icon.png" alt="Patrician Software" className="h-12 w-12 object-contain" />
+              <img src={publicAsset("/ps-icon.png")} alt="Patrician Software" className="h-12 w-12 object-contain" />
               <span className="text-[9px] font-black uppercase tracking-[0.24em] text-brand-highlight">
                 Modelo visual e-commerce
               </span>

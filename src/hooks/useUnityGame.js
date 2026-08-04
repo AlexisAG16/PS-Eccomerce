@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useUnityContext } from "react-unity-webgl";
 
 export const useUnityGame = (gameName, additionalData = {}) => {
+  const gameBasePath = `${import.meta.env.BASE_URL}minigames/${gameName}/Build/${gameName}`;
+
   // 1. Inyección de variables globales para Unity
   useEffect(() => {
     window.unityUserId = additionalData.userId;
@@ -12,10 +14,10 @@ export const useUnityGame = (gameName, additionalData = {}) => {
 
   // 2. Configuración centralizada de rutas
   const { unityProvider, isLoaded, loadingProgression } = useUnityContext({
-    loaderUrl: `/minigames/${gameName}/Build/${gameName}.loader.js`,
-    dataUrl: `/minigames/${gameName}/Build/${gameName}.data.br`,
-    frameworkUrl: `/minigames/${gameName}/Build/${gameName}.framework.js.br`,
-    codeUrl: `/minigames/${gameName}/Build/${gameName}.wasm.br`,
+    loaderUrl: `${gameBasePath}.loader.js`,
+    dataUrl: `${gameBasePath}.data.br`,
+    frameworkUrl: `${gameBasePath}.framework.js.br`,
+    codeUrl: `${gameBasePath}.wasm.br`,
     decompressorUrl: null,
   });
 
