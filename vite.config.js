@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/PS-Eccomerce/',
+  base: process.env.VITE_DEPLOY_TARGET === 'github-pages' ? '/PS-Eccomerce/' : '/',
   plugins: [react(), tailwindcss()],
   server: {
     fs: {
