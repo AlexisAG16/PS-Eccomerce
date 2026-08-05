@@ -10,7 +10,7 @@ import CarritoCompras from "../pages/public/CarritoCompras";
 import CategorySection from "./CategorySection";
 import api from "../api/axiosConfig";
 import CartIcon from "./CartIcon";
-import logo from "/ps-logo-tr.svg";
+import logo from "/ps-logo-white.svg";
 
 const Header = ({ isStaff, userRole }) => {
   const { user, logout } = useContext(AuthContext);
@@ -93,7 +93,7 @@ const Header = ({ isStaff, userRole }) => {
               <img
                 src={logo}
                 alt="Logo de tienda"
-                className="h-12 md:h-16 w-auto object-contain drop-shadow-lg brightness-0 invert contrast-125"
+                className="h-12 md:h-16 w-auto object-contain drop-shadow-lg"
               />
             </div>
 

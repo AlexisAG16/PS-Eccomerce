@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import { useContext, useEffect, useState } from "react"; 
 import { AuthContext } from "../contexts/AuthContext";
 import { ClipLoader } from 'react-spinners';
-import logo from "/ps-logo-tr.svg"
+import logo from "/ps-logo-white.svg"
 // UI Global
 import WhatsappIcon from "../components/WhatsappIcon";
 import CartIcon from "../components/CartIcon";
@@ -41,7 +41,7 @@ const MainLayout = () => {
           <img
             src={logo}
             alt="Cargando Patrician Software..."
-            className="w-[64vw] md:w-[34vw] max-w-lg h-auto animate-pulse drop-shadow-2xl opacity-95 brightness-125 contrast-125"
+            className="w-[64vw] md:w-[34vw] max-w-lg h-auto animate-pulse drop-shadow-2xl opacity-95"
           />
           <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-48 h-10 bg-brand-accent/20 blur-2xl rounded-full" />
         </div>
