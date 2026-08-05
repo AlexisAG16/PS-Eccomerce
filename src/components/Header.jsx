@@ -90,7 +90,11 @@ const Header = ({ isStaff, userRole }) => {
               className="relative cursor-pointer group transition-transform duration-300 hover:scale-105 active:scale-95"
               onClick={() => navigate("/")}
             >
-              <img src={logo} alt="Logo de tienda" className="h-12 md:h-16 w-auto object-contain drop-shadow-lg" />
+              <img
+                src={logo}
+                alt="Logo de tienda"
+                className="h-12 md:h-16 w-auto object-contain drop-shadow-lg brightness-0 invert contrast-125"
+              />
             </div>
 
             <div ref={searchRef} className="hidden md:block flex-1 mx-8 relative z-50">
