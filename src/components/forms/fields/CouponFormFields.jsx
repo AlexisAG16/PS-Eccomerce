@@ -9,7 +9,7 @@ const CouponFormFields = ({ register, watch, categories, products }) => {
       <fieldset className="space-y-4">
         <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiTag className="text-brand-secondary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Datos del Cupón</legend>
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Datos del Cupón</legend>
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">
@@ -27,7 +27,7 @@ const CouponFormFields = ({ register, watch, categories, products }) => {
       <fieldset className="space-y-4">
         <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiCalendar className="text-brand-secondary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Vigencia del Cupón</legend>
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Vigencia del Cupón</legend>
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">
@@ -35,7 +35,7 @@ const CouponFormFields = ({ register, watch, categories, products }) => {
             <input
               type="date"
               {...register("startDate", { required: "Campo requerido" })}
-              className="border-2 border-brand-border rounded-xl p-3 outline-none focus:border-brand-primary"
+              className="border-2 border-brand-border rounded-xl p-3 outline-none focus:border-brand-highlight"
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -43,7 +43,7 @@ const CouponFormFields = ({ register, watch, categories, products }) => {
             <input
               type="date"
               {...register("endDate", { required: "Campo requerido" })}
-              className="border-2 border-brand-border rounded-xl p-3 outline-none focus:border-brand-primary"
+              className="border-2 border-brand-border rounded-xl p-3 outline-none focus:border-brand-highlight"
             />
           </div>
         </div>
@@ -53,7 +53,7 @@ const CouponFormFields = ({ register, watch, categories, products }) => {
       <fieldset className="bg-brand-surface p-6 rounded-4xl border border-brand-border space-y-4">
         <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiPercent className="text-brand-secondary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Configuración</legend>
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Configuración</legend>
         </div>
         <div className="grid grid-cols-2 gap-6">
           <div className="flex flex-col gap-1">
@@ -65,7 +65,7 @@ const CouponFormFields = ({ register, watch, categories, products }) => {
           </div>
           <div className="flex flex-col gap-1">
             <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Valor</label>
-            <input type="number" {...register("value", { required: true })} className="border-2 border-white rounded-xl p-3 bg-brand-surface font-black text-brand-primary outline-none" />
+            <input type="number" {...register("value", { required: true })} className="border-2 border-white rounded-xl p-3 bg-brand-surface font-black text-brand-text outline-none" />
           </div>
         </div>
       </fieldset>
@@ -74,7 +74,7 @@ const CouponFormFields = ({ register, watch, categories, products }) => {
       <fieldset className="space-y-4">
         <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiShield className="text-brand-secondary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Condiciones y Límites</legend>
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Condiciones y Límites</legend>
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">
@@ -104,7 +104,7 @@ const CouponFormFields = ({ register, watch, categories, products }) => {
         <div className="space-y-4">
           <div className="flex items-center gap-2 border-b border-brand-border pb-2">
             <FiLayers className="text-brand-secondary" />
-            <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Categorías</legend>
+            <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Categorías</legend>
           </div>
           <div className="h-32 overflow-y-auto bg-brand-surface p-2 rounded-xl text-[10px]">
             {categories.map(c => <label key={c._id} className="flex gap-2 p-1"><input type="checkbox" value={c._id} {...register("applicableCategories")} /> {c.categoryName}</label>)}
@@ -113,7 +113,7 @@ const CouponFormFields = ({ register, watch, categories, products }) => {
         <div className="space-y-4">
           <div className="flex items-center gap-2 border-b border-brand-border pb-2">
             <FiBox className="text-brand-secondary" />
-            <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Productos</legend>
+            <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Productos</legend>
           </div>
           <div className="h-32 overflow-y-auto bg-brand-surface p-2 rounded-xl text-[10px]">
             {products.map(p => <label key={p._id} className="flex gap-2 p-1"><input type="checkbox" value={p._id} {...register("applicableProducts")} /> {p.productName}</label>)}

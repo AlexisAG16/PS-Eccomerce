@@ -36,7 +36,7 @@ const AffiliateFormFields = ({ register, watch, setValue, formState: { errors },
       <fieldset className="space-y-5">
         <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiUser className="text-brand-secondary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Usuario Vinculado</legend>
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Usuario Vinculado</legend>
         </div>
 
         {!isEditMode && !selectedUser ? (
@@ -47,7 +47,7 @@ const AffiliateFormFields = ({ register, watch, setValue, formState: { errors },
                 placeholder="Buscar por nombre o email..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full border-2 border-brand-border rounded-xl p-3 pl-10 outline-none focus:border-brand-primary font-bold"
+                className="w-full border-2 border-brand-border rounded-xl p-3 pl-10 outline-none focus:border-brand-highlight font-bold"
               />
             </div>
             <button
@@ -71,7 +71,7 @@ const AffiliateFormFields = ({ register, watch, setValue, formState: { errors },
                   className="p-2 hover:bg-brand-surface hover:shadow-sm rounded-lg cursor-pointer flex justify-between items-center group transition-all"
                 >
                   <span className="text-[11px] font-bold text-brand-text-muted uppercase">{u.firstName} {u.lastName}</span>
-                  <span className="text-[9px] font-black text-brand-primary opacity-0 group-hover:opacity-100 italic tracking-tighter">Seleccionar +</span>
+                  <span className="text-[9px] font-black text-brand-text opacity-0 group-hover:opacity-100 italic tracking-tighter">Seleccionar +</span>
                 </div>
               ))}
             </div>
@@ -99,7 +99,7 @@ const AffiliateFormFields = ({ register, watch, setValue, formState: { errors },
       <fieldset className="space-y-5 bg-brand-surface/50 p-5 rounded-4xl border border-brand-border">
         <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiCode className="text-brand-secondary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Configuración de Cuenta</legend>
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Configuración de Cuenta</legend>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -110,7 +110,7 @@ const AffiliateFormFields = ({ register, watch, setValue, formState: { errors },
               <input
                 {...register("affiliateCode", { required: "Campo obligatorio" })}
                 placeholder="ej: ofertas2026"
-                className="w-full border-2 border-white rounded-xl p-3 pl-8 shadow-sm focus:border-brand-primary outline-none font-bold lowercase"
+                className="w-full border-2 border-white rounded-xl p-3 pl-8 shadow-sm focus:border-brand-highlight outline-none font-bold lowercase"
               />
             </div>
           </div>
@@ -121,7 +121,7 @@ const AffiliateFormFields = ({ register, watch, setValue, formState: { errors },
               <input
                 type="number"
                 {...register("defaultCommission", { required: "Campo obligatorio" })}
-                className="w-full border-2 border-white rounded-xl p-3 pl-10 shadow-sm focus:border-brand-primary outline-none font-bold"
+                className="w-full border-2 border-white rounded-xl p-3 pl-10 shadow-sm focus:border-brand-highlight outline-none font-bold"
               />
             </div>
           </div>
@@ -132,7 +132,7 @@ const AffiliateFormFields = ({ register, watch, setValue, formState: { errors },
       <fieldset className="space-y-5">
         <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiCreditCard className="text-brand-secondary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Información de Cobro</legend>
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Información de Cobro</legend>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -140,7 +140,7 @@ const AffiliateFormFields = ({ register, watch, setValue, formState: { errors },
             <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Vía de Pago</label>
             <select
               {...register("paymentMethod.type")}
-              className="border-2 border-brand-border rounded-xl p-3 font-bold text-brand-primary outline-none"
+              className="border-2 border-brand-border rounded-xl p-3 font-bold text-brand-text outline-none"
             >
               <option value="ALIAS">ALIAS</option>
               <option value="CBU">CBU / CVU</option>

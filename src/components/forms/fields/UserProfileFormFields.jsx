@@ -12,7 +12,7 @@ const UserFormFields = ({ register, control, formState: { errors }, isEditMode }
       <fieldset className="space-y-6">
         <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiUser className="text-brand-secondary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Identidad</legend>
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Identidad</legend>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -53,7 +53,7 @@ const UserFormFields = ({ register, control, formState: { errors }, isEditMode }
       <fieldset className="space-y-6 bg-brand-surface/50 p-6 rounded-[2.5rem] border border-brand-border">
         <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiMapPin className="text-brand-secondary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Dirección</legend>
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Dirección</legend>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="md:col-span-2">
@@ -72,7 +72,7 @@ const UserFormFields = ({ register, control, formState: { errors }, isEditMode }
       <fieldset className="space-y-6">
         <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiCompass className="text-brand-secondary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Ubicación</legend>
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Ubicación</legend>
         </div>
         <MapField
           control={control}

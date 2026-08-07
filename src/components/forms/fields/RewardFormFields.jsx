@@ -9,8 +9,8 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
       {/* SECCIÓN 1: IDENTIDAD Y COSTO */}
       <fieldset className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="md:col-span-2 flex items-center gap-2 border-b border-brand-border pb-2">
-          <FiGift className="text-brand-primary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Configuración del Premio</legend>
+          <FiGift className="text-brand-text" />
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Configuración del Premio</legend>
         </div>
 
         <div className="flex flex-col gap-2 md:col-span-2">
@@ -18,7 +18,7 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
           <input
             {...register("title", { required: "El título es obligatorio" })}
             placeholder="Ej: 20% OFF en toda la tienda"
-            className="border-2 border-brand-border rounded-2xl p-4 focus:border-brand-primary outline-none font-bold text-brand-text shadow-sm"
+            className="border-2 border-brand-border bg-brand-bg rounded-2xl p-4 focus:border-brand-highlight outline-none font-bold text-brand-text placeholder:text-brand-text-muted shadow-sm"
           />
           {errors.title && <span className="text-[9px] text-red-500 font-bold ml-2">{errors.title.message}</span>}
         </div>
@@ -28,7 +28,7 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
           <input
             type="number"
             {...register("pointsCost", { required: true, min: 0 })}
-            className="border-2 border-brand-border rounded-2xl p-4 font-black text-brand-primary text-xl outline-none focus:border-brand-primary shadow-sm"
+            className="border-2 border-brand-border bg-brand-bg rounded-2xl p-4 font-black text-brand-text text-xl outline-none focus:border-brand-highlight shadow-sm"
           />
         </div>
 
@@ -38,7 +38,7 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
             type="number"
             {...register("stock", { required: true })}
             placeholder="-1 para infinito"
-            className="border-2 border-brand-border rounded-2xl p-4 font-bold text-brand-text-muted outline-none focus:border-brand-primary shadow-sm"
+            className="border-2 border-brand-border bg-brand-bg rounded-2xl p-4 font-bold text-brand-text outline-none focus:border-brand-highlight shadow-sm"
           />
           <p className="text-[8px] text-brand-text-muted italic ml-1">Usa -1 para stock ilimitado.</p>
         </div>
@@ -56,7 +56,7 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
             <label className="text-[9px] font-black text-brand-text-muted uppercase">Tipo de Beneficio</label>
             <select
               {...register("config.discountType")}
-              className="border-2 border-white rounded-xl p-3 font-bold text-brand-text shadow-sm outline-none focus:border-brand-secondary bg-brand-surface"
+              className="border-2 border-brand-border rounded-xl p-3 font-bold text-brand-text shadow-sm outline-none focus:border-brand-secondary bg-brand-bg"
             >
               <option value="percentage">Porcentaje (%)</option>
               <option value="fixed">Monto Fijo ($)</option>
@@ -71,7 +71,7 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
               type="number"
               step="0.01"
               {...register("config.value", { required: true, min: 1 })}
-              className="border-2 border-white rounded-xl p-3 font-black text-brand-secondary shadow-sm outline-none focus:border-brand-secondary"
+              className="border-2 border-brand-border rounded-xl p-3 font-black text-brand-text shadow-sm outline-none focus:border-brand-secondary bg-brand-bg"
             />
           </div>
         </div>
@@ -82,7 +82,7 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
             <input
               type="number"
               {...register("config.minOrderAmount")}
-              className="border-2 border-white rounded-xl p-3 font-medium outline-none focus:border-brand-secondary"
+              className="border-2 border-brand-border rounded-xl p-3 font-medium text-brand-text outline-none focus:border-brand-secondary bg-brand-bg"
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -90,7 +90,7 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
             <input
               type="number"
               {...register("config.minItems")}
-              className="border-2 border-white rounded-xl p-3 font-medium outline-none focus:border-brand-secondary"
+              className="border-2 border-brand-border rounded-xl p-3 font-medium text-brand-text outline-none focus:border-brand-secondary bg-brand-bg"
             />
           </div>
         </div>
@@ -99,15 +99,15 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
       {/* SECCIÓN 3: RESTRICCIONES */}
       <fieldset className="space-y-4">
         <div className="flex items-center gap-2 border-b border-brand-border pb-2">
-          <FiTarget className="text-brand-primary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Restricciones de Uso</legend>
+          <FiTarget className="text-brand-text" />
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Restricciones de Uso</legend>
         </div>
 
         <div className="flex flex-col gap-2">
           <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest ml-1">Limitar a Categoría</label>
           <select
             {...register("config.categoryRestriction")}
-            className="border-2 border-brand-border rounded-2xl p-4 font-bold text-brand-text-muted outline-none focus:border-brand-primary bg-brand-surface shadow-sm"
+            className="border-2 border-brand-border rounded-2xl p-4 font-bold text-brand-text-muted outline-none focus:border-brand-highlight bg-brand-surface shadow-sm"
           >
             <option value="">Aplica a toda la tienda</option>
             {categories.map(cat => (
@@ -116,9 +116,9 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
           </select>
         </div>
 
-        <div className="bg-blue-50 border border-blue-100 p-4 rounded-2xl flex gap-3 items-start">
-          <FiAlertCircle className="text-blue-500 mt-0.5 shrink-0" />
-          <p className="text-[9px] text-blue-700 font-medium leading-relaxed">
+        <div className="bg-brand-bg/70 border border-brand-border p-4 rounded-2xl flex gap-3 items-start">
+          <FiAlertCircle className="text-brand-secondary mt-0.5 shrink-0" />
+          <p className="text-[9px] text-brand-text-muted font-medium leading-relaxed">
             <span className="font-black uppercase">Nota Técnica:</span> Al canjear este premio, el sistema creará automáticamente un cupón con validez de 30 días, exclusivo para el usuario que realizó el canje y con un único uso permitido.
           </p>
         </div>

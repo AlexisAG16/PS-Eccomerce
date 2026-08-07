@@ -59,8 +59,8 @@ const OrdersMyModal = ({ isOpen, onClose }) => {
         {/* HEADER */}
         <div className="p-6 border-b border-brand-border flex justify-between items-center bg-brand-bg">
           <h2 className="text-xl font-black text-brand-text uppercase italic tracking-tighter flex items-center gap-2">
-            <span className="w-8 h-8 bg-brand-primary/10 rounded-full flex items-center justify-center">
-              <FaShoppingBag className="text-brand-primary text-xs" />
+            <span className="w-8 h-8 bg-brand-highlight/15 rounded-full border border-brand-highlight/40 flex items-center justify-center">
+              <FaShoppingBag className="text-brand-highlight text-xs" />
             </span>
             Historial de mis Órdenes
           </h2>
@@ -190,7 +190,7 @@ const OrdersMyModal = ({ isOpen, onClose }) => {
                     {/* 4. Total Neto definitivo impactado en la pasarela */}
                     <div className="pt-1 border-t border-dashed border-brand-border mt-1">
                       <p className="text-[8px] uppercase font-black text-brand-text-muted tracking-widest leading-none mb-0.5">Total Pagado</p>
-                      <p className="text-xl font-black text-brand-primary tracking-tight italic">
+                      <p className="text-xl font-black text-brand-highlight tracking-tight italic">
                         ${Number(order.total || 0).toLocaleString('es-AR')}
                       </p>
                     </div>
@@ -203,7 +203,7 @@ const OrdersMyModal = ({ isOpen, onClose }) => {
                             onClose(); // Cerramos el modal limpiamente
                             navigate(`/orden/recibo/${order._id}`); // 🎯 Navegación SPA fluida sin reload
                           }}
-                          className="inline-flex items-center justify-center bg-brand-secondary text-white hover:bg-brand-primary px-5 py-2 rounded-xl font-black text-[10px] uppercase italic tracking-widest transition-all shadow-md active:scale-95 cursor-pointer gap-2"
+                          className="inline-flex items-center justify-center bg-brand-secondary text-brand-text hover:bg-brand-accent px-5 py-2 rounded-xl font-black text-[10px] uppercase italic tracking-widest transition-all shadow-md active:scale-95 cursor-pointer gap-2"
                         >
                           <FaExchangeAlt size={10} className="animate-pulse" />
                           Pagar Ahora / Ver Recibo

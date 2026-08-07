@@ -22,7 +22,7 @@ const BrandFormFields = ({ register, watch, setValue, formState: { errors }, isE
           <input
             {...register("name", { required: "El nombre es obligatorio" })}
             placeholder="Ej: Samsung"
-            className="w-full pl-11 pr-4 py-4 border-2 border-brand-border rounded-2xl focus:border-brand-primary outline-none transition-all font-bold text-brand-text shadow-sm"
+            className="w-full pl-11 pr-4 py-4 border-2 border-brand-border rounded-2xl focus:border-brand-highlight outline-none transition-all font-bold text-brand-text shadow-sm"
           />
         </div>
         {errors.name && <span className="text-red-500 text-[9px] font-bold uppercase ml-1">{errors.name.message}</span>}
@@ -54,7 +54,7 @@ const BrandFormFields = ({ register, watch, setValue, formState: { errors }, isE
               }
             })}
             placeholder="https://ejemplo.com/logo.png"
-            className="w-full pl-11 pr-4 py-4 border-2 border-brand-border rounded-2xl focus:border-brand-primary outline-none transition-all font-bold text-brand-text text-sm shadow-sm"
+            className="w-full pl-11 pr-4 py-4 border-2 border-brand-border rounded-2xl focus:border-brand-highlight outline-none transition-all font-bold text-brand-text text-sm shadow-sm"
           />
         </div>
         {errors.logo && <span className="text-red-500 text-[9px] font-bold uppercase ml-1">{errors.logo.message}</span>}

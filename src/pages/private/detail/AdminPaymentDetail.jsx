@@ -19,7 +19,7 @@ const STATUS_CONFIG = {
   PENDING: { label: 'Pendiente', color: 'text-amber-500', bg: 'bg-amber-500', text: 'El usuario aún debe completar el pago.' },
   REJECTED: { label: 'Rechazado', color: 'text-red-500', bg: 'bg-red-500', text: 'La transacción fue declinada.' },
   REFUNDED: { label: 'Reembolsado', color: 'text-purple-500', bg: 'bg-purple-500', text: 'El dinero fue devuelto al cliente.' },
-  CANCELLED: { label: 'Cancelado', color: 'text-brand-text-muted', bg: 'bg-brand-surface0', text: 'El pago fue anulado.' }
+  CANCELLED: { label: 'Cancelado', color: 'text-brand-text-muted', bg: 'bg-brand-surface', text: 'El pago fue anulado.' }
 };
 
 const AdminPaymentDetail = () => {
@@ -99,7 +99,7 @@ const AdminPaymentDetail = () => {
   const headerActions = (
     <button
       onClick={() => navigate(`/admin/ordenes/detalle/${payment.orderId?._id || payment.orderId}`)}
-      className="bg-brand-primary text-white px-8 py-3 rounded-full font-black uppercase italic text-[10px] tracking-widest hover:bg-brand-secondary transition-all shadow-lg"
+      className="bg-brand-primary text-brand-text px-8 py-3 rounded-full font-black uppercase italic text-[10px] tracking-widest hover:bg-brand-accent transition-all shadow-lg border border-brand-border"
     >
       Ver Orden Relacionada
     </button>
@@ -152,16 +152,16 @@ const AdminPaymentDetail = () => {
                 {mpData.payment_type_id} • **** {mpData.card?.last_four_digits || '0000'}
               </p>
             </div>
-            <div className="p-8 bg-blue-50/50 rounded-[2.5rem] border border-blue-100">
-              <p className="text-[10px] font-black text-blue-400 uppercase mb-2">Identificador Externo</p>
-              <p className="text-xl font-mono font-bold text-brand-text">
+            <div className="p-8 bg-brand-bg/70 rounded-[2.5rem] border border-brand-border">
+              <p className="text-[10px] font-black text-brand-secondary uppercase mb-2">Identificador Externo</p>
+              <p className="text-xl font-mono font-bold text-brand-text break-all">
                 {mpData.id || 'N/A'}
               </p>
-              <p className="text-[10px] font-bold text-blue-400 mt-1 uppercase">ID Mercado Pago</p>
+              <p className="text-[10px] font-bold text-brand-text-muted mt-1 uppercase">ID Mercado Pago</p>
             </div>
           </div>
 
-          <div className="space-y-4 border-t border-dashed pt-8">
+          <div className="space-y-4 border-t border-dashed border-brand-border pt-8">
             <h4 className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest mb-4">Datos del Pagador</h4>
             <InfoRow label="Email Registrado" value={mpData.payer?.email || 'No disponible'} />
             <InfoRow label="ID de Usuario MP" value={mpData.payer?.id || 'N/A'} />
@@ -202,10 +202,10 @@ const AdminPaymentDetail = () => {
             />
           </div>
 
-          <div className="mt-4 p-4 bg-brand-surface/5 rounded-2xl border border-white/10">
-            <p className="text-[8px] font-black uppercase text-white/40 mb-1">Estado en Pasarela</p>
+          <div className="mt-4 p-4 bg-brand-bg/70 rounded-2xl border border-brand-border">
+            <p className="text-[8px] font-black uppercase text-brand-text-muted mb-1">Estado en Pasarela</p>
             <p className="text-sm font-black italic text-brand-secondary uppercase">{mpData.status || 'N/A'}</p>
-            <p className="text-[10px] text-white/60 leading-tight mt-1">{mpData.status_detail || 'Esperando confirmación'}</p>
+            <p className="text-[10px] text-brand-text-muted leading-tight mt-1">{mpData.status_detail || 'Esperando confirmación'}</p>
           </div>
         </DetailCard>
 
@@ -214,12 +214,12 @@ const AdminPaymentDetail = () => {
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className="w-full bg-brand-surface border-none rounded-2xl p-5 text-xs font-bold text-brand-text-muted focus:ring-2 focus:ring-brand-primary transition-all min-h-[120px] resize-none"
+            className="w-full bg-brand-bg border border-brand-border rounded-2xl p-5 text-xs font-bold text-brand-text placeholder:text-brand-text-muted focus:ring-2 focus:ring-brand-secondary outline-none transition-all min-h-[120px] resize-none"
             placeholder="Escriba observaciones sobre este pago..."
           />
           <button
             onClick={handleUpdateNotes}
-            className="w-full mt-4 py-4 bg-brand-primary text-white rounded-4xl font-black uppercase italic text-[10px] tracking-widest hover:bg-brand-secondary transition-all shadow-md"
+            className="w-full mt-4 py-4 bg-brand-primary text-brand-text rounded-4xl font-black uppercase italic text-[10px] tracking-widest hover:bg-brand-accent transition-all shadow-md border border-brand-border"
           >
             Guardar Observación
           </button>

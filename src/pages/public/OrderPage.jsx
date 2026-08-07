@@ -28,6 +28,8 @@ const OrderPage = () => {
   const { user } = useContext(AuthContext);
   const { cart, total, getOrderItems, clearCart } = useCart();
   const navigate = useNavigate();
+  const inputClass = "w-full rounded-2xl border border-brand-border bg-brand-bg/80 p-4 text-sm font-bold text-brand-text placeholder:text-brand-text-muted outline-none transition-all focus:ring-2 focus:ring-brand-highlight/40 read-only:cursor-not-allowed read-only:bg-brand-primary/70 read-only:text-brand-text-muted disabled:cursor-not-allowed disabled:bg-brand-primary/70 disabled:text-brand-text-muted";
+  const phoneInputClass = "flex w-full items-center rounded-2xl border border-brand-border bg-brand-bg/80 p-4 text-sm font-bold text-brand-text outline-none transition-all focus-within:ring-2 focus-within:ring-brand-highlight/40 [&_.PhoneInputInput]:ml-2 [&_.PhoneInputInput]:border-none [&_.PhoneInputInput]:bg-transparent [&_.PhoneInputInput]:font-bold [&_.PhoneInputInput]:text-brand-text [&_.PhoneInputInput]:placeholder:text-brand-text-muted [&_.PhoneInputInput]:outline-none";
 
   const [formData, setFormData] = useState({
     firstName: user?.firstName || '',
@@ -191,7 +193,7 @@ const OrderPage = () => {
                   type="text"
                   placeholder="Nombre"
                   required
-                  className={`input-airtotal`}
+                  className={inputClass}
                   value={formData.firstName}
                   readOnly={!!user} // Si hay user, no lo puede editar aquí
                   onChange={e => setFormData({ ...formData, firstName: e.target.value })}
@@ -200,7 +202,7 @@ const OrderPage = () => {
                   type="text"
                   placeholder="Apellido"
                   required
-                  className={`input-airtotal`}
+                  className={inputClass}
                   value={formData.lastName}
                   readOnly={!!user}
                   onChange={e => setFormData({ ...formData, lastName: e.target.value })}
@@ -211,7 +213,7 @@ const OrderPage = () => {
                 type="email"
                 placeholder="Correo Electrónico"
                 required
-                className={`input-airtotal`}
+                className={inputClass}
                 value={formData.email}
                 readOnly={!!user}
                 onChange={e => setFormData({ ...formData, email: e.target.value })}
@@ -223,7 +225,7 @@ const OrderPage = () => {
                   defaultCountry="AR"
                   value={formData.phone}
                   onChange={val => setFormData({ ...formData, phone: val })}
-                  className="input-airtotal-phone"
+                  className={phoneInputClass}
                   disabled={!!user} // 👈 Esto lo bloquea si el usuario está logueado
                 />
               </div>
@@ -292,7 +294,7 @@ const OrderPage = () => {
                         <input
                           type="text"
                           placeholder="Calle"
-                          className="input-airtotal"
+                          className={inputClass}
                           required
                           value={formData.street} // 👈 Valor precargado
                           onChange={e => setFormData({ ...formData, street: e.target.value })}
@@ -301,7 +303,7 @@ const OrderPage = () => {
                       <input
                         type="text"
                         placeholder="N°"
-                        className="input-airtotal"
+                        className={inputClass}
                         required
                         value={formData.number} // 👈 Valor precargado
                         onChange={e => setFormData({ ...formData, number: e.target.value })}
@@ -311,7 +313,7 @@ const OrderPage = () => {
                       <input
                         type="text"
                         placeholder="N° Departamento / Piso"
-                        className="input-airtotal"
+                        className={inputClass}
                         value={formData.apartment} // 👈 Valor precargado
                         onChange={e => setFormData({ ...formData, apartment: e.target.value })}
                       />
@@ -322,7 +324,7 @@ const OrderPage = () => {
                           type="text"
                           value="S.F.V. de Catamarca"
                           readOnly
-                          className="input-airtotal font-bold uppercase text-[10px]"
+                          className={`${inputClass} uppercase text-[10px]`}
                         />
                         <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[8px] font-black text-brand-highlight uppercase">Ciudad</span>
                       </div>
@@ -333,7 +335,7 @@ const OrderPage = () => {
                           type="text"
                           value="4700"
                           readOnly
-                          className="input-airtotal font-bold text-[10px]"
+                          className={`${inputClass} text-[10px]`}
                         />
                         <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[8px] font-black text-brand-highlight uppercase">CP</span>
                       </div>
@@ -343,7 +345,7 @@ const OrderPage = () => {
                     <input
                       type="text"
                       placeholder="Referencia (ej: Portón negro, frente a la plaza...)"
-                      className="input-airtotal"
+                      className={inputClass}
                       value={formData.reference} // 👈 Valor precargado
                       onChange={e => setFormData({ ...formData, reference: e.target.value })}
                     />

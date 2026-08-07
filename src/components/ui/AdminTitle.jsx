@@ -35,7 +35,7 @@ const AdminTitle = () => {
       <header className="mb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-brand-border pb-8">
         <div className="flex-1">
           <nav className="flex items-center gap-2 text-[10px] text-brand-text-muted uppercase tracking-[0.2em] mb-4 overflow-x-auto whitespace-nowrap">
-            <Link to="/admin/dashboard" className="hover:text-brand-primary transition-colors">Dashboard</Link>
+            <Link to="/admin/dashboard" className="hover:text-brand-highlight transition-colors">Dashboard</Link>
 
             {pathSegments.map((segment, index) => {
               // Si el segmento es "detalle", no lo renderizamos en el breadcrumb
@@ -51,9 +51,9 @@ const AdminTitle = () => {
                 <div key={url} className="flex items-center gap-2">
                   <span className="text-brand-text-muted/50">/</span>
                   {isLast ? (
-                    <span className="text-brand-primary font-black italic">{label}</span>
+                    <span className="text-brand-highlight font-black italic">{label}</span>
                   ) : (
-                    <Link to={url} className="hover:text-brand-primary transition-colors">{label}</Link>
+                    <Link to={url} className="hover:text-brand-highlight transition-colors">{label}</Link>
                   )}
                 </div>
               );
@@ -65,7 +65,7 @@ const AdminTitle = () => {
         </div>
 
         <div className="flex items-center">
-          <div className="bg-air-azul text-brand-text px-6 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] italic shadow-xl shadow-brand-primary/20 flex items-center gap-3 border border-white/10">
+          <div className="bg-brand-primary text-brand-text px-6 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] italic shadow-xl shadow-brand-primary/20 flex items-center gap-3 border border-brand-border">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>

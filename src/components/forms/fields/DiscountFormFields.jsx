@@ -12,14 +12,14 @@ const DiscountFormFields = ({ register, watch, formState: { errors }, control, c
       <fieldset className="space-y-4">
         <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiTag className="text-brand-secondary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Campaña</legend>
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Campaña</legend>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">
             <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Nombre del Evento</label>
             <input
               {...register("name", { required: "El nombre es obligatorio" })}
-              className="border-2 border-brand-border rounded-xl p-3 focus:border-brand-primary outline-none font-bold"
+              className="border-2 border-brand-border rounded-xl p-3 focus:border-brand-highlight outline-none font-bold"
               placeholder="Ej: HOT SALE"
             />
           </div>
@@ -38,7 +38,7 @@ const DiscountFormFields = ({ register, watch, formState: { errors }, control, c
       <fieldset className="bg-brand-surface p-6 rounded-4xl border border-brand-border space-y-4">
         <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiPercent className="text-brand-secondary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Configuración</legend>
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Configuración</legend>
         </div>
         <div className="grid grid-cols-2 gap-6">
           <div className="flex flex-col gap-1">
@@ -58,7 +58,7 @@ const DiscountFormFields = ({ register, watch, formState: { errors }, control, c
             <input
               type="number"
               {...register("value", { required: true, min: 1 })}
-              className="border-2 border-white rounded-xl p-3 bg-brand-surface font-black text-brand-primary outline-none"
+              className="border-2 border-white rounded-xl p-3 bg-brand-surface font-black text-brand-text outline-none"
             />
           </div>
         </div>
@@ -68,7 +68,7 @@ const DiscountFormFields = ({ register, watch, formState: { errors }, control, c
       <fieldset className="space-y-4">
         <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiCalendar className="text-brand-secondary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Vigencia</legend>
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Vigencia</legend>
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">
@@ -100,21 +100,21 @@ const DiscountFormFields = ({ register, watch, formState: { errors }, control, c
       <fieldset className="space-y-4">
         <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiLayers className="text-brand-secondary" />
-          <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Aplicar a Categorías</legend>
+          <legend className="text-[11px] font-black text-brand-highlight uppercase tracking-[0.2em]">Aplicar a Categorías</legend>
         </div>
         <div className="grid grid-cols-2 gap-2 bg-brand-surface p-4 rounded-2xl max-h-32 overflow-y-auto custom-scrollbar">
           {categories.map(cat => (
             <label key={cat._id} className="flex items-center gap-2 cursor-pointer group">
-              <input type="checkbox" value={cat._id} {...register("applicableCategories")} className="w-4 h-4 rounded text-brand-primary" />
-              <span className="text-[10px] font-bold text-brand-text-muted uppercase group-hover:text-brand-primary">{cat.categoryName}</span>
+              <input type="checkbox" value={cat._id} {...register("applicableCategories")} className="w-4 h-4 rounded text-brand-text" />
+              <span className="text-[10px] font-bold text-brand-text-muted uppercase group-hover:text-brand-text">{cat.categoryName}</span>
             </label>
           ))}
         </div>
       </fieldset>
 
       {/* <label className="flex items-center gap-3 p-4 bg-brand-primary/5 rounded-2xl cursor-pointer">
-        <input type="checkbox" {...register("isActive")} className="w-5 h-5 rounded text-brand-primary" />
-        <span className="text-[10px] font-black text-brand-primary uppercase">Campaña Activa inmediatamente</span>
+        <input type="checkbox" {...register("isActive")} className="w-5 h-5 rounded text-brand-text" />
+        <span className="text-[10px] font-black text-brand-highlight uppercase">Campaña Activa inmediatamente</span>
       </label> */}
 
     </div>

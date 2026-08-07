@@ -24,7 +24,7 @@ const CategoryFormFields = ({ register, watch, setValue, formState: { errors }, 
           <input
             {...register("categoryName", { required: "El nombre es obligatorio" })}
             placeholder="Ej: Repuestos de Motor"
-            className="w-full pl-11 pr-4 py-4 border-2 border-brand-border rounded-2xl focus:border-brand-primary outline-none transition-all font-bold text-brand-text shadow-sm"
+            className="w-full pl-11 pr-4 py-4 border-2 border-brand-border rounded-2xl focus:border-brand-highlight outline-none transition-all font-bold text-brand-text shadow-sm"
           />
         </div>
         {errors.categoryName && <span className="text-red-500 text-[9px] font-bold uppercase ml-1">{errors.categoryName.message}</span>}

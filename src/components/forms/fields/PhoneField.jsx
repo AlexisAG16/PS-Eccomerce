@@ -15,7 +15,7 @@ const PhoneField = ({ control, name, label }) => (
           defaultCountry="AR"
           value={value}
           onChange={onChange}
-          className="border-2 border-brand-border rounded-2xl p-4 focus-within:border-brand-primary outline-none font-bold text-brand-text shadow-sm transition-all"
+          className="border-2 border-brand-border rounded-2xl p-4 focus-within:border-brand-highlight outline-none font-bold text-brand-text shadow-sm transition-all"
         />
       )}
     />
