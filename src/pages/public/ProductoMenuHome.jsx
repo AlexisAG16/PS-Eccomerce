@@ -8,11 +8,8 @@ const Home = () => {
       <Aviso />
       <div className="min-h-screen flex flex-col font-sans bg-brand-bg">
         <section className="bg-brand-bg border-b border-brand-border px-4 md:px-8 pt-8 pb-14">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+          <div className="max-w-6xl mx-auto">
             <div>
-              <p className="text-brand-highlight text-[10px] font-black uppercase tracking-[0.28em] mb-3">
-                Modelo visual e-commerce
-              </p>
               <h1 className="text-4xl md:text-6xl font-black text-brand-text uppercase tracking-tight leading-none">
                 Tu tienda, tu marca, nuestro modelo.
               </h1>
@@ -22,15 +19,6 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="bg-brand-surface border border-brand-border rounded-xl p-6">
-              <p className="text-[10px] font-black uppercase tracking-[0.25em] text-brand-highlight mb-3">
-                Patrician Software
-              </p>
-              <p className="text-sm leading-relaxed text-brand-text-muted">
-                Un modelo reutilizable para presentar tiendas, servicios digitales y catalogos comerciales
-                sin perder la estructura original del ecommerce.
-              </p>
-            </div>
           </div>
         </section>
 

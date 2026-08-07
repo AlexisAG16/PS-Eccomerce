@@ -16,7 +16,7 @@ const columns = [
       >
         <span className="font-black text-brand-secondary text-[11px] tracking-tighter italic">#{val.slice(-6).toUpperCase()} </span>
 
-        <span className="group-hover:underline rounded-xl px-2 py-0.5 font-bold bg-brand-primary text-brand-surface text-[9px] transition-all">VER DETALLES </span>
+        <span className="group-hover:underline rounded-xl px-2 py-0.5 font-bold bg-brand-bg text-brand-text-muted border border-brand-border text-[9px] transition-all">VER DETALLES </span>
 
         <div className="flex gap-1 mt-0.5">
           <span className={`text-[7px] px-1.5 py-0.5 rounded-full font-bold uppercase ${row.orderType === 'WHOLESALE'
@@ -37,13 +37,13 @@ const columns = [
     field: "guest",
     render: (_, row) => (
       <div className="flex flex-col">
-        <span className="font-bold text-gray-800 text-xs italic tracking-tighter uppercase leading-none">
+        <span className="font-bold text-brand-text text-xs italic tracking-tighter uppercase leading-none">
           {row.guest?.firstName} {row.guest?.lastName || row.userId?.lastName}
         </span>
-        <span className="text-[9px] text-gray-400 font-medium lowercase mb-1">
+        <span className="text-[9px] text-brand-text-muted font-medium lowercase mb-1">
           {row.guest?.email || row.userId?.email}
         </span>
-        <span className="text-[10px] font-black text-brand-primary/80 italic uppercase tracking-widest">
+        <span className="text-[10px] font-black text-brand-text-muted italic uppercase tracking-widest">
           📦 {row.itemsCount} {row.itemsCount === 1 ? 'Producto' : 'Productos'}
         </span>
       </div>
@@ -55,14 +55,14 @@ const columns = [
     sortable: false,
     render: (val) => {
       const statusConfig = {
-        CREATED: { label: 'Creado', styles: 'text-gray-400 bg-gray-50 border-gray-100' },
-        PAID: { label: 'Pagado', styles: 'text-green-600 bg-green-50 border-green-200' },
-        SHIPPED: { label: 'Enviado', styles: 'text-blue-600 bg-blue-50 border-blue-200' },
-        CANCELLED: { label: 'Cancelado', styles: 'text-red-600 bg-red-50 border-red-200' },
+        CREATED: { label: 'Creado', styles: 'text-brand-text-muted bg-brand-surface border-brand-border' },
+        PAID: { label: 'Pagado', styles: 'text-green-300 bg-green-500/15 border-green-400/40' },
+        SHIPPED: { label: 'Enviado', styles: 'text-sky-300 bg-sky-500/15 border-sky-400/40' },
+        CANCELLED: { label: 'Cancelado', styles: 'text-red-300 bg-red-500/15 border-red-400/40' },
       };
 
       // Fallback por si llega un estado inesperado
-      const config = statusConfig[val] || { label: val, styles: 'bg-gray-100 text-gray-500' };
+      const config = statusConfig[val] || { label: val, styles: 'bg-brand-bg text-brand-text-muted' };
 
       return (
         <span className={`
@@ -91,15 +91,15 @@ const columns = [
       );
 
       const paymentMapper = {
-        CREATED: { label: 'Creado', color: 'text-gray-400' },
+        CREATED: { label: 'Creado', color: 'text-brand-text-muted' },
         PENDING: { label: 'Pendiente', color: 'text-amber-500' },
-        APPROVED: { label: 'Aprobado', color: 'text-green-600' },
+        APPROVED: { label: 'Aprobado', color: 'text-green-300' },
         REJECTED: { label: 'Rechazado', color: 'text-red-500' },
-        CANCELLED: { label: 'Cancelado', color: 'text-red-700' },
+        CANCELLED: { label: 'Cancelado', color: 'text-red-300' },
         REFUNDED: { label: 'Reembolso', color: 'text-purple-500' },
       };
 
-      const status = paymentMapper[val.status] || { label: val.status, color: 'text-gray-500' };
+      const status = paymentMapper[val.status] || { label: val.status, color: 'text-brand-text-muted' };
 
       return (
         <div className="flex flex-col leading-tight min-w-[80px]">
@@ -109,12 +109,12 @@ const columns = [
           </span>
 
           {/* Proveedor (MP / Transferencia) */}
-          <span className="text-[8px] text-gray-400 font-bold uppercase tracking-tighter truncate max-w-[90px]">
+          <span className="text-[8px] text-brand-text-muted font-bold uppercase tracking-tighter truncate max-w-[90px]">
             {val.provider === 'MERCADO_PAGO' ? 'M. Pago' : val.provider.replace('_', ' ')}
           </span>
 
           {/* ID de Transacción - Más pequeño y sutil */}
-          <span className="text-[7px] text-gray-300 font-mono mt-0.5">
+          <span className="text-[7px] text-brand-text-muted/50 font-mono mt-0.5">
             #{val.providerPaymentId?.toString().slice(-8) || 'N/A'}
           </span>
         </div>
@@ -130,10 +130,10 @@ const columns = [
       if (row.deliveryType === 'PICKUP') {
         return (
           <div className="flex flex-col min-w-[90px]">
-            <span className="text-gray-400 text-[10px] font-black uppercase italic whitespace-nowrap">
+            <span className="text-brand-text-muted text-[10px] font-black uppercase italic whitespace-nowrap">
               📍 Retiro Local
             </span>
-            <span className="text-[8px] text-gray-300 uppercase font-bold tracking-tighter leading-tight">
+            <span className="text-[8px] text-brand-text-muted/50 uppercase font-bold tracking-tighter leading-tight">
               Mostrador Central
             </span>
           </div>
@@ -142,24 +142,24 @@ const columns = [
 
       // Caso 2: Envío a domicilio pero el objeto shipping no existe aún
       if (!val) return (
-        <span className="text-[9px] text-gray-300 italic font-medium uppercase tracking-tighter">
+        <span className="text-[9px] text-brand-text-muted/50 italic font-medium uppercase tracking-tighter">
           ⏳ No generado
         </span>
       );
 
       // Mapeo de estados según tu Enum de Mongoose
       const shipStatus = {
-        CREATED: { label: 'Creado', color: 'text-gray-400' },
+        CREATED: { label: 'Creado', color: 'text-brand-text-muted' },
         READY_TO_SHIP: { label: 'Para Despacho', color: 'text-amber-500' },
         SHIPPED: { label: 'Despachado', color: 'text-brand-secondary' },
         IN_TRANSIT: { label: 'En Camino', color: 'text-blue-500' },
-        DELIVERED: { label: 'Entregado', color: 'text-green-600' },
+        DELIVERED: { label: 'Entregado', color: 'text-green-300' },
         FAILED: { label: 'Fallido', color: 'text-red-500' },
         RETURNED: { label: 'Devuelto', color: 'text-orange-600' },
-        CANCELLED: { label: 'Cancelado', color: 'text-red-700' },
+        CANCELLED: { label: 'Cancelado', color: 'text-red-300' },
       };
 
-      const status = shipStatus[val.status] || { label: val.status, color: 'text-gray-500' };
+      const status = shipStatus[val.status] || { label: val.status, color: 'text-brand-text-muted' };
 
       return (
         <div className="flex flex-col leading-tight min-w-[100px]">
@@ -170,12 +170,12 @@ const columns = [
 
           {/* Transportista y Nombre (si existe) */}
           <div className="flex flex-col mt-0.5">
-            <span className="text-[8px] text-gray-400 font-bold uppercase tracking-tighter truncate max-w-[110px]">
+            <span className="text-[8px] text-brand-text-muted font-bold uppercase tracking-tighter truncate max-w-[110px]">
               {val.carrier?.toUpperCase()} {val.carrierName ? `(${val.carrierName.split(' ')[0]})` : ''}
             </span>
 
             {/* Tracking Number con estilo de código */}
-            <span className="text-[8px] text-brand-primary font-mono font-bold tracking-tighter">
+            <span className="text-[8px] text-brand-text-muted font-mono font-bold tracking-tighter">
               {val.trackingNumber || 'PEND. GUÍA'}
             </span>
           </div>
@@ -187,11 +187,11 @@ const columns = [
     label: "Total",
     field: "total",
     render: (val) => (
-      <div className="flex flex-col items-end bg-gray-50 p-2 rounded-xl border border-gray-100">
+      <div className="flex flex-col items-end bg-brand-surface p-2 rounded-xl border border-brand-border">
         <span className="font-black text-sm text-brand-secondary italic tracking-tighter leading-none">
           ${val?.toLocaleString('es-AR')}
         </span>
-        <span className="text-[7px] font-black text-gray-400 uppercase tracking-widest mt-1">Final</span>
+        <span className="text-[7px] font-black text-brand-text-muted uppercase tracking-widest mt-1">Final</span>
       </div>
     )
   },
@@ -250,7 +250,7 @@ const AdminFullOrders = () => {
       {loading ? (
         <div className="h-[40vh] flex flex-col items-center justify-center">
           <ClipLoader color="#1a5276" size={50} />
-          <p className="mt-4 text-[10px] font-black text-gray-300 uppercase tracking-widest animate-pulse">
+          <p className="mt-4 text-[10px] font-black text-brand-text-muted/50 uppercase tracking-widest animate-pulse">
             Obteniendo datos de Patrician Software...
           </p>
         </div>

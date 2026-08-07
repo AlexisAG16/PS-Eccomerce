@@ -11,10 +11,10 @@ const columns = [
   //   sortable: false,
   //   render: (val) => (
   //     <div className="flex flex-col min-w-[80px]">
-  //       <span className="font-mono text-[10px] font-bold text-gray-500 tracking-tighter">
+  //       <span className="font-mono text-[10px] font-bold text-brand-text-muted tracking-tighter">
   //         #{val?.toString().slice(-10) || 'N/A'}
   //       </span>
-  //       <span className="text-[7px] text-gray-300 uppercase font-black italic">Comprobante</span>
+  //       <span className="text-[7px] text-brand-text-muted/50 uppercase font-black italic">Comprobante</span>
   //     </div>
   //   )
   // },
@@ -51,7 +51,7 @@ const columns = [
       return (
         <div className="flex items-center gap-1.5">
           <span className={`w-1.5 h-1.5 rounded-full ${config.color} animate-pulse`} />
-          <span className="text-[9px] font-black uppercase italic text-brand-primary tracking-tighter whitespace-nowrap">
+          <span className="text-[9px] font-black uppercase italic text-brand-text tracking-tighter whitespace-nowrap">
             {config.label}
           </span>
         </div>
@@ -64,7 +64,7 @@ const columns = [
     sortable: false,
     render: (val) => (
       <div className="flex flex-col">
-        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">
+        <span className="text-[10px] font-bold text-brand-text-muted uppercase tracking-tighter">
           #{val?._id?.slice(-6).toUpperCase() || val?.slice(-6).toUpperCase()}
         </span>
       </div>
@@ -75,11 +75,11 @@ const columns = [
     field: "status",
     render: (val) => {
       const statusMapper = {
-        CREATED: { label: 'Creado', cls: 'bg-gray-100 text-gray-500 border-gray-200' },
+        CREATED: { label: 'Creado', cls: 'bg-brand-bg text-brand-text-muted border-brand-border' },
         PENDING: { label: 'Pendiente', cls: 'bg-amber-50 text-amber-600 border-amber-200' },
         APPROVED: { label: 'Aprobado', cls: 'bg-green-50 text-green-600 border-green-200' },
         REJECTED: { label: 'Rechazado', cls: 'bg-red-50 text-red-600 border-red-200' },
-        CANCELLED: { label: 'Cancelado', cls: 'bg-gray-200 text-gray-600 border-gray-300' },
+        CANCELLED: { label: 'Cancelado', cls: 'bg-brand-border text-brand-text-muted border-gray-300' },
         REFUNDED: { label: 'Reembolso', cls: 'bg-purple-50 text-purple-600 border-purple-200' }
       };
 
@@ -101,10 +101,10 @@ const columns = [
     field: "amount",
     render: (val) => (
       <div className="flex flex-col items-end">
-        <span className="font-black text-sm text-brand-primary italic tracking-tighter">
+        <span className="font-black text-sm text-brand-text italic tracking-tighter">
           ${val?.toLocaleString('es-AR')}
         </span>
-        <span className="text-[7px] text-gray-400 font-bold uppercase">ARS</span>
+        <span className="text-[7px] text-brand-text-muted font-bold uppercase">ARS</span>
       </div>
     )
   },
@@ -113,7 +113,7 @@ const columns = [
     field: "createdAt",
     format: "date",
     render: (val) => (
-      <span className="text-[9px] text-gray-400 font-bold tabular-nums">
+      <span className="text-[9px] text-brand-text-muted font-bold tabular-nums">
         {new Date(val).toLocaleDateString('es-AR')}
       </span>
     )
@@ -171,7 +171,7 @@ const AdminPayments = () => {
       {loading ? (
         <div className="h-[50vh] flex flex-col items-center justify-center">
           <ClipLoader color="#1a5276" size={60} />
-          <p className="mt-4 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] animate-pulse">
+          <p className="mt-4 text-[10px] font-black text-brand-text-muted uppercase tracking-[0.2em] animate-pulse">
             Sincronizando Transacciones...
           </p>
         </div>

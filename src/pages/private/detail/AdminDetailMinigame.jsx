@@ -69,14 +69,14 @@ const renderField = (field, config, updateConfigField) => {
         <input
           type="number"
           step={field.step || 1}
-          className="w-full p-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none font-bold text-zinc-800"
+          className="w-full p-2.5 bg-brand-surface border border-brand-border rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none font-bold text-zinc-800"
           value={value ?? 0}
           onChange={(e) => updateConfigField(field.path, parseFloat(e.target.value) || 0)}
         />
       );
 
     default:
-      return <span className="text-xs text-gray-400 italic">Tipo de campo no soportado</span>;
+      return <span className="text-xs text-brand-text-muted italic">Tipo de campo no soportado</span>;
   }
 };
 
@@ -164,7 +164,7 @@ const AdminDetailMinigame = () => {
   if (!gameInfo) return <div className="p-10 text-center">Juego no registrado en la configuración.</div>;
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 bg-brand-bg min-h-screen">
       <div className="max-w-[1600px] mx-auto">
         <header className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-black text-zinc-800 uppercase tracking-tight">
@@ -194,7 +194,7 @@ const AdminDetailMinigame = () => {
 
           {/* EDITOR DINÁMICO */}
           <div className="w-full lg:w-[400px] flex flex-col">
-            <div className="bg-white p-6 rounded-2xl shadow-xl border border-zinc-200 flex-1 overflow-hidden flex flex-col">
+            <div className="bg-brand-surface p-6 rounded-2xl shadow-xl border border-zinc-200 flex-1 overflow-hidden flex flex-col">
               <h2 className="text-lg font-black mb-4 border-b pb-2 text-zinc-400 uppercase tracking-tighter">Parámetros del Sistema</h2>
 
               <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-6">

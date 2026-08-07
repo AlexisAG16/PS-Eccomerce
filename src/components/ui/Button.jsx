@@ -82,8 +82,8 @@ export const StatusToggleButton = ({ isActive, onToggle }) => {
     <button
       onClick={onToggle}
       className={`flex items-center gap-2 px-6 py-2.5 border-2 text-[10px] font-black uppercase italic rounded-full transition-all duration-300 shadow-sm ${isActive
-          ? 'border-red-100 text-red-500 hover:bg-red-50'
-          : 'border-green-100 text-green-600 hover:bg-green-50'
+          ? 'border-red-500/30 text-red-400 hover:bg-red-500/10'
+          : 'border-green-500/30 text-green-400 hover:bg-green-500/10'
         }`}
     >
       {isActive ? (
@@ -101,16 +101,36 @@ export const StatusToggleButton = ({ isActive, onToggle }) => {
   );
 };
 
-export const QuickLink = ({ to, icon, label }) => (
-  <Link
-    to={to}
-    className="flex flex-col items-center justify-center p-6 bg-white border border-transparent rounded-[2.5rem] shadow-sm hover:shadow-xl hover:border-brand-secondary/20 transition-all duration-300 group overflow-hidden relative"
-  >
-    <div className="text-brand-primary group-hover:text-brand-secondary group-hover:scale-110 transition-all duration-300 mb-3 z-10">
-      {icon}
-    </div>
-    <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 group-hover:text-brand-primary transition-colors z-10">
-      {label}
-    </span>
-  </Link>
-);
+export const QuickLink = ({ to, icon, label, disabled = false }) => {
+  const className = `flex flex-col items-center justify-center p-6 bg-brand-surface border border-white/25 rounded-[2.5rem] shadow-sm transition-all duration-300 group overflow-hidden relative ${
+    disabled
+      ? 'opacity-60 cursor-not-allowed grayscale'
+      : 'hover:shadow-xl hover:border-brand-highlight/60 hover:bg-brand-primary-light'
+  }`;
+
+  const content = (
+    <>
+      {disabled && <span className="absolute inset-x-5 top-1/2 h-0.5 -rotate-12 bg-red-500/90 shadow-[0_0_10px_rgba(239,68,68,0.75)]" />}
+      <div className="text-brand-secondary group-hover:text-brand-text group-hover:scale-110 transition-all duration-300 mb-3 z-10">
+        {icon}
+      </div>
+      <span className="text-[10px] font-black uppercase tracking-widest text-brand-text-muted group-hover:text-brand-text transition-colors z-10">
+        {label}
+      </span>
+    </>
+  );
+
+  if (disabled) {
+    return (
+      <button type="button" disabled className={className} aria-label={`${label} deshabilitado`}>
+        {content}
+      </button>
+    );
+  }
+
+  return (
+    <Link to={to} className={className}>
+      {content}
+    </Link>
+  );
+};

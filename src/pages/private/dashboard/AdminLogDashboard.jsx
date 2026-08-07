@@ -23,7 +23,7 @@ const columns = [
     label: "Detalles",
     field: "details",
     render: (val) => (
-      <pre className="text-[9px] bg-gray-100 p-1 rounded overflow-x-auto max-w-[200px]">
+      <pre className="text-[9px] bg-brand-bg p-1 rounded overflow-x-auto max-w-[200px]">
         {JSON.stringify(val, null, 2)}
       </pre>
     )

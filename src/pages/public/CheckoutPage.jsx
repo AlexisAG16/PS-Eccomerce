@@ -202,13 +202,13 @@ const CheckoutPage = () => {
   // --- ESTADO: CARGANDO (Spinner Patrician Software) ---
   if (loading) {
     return (
-      <div className="min-h-[60vh] flex flex-col items-center justify-center p-10">
+      <div className="min-h-[60vh] flex flex-col items-center justify-center p-10 bg-brand-bg">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
           className="w-16 h-16 border-4 border-brand-primary/10 border-t-brand-secondary rounded-full mb-4"
         />
-        <p className="text-brand-primary font-black italic uppercase tracking-widest text-sm animate-pulse">
+        <p className="text-brand-text font-black italic uppercase tracking-widest text-sm animate-pulse">
           Cargando confirmación...
         </p>
       </div>
@@ -221,20 +221,20 @@ const CheckoutPage = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="max-w-md mx-auto my-20 p-10 bg-white rounded-[3rem] shadow-xl border border-red-50 text-center"
+        className="max-w-md mx-auto my-20 p-10 bg-brand-surface rounded-[3rem] shadow-xl border border-brand-border text-center"
       >
         <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </div>
-        <h2 className="text-xl font-black text-gray-800 uppercase italic mb-2">¡Ups! Algo salió mal</h2>
-        <p className="text-gray-500 text-xs font-bold leading-relaxed mb-8 uppercase tracking-tight">
+        <h2 className="text-xl font-black text-brand-text uppercase italic mb-2">¡Ups! Algo salió mal</h2>
+        <p className="text-brand-text-muted text-xs font-bold leading-relaxed mb-8 uppercase tracking-tight">
           {error}
         </p>
         <button
           onClick={() => navigate('/catalogo')}
-          className="w-full py-4 bg-gray-100 text-gray-600 rounded-2xl font-black uppercase italic text-[10px] tracking-widest hover:bg-gray-200 transition-all"
+          className="w-full py-4 bg-brand-primary text-brand-text rounded-2xl font-black uppercase italic text-[10px] tracking-widest hover:bg-brand-accent transition-all border border-brand-border"
         >
           Volver al Catálogo
         </button>
@@ -247,7 +247,7 @@ const CheckoutPage = () => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="max-w-2xl mx-auto p-8 bg-white rounded-[3rem] shadow-2xl my-10 border border-gray-50 relative overflow-hidden"
+      className="max-w-2xl mx-auto p-8 bg-brand-surface rounded-[3rem] shadow-2xl my-10 border border-brand-border relative overflow-hidden text-brand-text"
     >
       <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 rounded-bl-full -mr-10 -mt-10" />
 
@@ -255,30 +255,30 @@ const CheckoutPage = () => {
         <div className="inline-block bg-brand-secondary text-white px-4 py-1 rounded-full text-[9px] font-black uppercase tracking-[0.3em] mb-3">
           Pedido Registrado Vía WhatsApp
         </div>
-        <h1 className="text-3xl font-black text-brand-primary uppercase italic tracking-tighter">
+        <h1 className="text-3xl font-black text-brand-text uppercase italic tracking-tighter">
           Orden #{order._id.slice(-6).toUpperCase()}
         </h1>
       </header>
 
       {/* DETALLE DE PRODUCTOS */}
-      <div className="bg-[#f8fafc] rounded-4xl p-8 mb-6 border border-gray-100">
-        <h3 className="text-[10px] font-black uppercase text-gray-400 mb-6 tracking-[0.2em] italic border-b border-gray-200 pb-2">
+      <div className="bg-brand-bg/70 rounded-4xl p-8 mb-6 border border-brand-border">
+        <h3 className="text-[10px] font-black uppercase text-brand-highlight mb-6 tracking-[0.2em] italic border-b border-brand-border pb-2">
           Resumen de Compra
         </h3>
         <ul className="space-y-4">
           {order.items.map((item, i) => (
             <li key={i} className="flex justify-between items-center text-sm">
               <div className="flex flex-col">
-                <span className="font-black text-brand-primary uppercase text-xs tracking-tight">{item.productName}</span>
-                <span className="text-[10px] text-gray-400 font-bold tracking-widest">CANTIDAD: {item.quantity}</span>
+                <span className="font-black text-brand-text uppercase text-xs tracking-tight">{item.productName}</span>
+                <span className="text-[10px] text-brand-text-muted font-bold tracking-widest">CANTIDAD: {item.quantity}</span>
               </div>
-              <span className="font-black text-gray-700 italic">${item.subtotal.toLocaleString('es-AR')}</span>
+              <span className="font-black text-brand-highlight italic">${item.subtotal.toLocaleString('es-AR')}</span>
             </li>
           ))}
         </ul>
 
         {/* CUPONES */}
-        <div className="mt-6 border-t border-gray-200 pt-6">
+        <div className="mt-6 border-t border-brand-border pt-6">
           {user ? (
             <CouponInput
               cart={order.items}
@@ -300,40 +300,40 @@ const CheckoutPage = () => {
               }}
             />
           ) : (
-            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-center">
-              <p className="text-xs font-bold text-amber-700 uppercase tracking-tight">¿Tienes un cupón de descuento?</p>
-              <p className="text-[10px] text-amber-600 uppercase mt-1">
+            <div className="bg-brand-primary/70 border border-brand-highlight/60 rounded-2xl p-4 text-center">
+              <p className="text-xs font-bold text-brand-highlight uppercase tracking-tight">¿Tienes un cupón de descuento?</p>
+              <p className="text-[10px] text-brand-text-muted uppercase mt-1">
                 Debes <span className="font-black underline cursor-pointer" onClick={() => navigate('/login')}>Iniciar Sesión</span> para usarlo.
               </p>
             </div>
           )}
         </div>
 
-        <div className="mt-8 pt-6 border-t-2 border-dashed border-gray-200 flex justify-between items-end">
+        <div className="mt-8 pt-6 border-t-2 border-dashed border-brand-border flex justify-between items-end">
           <div className="flex flex-col">
             <span className="text-[10px] font-black uppercase text-brand-secondary tracking-widest">Total Final</span>
-            <span className="text-[9px] text-gray-400 font-bold uppercase tracking-tighter">Acuerdo de pago Mayorista</span>
+            <span className="text-[9px] text-brand-text-muted font-bold uppercase tracking-tighter">Acuerdo de pago Mayorista</span>
           </div>
-          <span className="text-4xl font-black text-brand-primary italic tracking-tighter">
+          <span className="text-4xl font-black text-brand-highlight italic tracking-tighter">
             ${order.total.toLocaleString('es-AR')}
           </span>
         </div>
       </div>
 
       {/* 🏛️ NUEVA SECCIÓN DE DATOS DE TRANSFERENCIA BANCARIA DIRECTA */}
-      <div className="bg-brand-primary/5 border border-brand-primary/10 rounded-3xl p-6 mb-6 space-y-3">
-        <h4 className="text-xs font-black text-brand-primary uppercase italic tracking-wider">🏛️ Datos para Transferencia Directa</h4>
-        <p className="text-[11px] font-bold text-gray-600 uppercase">Si prefiere agilizar el despacho, realice la transferencia aquí:</p>
-        <div className="bg-white p-4 rounded-xl border text-xs font-mono text-gray-700 space-y-1.5 select-all">
-          <div><span className="font-sans font-black text-[10px] text-gray-400 uppercase block">Alias Bancario</span>{PS_ALIAS}</div>
-          <div className="pt-1.5 border-t border-gray-100"><span className="font-sans font-black text-[10px] text-gray-400 uppercase block">CBU</span>{PS_CBU}</div>
+      <div className="bg-brand-bg/70 border border-brand-border rounded-3xl p-6 mb-6 space-y-3">
+        <h4 className="text-xs font-black text-brand-highlight uppercase italic tracking-wider">🏛️ Datos para Transferencia Directa</h4>
+        <p className="text-[11px] font-bold text-brand-text-muted uppercase">Si prefiere agilizar el despacho, realice la transferencia aquí:</p>
+        <div className="bg-brand-primary p-4 rounded-xl border border-brand-border text-xs font-mono text-brand-text space-y-1.5 select-all">
+          <div><span className="font-sans font-black text-[10px] text-brand-highlight uppercase block">Alias Bancario</span>{PS_ALIAS}</div>
+          <div className="pt-1.5 border-t border-brand-border"><span className="font-sans font-black text-[10px] text-brand-highlight uppercase block">CBU</span>{PS_CBU}</div>
         </div>
         <p className="text-[9px] font-bold text-brand-secondary uppercase italic">⚠️ Envíe el comprobante de pago por WhatsApp indicando su número de orden.</p>
       </div>
 
       {/* 🗺️ PASOS E INSTRUCCIONES DE SEGUIMIENTO */}
       <div className="space-y-4 mb-8">
-        <h4 className="text-xs font-black text-gray-400 uppercase tracking-widest italic border-b pb-2">Próximos pasos recomendados:</h4>
+        <h4 className="text-xs font-black text-brand-text-muted uppercase tracking-widest italic border-b border-brand-border pb-2">Próximos pasos recomendados:</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {/* BOTÓN WHATSAPP */}
           <button
@@ -347,8 +347,8 @@ const CheckoutPage = () => {
           <button
             onClick={handleCopyTrackingLink}
             className={`w-full p-4 rounded-2xl font-black flex items-center justify-center gap-2 transition-all cursor-pointer uppercase italic text-[11px] tracking-wider border-2 ${copied
-                ? "bg-green-50 border-green-500 text-green-600"
-                : "bg-transparent border-gray-200 text-gray-600 hover:bg-gray-50"
+                ? "bg-green-500/15 border-green-400 text-green-300"
+                : "bg-transparent border-brand-border text-brand-text hover:border-brand-highlight"
               }`}
           >
             {copied ? <FiCheckCircle className="text-base" /> : <FiCopy className="text-base" />}
@@ -357,12 +357,12 @@ const CheckoutPage = () => {
         </div>
 
         {/* SOPORTE VÍA CORREO */}
-        <div className="flex items-center justify-center gap-2 text-[10px] font-black text-gray-400 uppercase">
-          <FiMail className="text-brand-primary" /> Soporte logístico institucional: <span className="text-brand-primary lowercase select-all font-bold">{PS_EMAIL}</span>
+        <div className="flex items-center justify-center gap-2 text-[10px] font-black text-brand-text-muted uppercase">
+          <FiMail className="text-brand-highlight" /> Soporte logístico institucional: <span className="text-brand-text lowercase select-all font-bold">{PS_EMAIL}</span>
         </div>
       </div>
 
-      <p className="text-[9px] text-center text-gray-400 uppercase font-black tracking-[0.15em] px-6 leading-relaxed bg-gray-50 py-3 rounded-2xl border">
+      <p className="text-[9px] text-center text-brand-text-muted uppercase font-black tracking-[0.15em] px-6 leading-relaxed bg-brand-bg/70 py-3 rounded-2xl border border-brand-border">
         💡 Nota: El equipo administrativo audita las órdenes entrantes de forma constante. Nos comunicaremos directamente al teléfono provisto en su registro si detectamos inconsistencias o demoras en la asignación del stock.
       </p>
     </motion.div>

@@ -44,12 +44,12 @@ const NotificationBell = ({ isStaff }) => {
     <Link
       onClick={handleBellClick} // 👈 AGREGAMOS EL CLICK AQUÍ
       to="/admin/ordenes"
-      className="relative bg-white text-air-azul p-3 rounded-full hover:bg-gray-100 transition shadow-lg group border border-gray-100 flex items-center justify-center"
+      className="relative bg-brand-surface text-brand-secondary p-3 rounded-full hover:bg-brand-primary-light transition shadow-lg group border border-brand-border flex items-center justify-center"
     >
       <AiOutlineBell size={22} />
 
       {pendingCount > 0 && (
-        <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-black min-w-[18px] h-[18px] flex items-center justify-center rounded-full animate-bounce shadow-md border-2 border-white">
+        <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-black min-w-[18px] h-[18px] flex items-center justify-center rounded-full animate-bounce shadow-md border-2 border-brand-bg">
           {pendingCount}
         </span>
       )}

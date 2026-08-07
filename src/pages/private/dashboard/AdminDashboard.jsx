@@ -50,19 +50,19 @@ const AdminDashboard = () => {
   }, [authLoading, user, can]);
 
   if (authLoading) return (
-    <div className="h-screen flex items-center justify-center bg-brand-primary-soft">
+    <div className="h-screen flex items-center justify-center bg-brand-bg">
       <ClipLoader color="#3b82f6" size={50} />
     </div>
   );
 
   if (!can('read:orders')) {
     return (
-      <div className="min-h-[70vh] flex flex-col items-center justify-center p-12 bg-white rounded-2xl border border-slate-200 shadow-inner">
-        <div className="w-24 h-24 bg-brand-primary-soft rounded-full flex items-center justify-center mb-6">
-          <FiLock className="text-4xl text-slate-300" />
+      <div className="min-h-[70vh] flex flex-col items-center justify-center p-12 bg-brand-surface rounded-2xl border border-brand-border shadow-inner">
+        <div className="w-24 h-24 bg-brand-bg rounded-full flex items-center justify-center mb-6">
+          <FiLock className="text-4xl text-brand-text-muted/60" />
         </div>
-        <h2 className="text-xl font-black uppercase text-brand-primary tracking-tighter">Area Restringida</h2>
-        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2 max-w-xs text-center leading-relaxed">
+        <h2 className="text-xl font-black uppercase text-brand-text tracking-tighter">Area Restringida</h2>
+        <p className="text-[10px] font-bold text-brand-text-muted uppercase tracking-widest mt-2 max-w-xs text-center leading-relaxed">
           Tu nivel de acceso actual no permite visualizar metricas de rendimiento comercial.
         </p>
         <button
@@ -78,7 +78,7 @@ const AdminDashboard = () => {
   if (loading) return (
     <div className="min-h-[60vh] flex flex-col items-center justify-center">
       <ClipLoader color="#3b82f6" size={60} />
-      <p className="mt-4 text-[10px] font-black uppercase tracking-widest text-slate-400 animate-pulse">
+      <p className="mt-4 text-[10px] font-black uppercase tracking-widest text-brand-text-muted animate-pulse">
         Sincronizando metricas comerciales...
       </p>
     </div>
@@ -98,49 +98,49 @@ const AdminDashboard = () => {
         </p>
       </section>
 
-      <section className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-xl border border-slate-200">
-        <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Ingresos</p>
-        <p className="text-3xl font-black text-brand-primary">${totalSales.toLocaleString('es-AR')}</p>
+      <section className="lg:col-span-4 bg-brand-surface p-6 rounded-2xl shadow-xl border border-brand-border">
+        <p className="text-[10px] font-black uppercase tracking-widest text-brand-text-muted mb-2">Ingresos</p>
+        <p className="text-3xl font-black text-brand-text">${totalSales.toLocaleString('es-AR')}</p>
       </section>
 
-      <section className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-xl border border-slate-200">
-        <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Ordenes</p>
-        <p className="text-3xl font-black text-brand-primary">{totalOrders.toLocaleString('es-AR')}</p>
+      <section className="lg:col-span-4 bg-brand-surface p-6 rounded-2xl shadow-xl border border-brand-border">
+        <p className="text-[10px] font-black uppercase tracking-widest text-brand-text-muted mb-2">Ordenes</p>
+        <p className="text-3xl font-black text-brand-text">{totalOrders.toLocaleString('es-AR')}</p>
       </section>
 
-      <section className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-xl border border-slate-200">
-        <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Stock critico</p>
+      <section className="lg:col-span-4 bg-brand-surface p-6 rounded-2xl shadow-xl border border-brand-border">
+        <p className="text-[10px] font-black uppercase tracking-widest text-brand-text-muted mb-2">Stock critico</p>
         <p className="text-3xl font-black text-brand-danger">{lowStockItems.length}</p>
       </section>
 
-      <section className="lg:col-span-6 bg-white p-8 rounded-2xl shadow-xl border border-slate-200">
-        <h2 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">Productos destacados por venta</h2>
+      <section className="lg:col-span-6 bg-brand-surface p-8 rounded-2xl shadow-xl border border-brand-border">
+        <h2 className="text-[10px] font-black uppercase tracking-widest text-brand-text-muted mb-6">Productos destacados por venta</h2>
         <div className="space-y-3">
           {stats.topProducts?.length > 0 ? (
             stats.topProducts.map((product) => (
-              <div key={product._id || product.name} className="flex items-center justify-between gap-4 border-b border-slate-100 pb-3">
-                <span className="text-sm font-bold text-brand-primary line-clamp-1">{product.name}</span>
+              <div key={product._id || product.name} className="flex items-center justify-between gap-4 border-b border-brand-border pb-3">
+                <span className="text-sm font-bold text-brand-text line-clamp-1">{product.name}</span>
                 <span className="text-xs font-black text-brand-accent">{product.salesCount} ventas</span>
               </div>
             ))
           ) : (
-            <p className="text-[10px] uppercase font-black text-slate-300">Sin datos de ventas</p>
+            <p className="text-[10px] uppercase font-black text-brand-text-muted/60">Sin datos de ventas</p>
           )}
         </div>
       </section>
 
-      <section className="lg:col-span-6 bg-white p-8 rounded-2xl shadow-xl border border-slate-200">
-        <h2 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">Alertas de stock</h2>
+      <section className="lg:col-span-6 bg-brand-surface p-8 rounded-2xl shadow-xl border border-brand-border">
+        <h2 className="text-[10px] font-black uppercase tracking-widest text-brand-text-muted mb-6">Alertas de stock</h2>
         <div className="space-y-3">
           {lowStockItems.length > 0 ? (
             lowStockItems.map((item) => (
-              <div key={item._id || item.name} className="flex items-center justify-between gap-4 border-b border-slate-100 pb-3">
-                <span className="text-sm font-bold text-brand-primary line-clamp-1">{item.name}</span>
+              <div key={item._id || item.name} className="flex items-center justify-between gap-4 border-b border-brand-border pb-3">
+                <span className="text-sm font-bold text-brand-text line-clamp-1">{item.name}</span>
                 <span className="text-xs font-black text-brand-danger">{item.stock} unidades</span>
               </div>
             ))
           ) : (
-            <p className="text-[10px] uppercase font-black text-slate-300">Sin alertas activas</p>
+            <p className="text-[10px] uppercase font-black text-brand-text-muted/60">Sin alertas activas</p>
           )}
         </div>
       </section>

@@ -49,11 +49,11 @@ const AdminDetailCoupons = () => {
   if (loading) return (
     <div className="h-screen flex flex-col items-center justify-center">
       <ClipLoader color="#1a5276" size={50} />
-      <p className="mt-4 text-[10px] font-black text-gray-400 uppercase tracking-widest italic animate-pulse">Abriendo expediente de beneficio...</p>
+      <p className="mt-4 text-[10px] font-black text-brand-text-muted uppercase tracking-widest italic animate-pulse">Abriendo expediente de beneficio...</p>
     </div>
   );
 
-  if (!coupon) return <div className="pt-40 text-center uppercase font-black italic text-brand-primary">Cupón no encontrado</div>;
+  if (!coupon) return <div className="pt-40 text-center uppercase font-black italic text-brand-text">Cupón no encontrado</div>;
 
   // Validaciones lógicas rápidas
   const now = new Date();
@@ -86,11 +86,11 @@ const AdminDetailCoupons = () => {
     >
       {/* COLUMNA SUPERIOR: MÉTRICAS GENERALES */}
       <div className="lg:col-span-12 grid grid-cols-2 md:grid-cols-5 gap-4 mb-4">
-        <MetricItem label="Usos Registrados" value={coupon.usedCount} icon={FiActivity} colorClass="text-brand-primary font-black" />
-        <MetricItem label="Límite Global" value={hasUsageLimit ? coupon.usageLimit : "∞"} icon={FiSettings} colorClass={isLimitReached ? 'text-red-500 font-black' : 'text-gray-400'} />
+        <MetricItem label="Usos Registrados" value={coupon.usedCount} icon={FiActivity} colorClass="text-brand-text font-black" />
+        <MetricItem label="Límite Global" value={hasUsageLimit ? coupon.usageLimit : "∞"} icon={FiSettings} colorClass={isLimitReached ? 'text-red-500 font-black' : 'text-brand-text-muted'} />
         <MetricItem label="Compra Mínima" value={`$${coupon.minOrderAmount?.toLocaleString('es-AR') || 0}`} icon={FiShoppingBag} colorClass="text-brand-secondary" />
-        <MetricItem label="Tipo de Beneficio" value={coupon.discountType === 'percentage' ? 'Porcentual' : 'Monto Fijo'} icon={FiTag} colorClass="text-gray-500 font-bold" />
-        <MetricItem label="Origen Cupón" value={coupon.origin || 'MARKETING'} icon={FiUsers} colorClass="text-gray-400" />
+        <MetricItem label="Tipo de Beneficio" value={coupon.discountType === 'percentage' ? 'Porcentual' : 'Monto Fijo'} icon={FiTag} colorClass="text-brand-text-muted font-bold" />
+        <MetricItem label="Origen Cupón" value={coupon.origin || 'MARKETING'} icon={FiUsers} colorClass="text-brand-text-muted" />
       </div>
 
       {/* COLUMNA IZQUIERDA: ALCANCE Y REGLAS */}
@@ -102,21 +102,21 @@ const AdminDetailCoupons = () => {
           {/* Categorías Elegibles */}
           <div className="space-y-3 mb-6">
             <div className="flex items-center gap-2">
-              <div className="h-px w-4 bg-gray-200" />
-              <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
+              <div className="h-px w-4 bg-brand-border" />
+              <span className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest">
                 Categorías Elegibles
               </span>
             </div>
             <div className="flex flex-wrap gap-2">
               {coupon.applicableCategories?.map((cat) => (
                 <Link to={`/admin/categorias/detalle/${cat._id || cat}`} key={cat._id || cat} className="group">
-                  <span className="inline-flex items-center px-3 py-1.5 rounded-lg text-[10px] font-black uppercase italic tracking-wider bg-gray-100 text-gray-500 hover:bg-gray-200 group-hover:scale-105 transition-all">
+                  <span className="inline-flex items-center px-3 py-1.5 rounded-lg text-[10px] font-black uppercase italic tracking-wider bg-brand-bg text-brand-text-muted hover:bg-brand-border group-hover:scale-105 transition-all">
                     📁 {cat.categoryName || "Ver Categoría"}
                   </span>
                 </Link>
               ))}
               {(!coupon.applicableCategories || coupon.applicableCategories.length === 0) && (
-                <span className="text-[10px] text-gray-400 italic">Global (Aplica a todas las categorías si no hay restricción)</span>
+                <span className="text-[10px] text-brand-text-muted italic">Global (Aplica a todas las categorías si no hay restricción)</span>
               )}
             </div>
           </div>
@@ -124,20 +124,20 @@ const AdminDetailCoupons = () => {
           {/* Productos Exclusivos */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <div className="h-px w-4 bg-gray-200" />
-              <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
+              <div className="h-px w-4 bg-brand-border" />
+              <span className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest">
                 Productos Vinculados Específicos
               </span>
             </div>
             <div className="flex flex-col gap-2">
               {coupon.applicableProducts?.map((prod) => (
-                <Link to={`/admin/productos/detalle/${prod._id || prod}`} key={prod._id || prod} className="flex justify-between items-center p-3 bg-white hover:bg-gray-50 border border-gray-100 rounded-xl transition-all">
-                  <span className="text-xs font-bold uppercase tracking-tighter text-brand-primary">{prod.productName || "Ver Ficha del Producto"}</span>
-                  <span className="text-[10px] font-mono text-gray-400 bg-gray-50 px-2 py-0.5 rounded border">SKU: {prod.sku || 'N/A'}</span>
+                <Link to={`/admin/productos/detalle/${prod._id || prod}`} key={prod._id || prod} className="flex justify-between items-center p-3 bg-brand-surface hover:bg-brand-surface border border-brand-border rounded-xl transition-all">
+                  <span className="text-xs font-bold uppercase tracking-tighter text-brand-text">{prod.productName || "Ver Ficha del Producto"}</span>
+                  <span className="text-[10px] font-mono text-brand-text-muted bg-brand-surface px-2 py-0.5 rounded border">SKU: {prod.sku || 'N/A'}</span>
                 </Link>
               ))}
               {(!coupon.applicableProducts || coupon.applicableProducts.length === 0) && (
-                <span className="text-[10px] text-gray-400 italic px-1">Aplica a todo el catálogo general disponible.</span>
+                <span className="text-[10px] text-brand-text-muted italic px-1">Aplica a todo el catálogo general disponible.</span>
               )}
             </div>
           </div>
@@ -151,7 +151,7 @@ const AdminDetailCoupons = () => {
                 label="Propietario Exclusivo (User ID)"
                 value={
                   <div className="flex flex-col items-end">
-                    <span className="text-xs font-mono font-bold text-gray-700 bg-gray-100 px-2 py-1 rounded-md">{coupon.userId.email || coupon.userId}</span>
+                    <span className="text-xs font-mono font-bold text-brand-text bg-brand-bg px-2 py-1 rounded-md">{coupon.userId.email || coupon.userId}</span>
                     <span className="text-[9px] font-black text-brand-secondary uppercase mt-0.5">🔒 Intransferible</span>
                   </div>
                 }
@@ -192,7 +192,7 @@ const AdminDetailCoupons = () => {
           <InfoRow
             label="Valor Nominal Aplicado"
             value={
-              <span className="text-3xl text-brand-primary font-black italic">
+              <span className="text-3xl text-brand-text font-black italic">
                 {coupon.discountType === 'percentage' ? `${coupon.value}%` : `$${coupon.value?.toLocaleString('es-AR')}`}
               </span>
             }
@@ -201,7 +201,7 @@ const AdminDetailCoupons = () => {
           {coupon.maxDiscountAmount && (
             <InfoRow label="Tope Máximo de Descuento" value={`$${coupon.maxDiscountAmount.toLocaleString('es-AR')}`} />
           )}
-          <InfoRow label="Origen de Campaña" value={<span className={`text-[10px] font-black uppercase px-2 py-1 rounded-md ${originColors[coupon.origin] || 'bg-gray-100 text-gray-600'}`}>{coupon.origin}</span>} />
+          <InfoRow label="Origen de Campaña" value={<span className={`text-[10px] font-black uppercase px-2 py-1 rounded-md ${originColors[coupon.origin] || 'bg-brand-bg text-brand-text-muted'}`}>{coupon.origin}</span>} />
         </DetailCard>
 
         {/* CARD: REGLAS OPERATIVAS */}
@@ -218,8 +218,8 @@ const AdminDetailCoupons = () => {
           <InfoRow
             label="Inicio de Vigencia"
             value={
-              <div className="flex items-center gap-2 text-xs font-mono font-medium text-gray-700">
-                <FiCalendar className="text-gray-400" />
+              <div className="flex items-center gap-2 text-xs font-mono font-medium text-brand-text">
+                <FiCalendar className="text-brand-text-muted" />
                 {new Date(coupon.startDate).toLocaleDateString('es-AR')} a las 00:00h
               </div>
             }
@@ -227,8 +227,8 @@ const AdminDetailCoupons = () => {
           <InfoRow
             label="Fin de Vigencia"
             value={
-              <div className="flex items-center gap-2 text-xs font-mono font-medium text-gray-700">
-                <FiCalendar className="text-gray-400" />
+              <div className="flex items-center gap-2 text-xs font-mono font-medium text-brand-text">
+                <FiCalendar className="text-brand-text-muted" />
                 {new Date(coupon.endDate).toLocaleDateString('es-AR')} a las 23:59h
               </div>
             }

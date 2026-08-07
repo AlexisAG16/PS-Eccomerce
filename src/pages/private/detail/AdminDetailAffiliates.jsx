@@ -59,11 +59,11 @@ const AdminDetailAffiliates = () => {
   if (loading) return (
     <div className="h-screen flex flex-col items-center justify-center">
       <ClipLoader color="#1a5276" size={50} />
-      <p className="mt-4 text-[10px] font-black text-gray-400 uppercase tracking-widest italic animate-pulse">Consultando base de datos de socios...</p>
+      <p className="mt-4 text-[10px] font-black text-brand-text-muted uppercase tracking-widest italic animate-pulse">Consultando base de datos de socios...</p>
     </div>
   );
 
-  if (!affiliate) return <div className="pt-40 text-center uppercase font-black italic text-brand-primary">Afiliado no encontrado</div>;
+  if (!affiliate) return <div className="pt-40 text-center uppercase font-black italic text-brand-text">Afiliado no encontrado</div>;
 
   const headerActions = (
     <div className="flex gap-3">
@@ -99,7 +99,7 @@ const AdminDetailAffiliates = () => {
           label="Código Activo"
           value={`@${affiliate.affiliateCode}`}
           icon={FiCode}
-          colorClass="text-brand-primary"
+          colorClass="text-brand-text"
         />
         <MetricItem
           label="Estado Cuenta"
@@ -120,24 +120,24 @@ const AdminDetailAffiliates = () => {
 
             <div className="flex-1 space-y-4">
               <div>
-                <h3 className="text-2xl font-black text-brand-primary uppercase italic tracking-tighter">
+                <h3 className="text-2xl font-black text-brand-text uppercase italic tracking-tighter">
                   {affiliate.user?.firstName} {affiliate.user?.lastName}
                 </h3>
-                <span className="text-[10px] bg-gray-100 text-gray-500 px-2 py-1 rounded font-bold uppercase">
+                <span className="text-[10px] bg-brand-bg text-brand-text-muted px-2 py-1 rounded font-bold uppercase">
                   ID de Usuario: {affiliate.user?._id}
                 </span>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex items-center gap-3 text-gray-600">
+                <div className="flex items-center gap-3 text-brand-text-muted">
                   <FiMail className="text-brand-secondary" />
                   <span className="text-sm font-medium">{affiliate.user?.email}</span>
                 </div>
-                <div className="flex items-center gap-3 text-gray-600">
+                <div className="flex items-center gap-3 text-brand-text-muted">
                   <FiPhone className="text-brand-secondary" />
                   <span className="text-sm font-medium">{affiliate.user?.phone || 'Sin teléfono'}</span>
                 </div>
-                <div className="flex items-center gap-3 text-gray-600 md:col-span-2">
+                <div className="flex items-center gap-3 text-brand-text-muted md:col-span-2">
                   <FiMapPin className="text-brand-secondary" />
                   <span className="text-sm font-medium">
                     {affiliate.user?.address?.street} {affiliate.user?.address?.number}, {affiliate.user?.address?.city}
@@ -147,7 +147,7 @@ const AdminDetailAffiliates = () => {
 
               <Link
                 to={`/admin/usuarios/detalle/${affiliate.user?._id}`}
-                className="inline-block text-[10px] font-black text-brand-primary uppercase border-b-2 border-brand-primary pb-1 hover:text-brand-secondary hover:border-brand-secondary transition-all"
+                className="inline-block text-[10px] font-black text-brand-text uppercase border-b-2 border-brand-primary pb-1 hover:text-brand-secondary hover:border-brand-secondary transition-all"
               >
                 Ver expediente de usuario completo →
               </Link>
@@ -184,7 +184,7 @@ const AdminDetailAffiliates = () => {
           <p className="text-4xl font-black italic tracking-tighter">
             ${affiliate.totalEarnings?.toLocaleString('es-AR')}
           </p>
-          <p className="text-[9px] uppercase font-bold mt-4 bg-white/20 inline-block px-3 py-1 rounded-full">
+          <p className="text-[9px] uppercase font-bold mt-4 bg-brand-surface/20 inline-block px-3 py-1 rounded-full">
             Acumulado pagado y pendiente
           </p>
         </div>
@@ -198,7 +198,7 @@ const AdminDetailAffiliates = () => {
             navigator.clipboard.writeText(link);
             toast.success("Enlace copiado al portapapeles");
           }}
-          className="flex flex-row justify-center items-center gap-4 p-8 w-full bg-white text-brand-primary font-black uppercase italic rounded-[3rem] hover:bg-gray-50 transition-all shadow-xl border-2 border-gray-100 group"
+          className="flex flex-row justify-center items-center gap-4 p-8 w-full bg-brand-surface text-brand-text font-black uppercase italic rounded-[3rem] hover:bg-brand-surface transition-all shadow-xl border-2 border-brand-border group"
         >
           <FiCode className="text-xl" />
           <span className="tracking-[0.3em] text-xs">Generar y copiar enlace de referido</span>

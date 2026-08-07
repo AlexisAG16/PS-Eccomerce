@@ -49,11 +49,11 @@ const AdminRewardDetail = () => {
   if (loading) return (
     <div className="h-screen flex flex-col items-center justify-center">
       <ClipLoader color="#1a5276" size={50} />
-      <p className="mt-4 text-[10px] font-black text-gray-400 uppercase tracking-widest italic animate-pulse">Analizando parámetros de lealtad...</p>
+      <p className="mt-4 text-[10px] font-black text-brand-text-muted uppercase tracking-widest italic animate-pulse">Analizando parámetros de lealtad...</p>
     </div>
   );
 
-  if (!reward) return <div className="pt-40 text-center uppercase font-black italic text-brand-primary">Recompensa no encontrada</div>;
+  if (!reward) return <div className="pt-40 text-center uppercase font-black italic text-brand-text">Recompensa no encontrada</div>;
 
   const isLowStock = reward.stock !== -1 && reward.stock <= 5;
   const isInfinite = reward.stock === -1;
@@ -80,7 +80,7 @@ const AdminRewardDetail = () => {
           label="Costo de Canje"
           value={`${reward.pointsCost} PTS`}
           icon={FiActivity}
-          colorClass="text-brand-primary font-black"
+          colorClass="text-brand-text font-black"
         />
         <MetricItem
           label="Stock Disponible"
@@ -92,13 +92,13 @@ const AdminRewardDetail = () => {
           label="Tipo de Beneficio"
           value={reward.config?.discountType === 'percentage' ? 'Porcentaje' : 'Monto Fijo'}
           icon={FiTag}
-          colorClass="text-gray-400"
+          colorClass="text-brand-text-muted"
         />
         <MetricItem
           label="Estado Visible"
           value={reward.isActive ? "ACTIVO" : "OCULTO"}
           icon={FiSettings}
-          colorClass={reward.isActive ? "text-green-500" : "text-gray-300"}
+          colorClass={reward.isActive ? "text-green-500" : "text-brand-text-muted/50"}
         />
       </div>
 
@@ -113,7 +113,7 @@ const AdminRewardDetail = () => {
               <span className="text-2xl md:text-4xl ml-2 text-brand-secondary block md:inline uppercase not-italic tracking-normal">OFF</span>
             </h2>
             <div className="mt-8 flex items-center gap-4">
-              <div className="h-px w-12 bg-white/30" />
+              <div className="h-px w-12 bg-brand-surface/30" />
               <p className="text-sm font-light italic text-white/80">Código autogenerado de uso único al canjear.</p>
             </div>
           </div>
@@ -134,14 +134,14 @@ const AdminRewardDetail = () => {
             value={reward.config?.categoryRestriction ? "Restringido a Categoría" : "Global (Toda la tienda)"}
           />
           {reward.config?.categoryRestriction && (
-            <div className="mt-4 p-4 bg-gray-50 rounded-2xl border border-gray-100 flex items-center justify-between">
+            <div className="mt-4 p-4 bg-brand-surface rounded-2xl border border-brand-border flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <FiLayers className="text-brand-secondary" />
-                <span className="text-[10px] font-black uppercase text-gray-500 italic">Categoría Exclusiva:</span>
+                <span className="text-[10px] font-black uppercase text-brand-text-muted italic">Categoría Exclusiva:</span>
               </div>
               <Link
                 to={`/admin/categorias/detalle/${reward.config.categoryRestriction._id || reward.config.categoryRestriction}`}
-                className="text-xs font-black text-brand-primary hover:underline uppercase italic"
+                className="text-xs font-black text-brand-text hover:underline uppercase italic"
               >
                 {reward.config.categoryRestriction.categoryName || "Ver Categoría"}
               </Link>
@@ -173,17 +173,17 @@ const AdminRewardDetail = () => {
 
         <DetailCard title="Simulación de Canje">
           <div className="space-y-4">
-            <p className="text-[11px] text-gray-500 leading-relaxed italic">
+            <p className="text-[11px] text-brand-text-muted leading-relaxed italic">
               Cuando un usuario canjea esta recompensa por <strong>{reward.pointsCost} puntos</strong>, el sistema realizará las siguientes acciones:
             </p>
             <ul className="space-y-2">
-              <li className="flex items-center gap-2 text-[10px] font-bold text-brand-primary uppercase">
+              <li className="flex items-center gap-2 text-[10px] font-bold text-brand-text uppercase">
                 <div className="w-1.5 h-1.5 rounded-full bg-brand-primary" /> Generación de código REW-XXXXXX
               </li>
-              <li className="flex items-center gap-2 text-[10px] font-bold text-brand-primary uppercase">
+              <li className="flex items-center gap-2 text-[10px] font-bold text-brand-text uppercase">
                 <div className="w-1.5 h-1.5 rounded-full bg-brand-primary" /> Vencimiento automático (30 días)
               </li>
-              <li className="flex items-center gap-2 text-[10px] font-bold text-brand-primary uppercase">
+              <li className="flex items-center gap-2 text-[10px] font-bold text-brand-text uppercase">
                 <div className="w-1.5 h-1.5 rounded-full bg-brand-primary" /> Descuento de puntos en perfil usuario
               </li>
             </ul>
@@ -195,7 +195,7 @@ const AdminRewardDetail = () => {
       <div className="lg:col-span-12 mt-6">
         <Link
           to="/admin/recompensas"
-          className="flex flex-row justify-center items-center gap-4 p-8 w-full bg-white text-brand-text font-black uppercase italic rounded-[3rem] hover:bg-gray-50 transition-all group shadow-sm border border-gray-100"
+          className="flex flex-row justify-center items-center gap-4 p-8 w-full bg-brand-surface text-brand-text font-black uppercase italic rounded-[3rem] hover:bg-brand-surface transition-all group shadow-sm border border-brand-border"
         >
           <span className="tracking-[0.3em] text-xs">Volver al panel de recompensas</span>
         </Link>

@@ -8,55 +8,55 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
 
       {/* SECCIÓN 1: IDENTIDAD Y COSTO */}
       <fieldset className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="md:col-span-2 flex items-center gap-2 border-b border-gray-100 pb-2">
+        <div className="md:col-span-2 flex items-center gap-2 border-b border-brand-border pb-2">
           <FiGift className="text-brand-primary" />
           <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Configuración del Premio</legend>
         </div>
 
         <div className="flex flex-col gap-2 md:col-span-2">
-          <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Título Público</label>
+          <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest ml-1">Título Público</label>
           <input
             {...register("title", { required: "El título es obligatorio" })}
             placeholder="Ej: 20% OFF en toda la tienda"
-            className="border-2 border-gray-100 rounded-2xl p-4 focus:border-brand-primary outline-none font-bold text-gray-700 shadow-sm"
+            className="border-2 border-brand-border rounded-2xl p-4 focus:border-brand-primary outline-none font-bold text-brand-text shadow-sm"
           />
           {errors.title && <span className="text-[9px] text-red-500 font-bold ml-2">{errors.title.message}</span>}
         </div>
 
         <div className="flex flex-col gap-2">
-          <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Costo (Puntos)</label>
+          <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest ml-1">Costo (Puntos)</label>
           <input
             type="number"
             {...register("pointsCost", { required: true, min: 0 })}
-            className="border-2 border-gray-100 rounded-2xl p-4 font-black text-brand-primary text-xl outline-none focus:border-brand-primary shadow-sm"
+            className="border-2 border-brand-border rounded-2xl p-4 font-black text-brand-primary text-xl outline-none focus:border-brand-primary shadow-sm"
           />
         </div>
 
         <div className="flex flex-col gap-2">
-          <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Stock Disponible</label>
+          <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest ml-1">Stock Disponible</label>
           <input
             type="number"
             {...register("stock", { required: true })}
             placeholder="-1 para infinito"
-            className="border-2 border-gray-100 rounded-2xl p-4 font-bold text-gray-600 outline-none focus:border-brand-primary shadow-sm"
+            className="border-2 border-brand-border rounded-2xl p-4 font-bold text-brand-text-muted outline-none focus:border-brand-primary shadow-sm"
           />
-          <p className="text-[8px] text-gray-400 italic ml-1">Usa -1 para stock ilimitado.</p>
+          <p className="text-[8px] text-brand-text-muted italic ml-1">Usa -1 para stock ilimitado.</p>
         </div>
       </fieldset>
 
       {/* SECCIÓN 2: EL "ADN" DEL CUPÓN (CONFIG) */}
-      <fieldset className="space-y-6 bg-brand-surface p-6 rounded-[2.5rem] border border-gray-100">
-        <div className="flex items-center gap-2 border-b border-gray-200/50 pb-2">
+      <fieldset className="space-y-6 bg-brand-surface p-6 rounded-[2.5rem] border border-brand-border">
+        <div className="flex items-center gap-2 border-b border-brand-border/50 pb-2">
           <FiSettings className="text-brand-secondary" />
           <legend className="text-[11px] font-black text-brand-secondary uppercase tracking-[0.2em]">ADN del Cupón Generado</legend>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col gap-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase">Tipo de Beneficio</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase">Tipo de Beneficio</label>
             <select
               {...register("config.discountType")}
-              className="border-2 border-white rounded-xl p-3 font-bold text-gray-700 shadow-sm outline-none focus:border-brand-secondary bg-white"
+              className="border-2 border-white rounded-xl p-3 font-bold text-brand-text shadow-sm outline-none focus:border-brand-secondary bg-brand-surface"
             >
               <option value="percentage">Porcentaje (%)</option>
               <option value="fixed">Monto Fijo ($)</option>
@@ -64,7 +64,7 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase">
+            <label className="text-[9px] font-black text-brand-text-muted uppercase">
               Valor del {discountType === 'percentage' ? 'Descuento (%)' : 'Monto ($)'}
             </label>
             <input
@@ -78,7 +78,7 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col gap-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase">Compra Mínima Requerida ($)</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase">Compra Mínima Requerida ($)</label>
             <input
               type="number"
               {...register("config.minOrderAmount")}
@@ -86,7 +86,7 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
             />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase">Mínimo de Ítems</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase">Mínimo de Ítems</label>
             <input
               type="number"
               {...register("config.minItems")}
@@ -98,16 +98,16 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
 
       {/* SECCIÓN 3: RESTRICCIONES */}
       <fieldset className="space-y-4">
-        <div className="flex items-center gap-2 border-b border-gray-100 pb-2">
+        <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiTarget className="text-brand-primary" />
           <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Restricciones de Uso</legend>
         </div>
 
         <div className="flex flex-col gap-2">
-          <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Limitar a Categoría</label>
+          <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest ml-1">Limitar a Categoría</label>
           <select
             {...register("config.categoryRestriction")}
-            className="border-2 border-gray-100 rounded-2xl p-4 font-bold text-gray-600 outline-none focus:border-brand-primary bg-white shadow-sm"
+            className="border-2 border-brand-border rounded-2xl p-4 font-bold text-brand-text-muted outline-none focus:border-brand-primary bg-brand-surface shadow-sm"
           >
             <option value="">Aplica a toda la tienda</option>
             {categories.map(cat => (
@@ -129,10 +129,10 @@ const RewardFormFields = ({ register, watch, formState: { errors }, categories }
         <label className="flex items-center gap-3 cursor-pointer">
           <div className="relative">
             <input type="checkbox" {...register("isActive")} className="sr-only peer" />
-            <div className="w-10 h-5 bg-gray-200 rounded-full peer peer-checked:bg-green-500 transition-colors"></div>
-            <div className="absolute left-1 top-1 w-3 h-3 bg-white rounded-full peer-checked:translate-x-5 transition-transform"></div>
+            <div className="w-10 h-5 bg-brand-border rounded-full peer peer-checked:bg-green-500 transition-colors"></div>
+            <div className="absolute left-1 top-1 w-3 h-3 bg-brand-surface rounded-full peer-checked:translate-x-5 transition-transform"></div>
           </div>
-          <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest italic">Premio Visible en la tienda</span>
+          <span className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest italic">Premio Visible en la tienda</span>
         </label>
       </div>
     </div>

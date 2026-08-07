@@ -96,11 +96,11 @@ const SalesOverview = ({ dataServer }) => {
 
   // Si no hay datos, mostramos un loader o un placeholder
   if (!dataServer || dataServer.length === 0) {
-    return <div className="h-[300px] flex items-center justify-center italic text-gray-400">Cargando métricas...</div>;
+    return <div className="h-[300px] flex items-center justify-center italic text-brand-text-muted">Cargando métricas...</div>;
   }
 
   return (
-    <div className="bg-white p-8 rounded-[3rem] shadow-xl border border-gray-100 h-[450px]">
+    <div className="bg-brand-surface p-8 rounded-[3rem] shadow-xl border border-brand-border h-[450px]">
       {/* 🚩 Usamos <Chart /> genérico para soportar el mix de línea y barras */}
       <Chart ref={chartRef} type='bar' data={chartData} options={options} />
     </div>

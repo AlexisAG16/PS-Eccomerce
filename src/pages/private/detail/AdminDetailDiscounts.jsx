@@ -48,11 +48,11 @@ const AdminDiscountDetail = () => {
   if (loading) return (
     <div className="h-screen flex flex-col items-center justify-center">
       <ClipLoader color="#1a5276" size={50} />
-      <p className="mt-4 text-[10px] font-black text-gray-400 uppercase tracking-widest italic animate-pulse">Consultando cronograma promocional...</p>
+      <p className="mt-4 text-[10px] font-black text-brand-text-muted uppercase tracking-widest italic animate-pulse">Consultando cronograma promocional...</p>
     </div>
   );
 
-  if (!discount) return <div className="pt-40 text-center uppercase font-black italic text-brand-primary">Campaña no encontrada</div>;
+  if (!discount) return <div className="pt-40 text-center uppercase font-black italic text-brand-text">Campaña no encontrada</div>;
 
   const headerActions = (
     <div className="flex gap-3">
@@ -95,35 +95,35 @@ const AdminDiscountDetail = () => {
           label="Tipo"
           value={discount.discountType === 'percentage' ? 'Porcentual' : 'Monto Fijo'}
           icon={FiBarChart2}
-          colorClass="text-brand-primary"
+          colorClass="text-brand-text"
         />
         <MetricItem
           label="Categorías"
           value={discount.applicableCategories?.length || 0}
           icon={FiBox}
-          colorClass="text-gray-400"
+          colorClass="text-brand-text-muted"
         />
       </div>
 
       {/* INFORMACIÓN PRINCIPAL */}
       <main className="lg:col-span-7">
         <DetailCard title="Descripción de Campaña">
-          <div className="p-6 bg-gray-50 rounded-4xl border border-gray-100 italic text-gray-600">
+          <div className="p-6 bg-brand-surface rounded-4xl border border-brand-border italic text-brand-text-muted">
             {discount.description || "Sin descripción técnica adicional."}
           </div>
           <div className="mt-8 space-y-4">
-            <h4 className="text-[9px] font-black uppercase text-gray-400 tracking-widest">Alcance de Categorías</h4>
+            <h4 className="text-[9px] font-black uppercase text-brand-text-muted tracking-widest">Alcance de Categorías</h4>
             <div className="flex flex-wrap gap-2">
               {discount.applicableCategories?.length > 0 ? (
                 discount.applicableCategories.map(cat => (
                   <Link to={`/admin/categorias/detalle/${cat._id}`} key={cat._id}>
-                    <span className="px-4 py-2 bg-white border border-gray-100 rounded-full text-[10px] font-black uppercase italic text-brand-primary">
+                    <span className="px-4 py-2 bg-brand-surface border border-brand-border rounded-full text-[10px] font-black uppercase italic text-brand-text">
                       {cat.categoryName}
                     </span>
                   </Link>
                 ))
               ) : (
-                <p className="text-xs text-gray-400 italic">Aplicable a todo el catálogo general.</p>
+                <p className="text-xs text-brand-text-muted italic">Aplicable a todo el catálogo general.</p>
               )}
             </div>
           </div>
@@ -145,7 +145,7 @@ const AdminDiscountDetail = () => {
             icon={FiCalendar}
             dark
           />
-          <div className="mt-4 p-4 bg-white/5 rounded-2xl border border-white/10">
+          <div className="mt-4 p-4 bg-brand-surface/5 rounded-2xl border border-white/10">
             <p className="text-[8px] font-black uppercase text-white/40 mb-1">Días Restantes / Transcurridos</p>
             <p className="text-xl font-black italic">
               {Math.ceil((new Date(discount.endDate) - now) / (1000 * 60 * 60 * 24))} DÍAS

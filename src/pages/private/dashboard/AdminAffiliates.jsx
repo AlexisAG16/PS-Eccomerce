@@ -13,7 +13,7 @@ const columns = [
     field: "user",
     render: (val) => (
       <div className="flex flex-col">
-        <span className="font-bold text-gray-800 uppercase italic tracking-tighter leading-none mb-1">
+        <span className="font-bold text-brand-text uppercase italic tracking-tighter leading-none mb-1">
           {val ? `${val.firstName} ${val.lastName}` : "Usuario eliminado"}
         </span>
         <span className="text-[9px] text-brand-secondary font-mono">{val?.email}</span>
@@ -24,7 +24,7 @@ const columns = [
     label: "Código",
     field: "affiliateCode",
     render: (val) => (
-      <span className="font-black text-brand-primary bg-blue-50 px-3 py-1 rounded-lg border border-blue-100 uppercase tracking-widest text-[11px]">
+      <span className="font-black text-brand-text bg-blue-50 px-3 py-1 rounded-lg border border-blue-100 uppercase tracking-widest text-[11px]">
         {val}
       </span>
     )
@@ -32,7 +32,7 @@ const columns = [
   {
     label: "Comisión",
     field: "defaultCommission",
-    render: (val) => <span className="font-mono font-bold text-gray-700">{val}%</span>
+    render: (val) => <span className="font-mono font-bold text-brand-text">{val}%</span>
   },
   {
     label: "Ganancias",

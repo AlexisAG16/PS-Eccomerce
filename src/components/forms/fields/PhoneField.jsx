@@ -4,7 +4,7 @@ import 'react-phone-number-input/style.css';
 
 const PhoneField = ({ control, name, label }) => (
   <div className="flex flex-col gap-2">
-    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">{label}</label>
+    <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest ml-1">{label}</label>
     <Controller
       name={name}
       control={control}
@@ -15,7 +15,7 @@ const PhoneField = ({ control, name, label }) => (
           defaultCountry="AR"
           value={value}
           onChange={onChange}
-          className="border-2 border-gray-100 rounded-2xl p-4 focus-within:border-brand-primary outline-none font-bold text-gray-700 shadow-sm transition-all"
+          className="border-2 border-brand-border rounded-2xl p-4 focus-within:border-brand-primary outline-none font-bold text-brand-text shadow-sm transition-all"
         />
       )}
     />

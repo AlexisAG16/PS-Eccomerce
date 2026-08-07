@@ -17,44 +17,44 @@ const UserAdminFormFields = ({ register, watch, control, formState: { errors }, 
     <div className="space-y-8 max-h-[70vh] overflow-y-auto pr-4 custom-scrollbar pb-6">
       {/* --- SECCIÓN 1: IDENTIDAD PERSONAL --- */}
       <fieldset className="space-y-5">
-        <div className="flex items-center gap-2 border-b border-gray-100 pb-2">
+        <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiUser className="text-brand-secondary" />
           <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Información Personal</legend>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">Nombre</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Nombre</label>
             <input
               {...register("firstName", { required: "Campo obligatorio" })}
-              className="border-2 border-gray-100 rounded-xl p-3 focus:border-brand-primary outline-none font-bold text-gray-700"
+              className="border-2 border-brand-border rounded-xl p-3 focus:border-brand-primary outline-none font-bold text-brand-text"
             />
           </div>
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">Apellido</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Apellido</label>
             <input
               {...register("lastName", { required: "Campo obligatorio" })}
-              className="border-2 border-gray-100 rounded-xl p-3 focus:border-brand-primary outline-none font-bold text-gray-700"
+              className="border-2 border-brand-border rounded-xl p-3 focus:border-brand-primary outline-none font-bold text-brand-text"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">F. Nacimiento</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">F. Nacimiento</label>
             <input
               type="date"
               {...register("birthDate", { required: "Obligatorio" })}
-              className="border-2 border-gray-100 rounded-xl p-3 outline-none font-bold text-gray-700"
+              className="border-2 border-brand-border rounded-xl p-3 outline-none font-bold text-brand-text"
             />
           </div>
           <div className="flex flex-col gap-1 md:col-span-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">Género</label>
-            <div className="flex gap-4 p-3 bg-gray-50 rounded-xl border border-gray-100">
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Género</label>
+            <div className="flex gap-4 p-3 bg-brand-surface rounded-xl border border-brand-border">
               {['MASCULINO', 'FEMENINO', 'OTROS'].map((g) => (
                 <label key={g} className="flex items-center gap-2 cursor-pointer group">
                   <input type="radio" value={g} {...register("gender")} className="text-brand-primary w-4 h-4" />
-                  <span className="text-[10px] font-bold text-gray-500 group-hover:text-brand-primary">{g}</span>
+                  <span className="text-[10px] font-bold text-brand-text-muted group-hover:text-brand-primary">{g}</span>
                 </label>
               ))}
             </div>
@@ -63,17 +63,17 @@ const UserAdminFormFields = ({ register, watch, control, formState: { errors }, 
       </fieldset>
 
       {/* --- SECCIÓN 2: SEGURIDAD Y ROL --- */}
-      <fieldset className="space-y-5 bg-gray-50/50 p-5 rounded-4xl border border-gray-100">
-        <div className="flex items-center gap-2 border-b border-gray-100 pb-2">
+      <fieldset className="space-y-5 bg-brand-surface/50 p-5 rounded-4xl border border-brand-border">
+        <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiShield className="text-brand-secondary" />
           <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Credenciales y Acceso</legend>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">Email</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Email</label>
             <div className="relative">
-              <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300" />
+              <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-muted/50" />
               <input
                 type="email"
                 {...register("email", { required: "Email obligatorio" })}
@@ -82,11 +82,11 @@ const UserAdminFormFields = ({ register, watch, control, formState: { errors }, 
             </div>
           </div>
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">
               {isEditMode ? "Cambiar Contraseña (opcional)" : "Contraseña"}
             </label>
             <div className="relative">
-              <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300" />
+              <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-muted/50" />
               <input
                 type="password"
                 {...register("password", { required: !isEditMode })}
@@ -98,10 +98,10 @@ const UserAdminFormFields = ({ register, watch, control, formState: { errors }, 
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">Rol del Sistema</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Rol del Sistema</label>
             <select
               {...register("role", { required: "Asigna un rol" })}
-              className="border-2 border-white rounded-xl p-3 shadow-sm bg-white font-black text-brand-primary outline-none appearance-none cursor-pointer"
+              className="border-2 border-white rounded-xl p-3 shadow-sm bg-brand-surface font-black text-brand-primary outline-none appearance-none cursor-pointer"
             >
               <option value="">Seleccionar rol...</option>
               {roles.map(r => (
@@ -115,11 +115,11 @@ const UserAdminFormFields = ({ register, watch, control, formState: { errors }, 
           <div className="flex gap-6">
             <label className="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" {...register("isActive")} className="w-5 h-5 rounded text-brand-primary" />
-              <span className="text-[10px] font-black text-gray-500 uppercase">Activo</span>
+              <span className="text-[10px] font-black text-brand-text-muted uppercase">Activo</span>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" {...register("isVerified")} className="w-5 h-5 rounded text-green-500" />
-              <span className="text-[10px] font-black text-gray-500 uppercase">Verificado</span>
+              <span className="text-[10px] font-black text-brand-text-muted uppercase">Verificado</span>
             </label>
           </div>
         </div>
@@ -127,35 +127,35 @@ const UserAdminFormFields = ({ register, watch, control, formState: { errors }, 
 
       {/* --- SECCIÓN 3: DIRECCIÓN Y UBICACIÓN --- */}
       <fieldset className="space-y-5">
-        <div className="flex items-center gap-2 border-b border-gray-100 pb-2">
+        <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiMapPin className="text-brand-secondary" />
           <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Ubicación y Contacto</legend>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="flex flex-col gap-1 md:col-span-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">Calle</label>
-            <input {...register("address.street")} className="border-2 border-gray-100 rounded-xl p-3 font-bold" />
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Calle</label>
+            <input {...register("address.street")} className="border-2 border-brand-border rounded-xl p-3 font-bold" />
           </div>
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">Número</label>
-            <input {...register("address.number")} className="border-2 border-gray-100 rounded-xl p-3 font-bold" />
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Número</label>
+            <input {...register("address.number")} className="border-2 border-brand-border rounded-xl p-3 font-bold" />
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">Ciudad</label>
-            <input {...register("address.city")} className="border-2 border-gray-100 rounded-xl p-3 font-bold bg-gray-50" />
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Ciudad</label>
+            <input {...register("address.city")} className="border-2 border-brand-border rounded-xl p-3 font-bold bg-brand-surface" />
           </div>
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">Teléfono</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Teléfono</label>
             <div className="relative">
-              <FiPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300" />
+              <FiPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-muted/50" />
               <input
                 {...register("phone")}
                 placeholder="+54 9..."
-                className="w-full border-2 border-gray-100 rounded-xl p-3 pl-10 focus:border-brand-primary outline-none font-bold"
+                className="w-full border-2 border-brand-border rounded-xl p-3 pl-10 focus:border-brand-primary outline-none font-bold"
               />
             </div>
           </div>
@@ -181,7 +181,7 @@ const UserAdminFormFields = ({ register, watch, control, formState: { errors }, 
             center={isEditMode && coords?.[1] ? [coords[1], coords[0]] : [-28.4696, -65.7852]}
           />
 
-          <p className="text-[9px] text-gray-400 italic px-1">
+          <p className="text-[9px] text-brand-text-muted italic px-1">
             * Haz click en el mapa para marcar la ubicación exacta de entrega o residencia.
           </p>
         </div>

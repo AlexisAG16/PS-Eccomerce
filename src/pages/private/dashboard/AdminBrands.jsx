@@ -13,14 +13,14 @@ const columns = [
     field: "name",
     render: (val, row) => (
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full border border-gray-100 overflow-hidden bg-white shadow-sm shrink-0">
+        <div className="w-10 h-10 rounded-full border border-brand-border overflow-hidden bg-brand-surface shadow-sm shrink-0">
           <img
             src={row.logo || "https://via.placeholder.com/50"}
             className="w-full h-full object-contain"
             alt={val}
           />
         </div>
-        <span className="font-black text-brand-primary uppercase italic tracking-tighter">
+        <span className="font-black text-brand-text uppercase italic tracking-tighter">
           {val}
         </span>
       </div>

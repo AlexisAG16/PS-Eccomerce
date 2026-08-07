@@ -16,13 +16,13 @@ const BrandFormFields = ({ register, watch, setValue, formState: { errors }, isE
     <div className="space-y-8">
       {/* NOMBRE */}
       <div className="flex flex-col gap-2">
-        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Nombre de Marca</label>
+        <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest ml-1">Nombre de Marca</label>
         <div className="relative">
-          <FiTag className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300" />
+          <FiTag className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-muted/50" />
           <input
             {...register("name", { required: "El nombre es obligatorio" })}
             placeholder="Ej: Samsung"
-            className="w-full pl-11 pr-4 py-4 border-2 border-gray-100 rounded-2xl focus:border-brand-primary outline-none transition-all font-bold text-gray-700 shadow-sm"
+            className="w-full pl-11 pr-4 py-4 border-2 border-brand-border rounded-2xl focus:border-brand-primary outline-none transition-all font-bold text-brand-text shadow-sm"
           />
         </div>
         {errors.name && <span className="text-red-500 text-[9px] font-bold uppercase ml-1">{errors.name.message}</span>}
@@ -30,12 +30,12 @@ const BrandFormFields = ({ register, watch, setValue, formState: { errors }, isE
 
       {/* SLUG */}
       <div className="flex flex-col gap-2">
-        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Slug SEO (URL)</label>
+        <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest ml-1">Slug SEO (URL)</label>
         <div className="relative">
-          <FiGlobe className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300" />
+          <FiGlobe className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-muted/50" />
           <input
             {...register("slug")}
-            className="w-full pl-11 pr-4 py-4 border-2 border-gray-100 rounded-2xl bg-gray-50 text-brand-secondary font-mono text-xs outline-none shadow-inner"
+            className="w-full pl-11 pr-4 py-4 border-2 border-brand-border rounded-2xl bg-brand-surface text-brand-secondary font-mono text-xs outline-none shadow-inner"
             readOnly
           />
         </div>
@@ -43,9 +43,9 @@ const BrandFormFields = ({ register, watch, setValue, formState: { errors }, isE
 
       {/* LOGO URL */}
       <div className="flex flex-col gap-2">
-        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">URL del Logo</label>
+        <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest ml-1">URL del Logo</label>
         <div className="relative">
-          <FiImage className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300" />
+          <FiImage className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-muted/50" />
           <input
             {...register("logo", {
               pattern: {
@@ -54,11 +54,11 @@ const BrandFormFields = ({ register, watch, setValue, formState: { errors }, isE
               }
             })}
             placeholder="https://ejemplo.com/logo.png"
-            className="w-full pl-11 pr-4 py-4 border-2 border-gray-100 rounded-2xl focus:border-brand-primary outline-none transition-all font-bold text-gray-700 text-sm shadow-sm"
+            className="w-full pl-11 pr-4 py-4 border-2 border-brand-border rounded-2xl focus:border-brand-primary outline-none transition-all font-bold text-brand-text text-sm shadow-sm"
           />
         </div>
         {errors.logo && <span className="text-red-500 text-[9px] font-bold uppercase ml-1">{errors.logo.message}</span>}
-        <p className="text-[8px] text-gray-400 uppercase italic ml-1">
+        <p className="text-[8px] text-brand-text-muted uppercase italic ml-1">
           Pegue el link del ícono (Wikipedia, oficial, etc.)
         </p>
       </div>

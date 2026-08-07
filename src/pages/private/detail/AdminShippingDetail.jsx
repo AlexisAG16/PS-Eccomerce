@@ -181,11 +181,11 @@ const AdminShippingDetail = () => {
   if (loading) return (
     <div className="h-screen flex flex-col items-center justify-center">
       <ClipLoader color="#1a5276" size={50} />
-      <p className="mt-4 text-[10px] font-black text-gray-400 uppercase tracking-widest italic animate-pulse">Sincronizando coordenadas GPS...</p>
+      <p className="mt-4 text-[10px] font-black text-brand-text-muted uppercase tracking-widest italic animate-pulse">Sincronizando coordenadas GPS...</p>
     </div>
   );
 
-  if (!shipping) return <div className="pt-40 text-center font-black uppercase text-brand-primary">Envío no encontrado</div>;
+  if (!shipping) return <div className="pt-40 text-center font-black uppercase text-brand-text">Envío no encontrado</div>;
 
   const clientPos = shipping.shippingAddress?.location?.coordinates?.length === 2
     ? [shipping.shippingAddress.location.coordinates[1], shipping.shippingAddress.location.coordinates[0]]
@@ -208,30 +208,30 @@ const AdminShippingDetail = () => {
           label="Transportista"
           value={editData.carrier}
           icon={FiNavigation}
-          colorClass="text-brand-primary"
+          colorClass="text-brand-text"
         />
         <MetricItem
           label="Destino"
           value={shipping.shippingAddress?.city}
           icon={FiMapPin}
-          colorClass="text-gray-400"
+          colorClass="text-brand-text-muted"
         />
         <MetricItem
           label="Carga"
           value="Standard"
           icon={FiPackage}
-          colorClass="text-gray-400"
+          colorClass="text-brand-text-muted"
         />
       </div>
 
       {/* COLUMNA IZQUIERDA: GESTIÓN */}
       <aside className="lg:col-span-4 space-y-6">
         <DetailCard title="Punto de Entrega">
-          <div className="p-6 bg-gray-50 rounded-[2.5rem] border border-gray-100">
-            <p className="font-black text-brand-primary uppercase italic text-lg leading-tight">
+          <div className="p-6 bg-brand-surface rounded-[2.5rem] border border-brand-border">
+            <p className="font-black text-brand-text uppercase italic text-lg leading-tight">
               {shipping.shippingAddress?.street} {shipping.shippingAddress?.number}
             </p>
-            <p className="text-[10px] text-gray-400 font-black uppercase mt-1 tracking-tighter">
+            <p className="text-[10px] text-brand-text-muted font-black uppercase mt-1 tracking-tighter">
               {shipping.shippingAddress?.city}, {shipping.shippingAddress?.province} (CP {shipping.shippingAddress?.postalCode})
             </p>
           </div>
@@ -269,7 +269,7 @@ const AdminShippingDetail = () => {
               <input
                 value={editData.carrier}
                 onChange={e => setEditData({ ...editData, carrier: e.target.value })}
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-2xl text-xs font-bold uppercase text-white outline-none focus:border-brand-secondary transition-colors"
+                className="w-full bg-brand-surface/5 border border-white/10 p-4 rounded-2xl text-xs font-bold uppercase text-white outline-none focus:border-brand-secondary transition-colors"
                 placeholder="Ej: Propio, Correo Argentino..."
               />
             </div>
@@ -283,7 +283,7 @@ const AdminShippingDetail = () => {
                 <select
                   value={editData.carrierName}
                   onChange={e => setEditData({ ...editData, carrierName: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 p-4 rounded-2xl text-xs font-bold uppercase text-white outline-none focus:border-brand-secondary transition-colors appearance-none cursor-pointer"
+                  className="w-full bg-brand-surface/5 border border-white/10 p-4 rounded-2xl text-xs font-bold uppercase text-white outline-none focus:border-brand-secondary transition-colors appearance-none cursor-pointer"
                 >
                   <option value="" className="bg-brand-primary">Seleccionar repartidor...</option>
                   {carriers.map((c) => (
@@ -305,13 +305,13 @@ const AdminShippingDetail = () => {
               <input
                 value={editData.trackingNumber}
                 onChange={e => setEditData({ ...editData, trackingNumber: e.target.value })}
-                className="w-full bg-white/5 border border-white/10 p-4 rounded-2xl text-xs font-bold text-brand-secondary outline-none focus:border-brand-secondary transition-colors uppercase"
+                className="w-full bg-brand-surface/5 border border-white/10 p-4 rounded-2xl text-xs font-bold text-brand-secondary outline-none focus:border-brand-secondary transition-colors uppercase"
               />
             </div>
 
             <button
               onClick={handleUpdate}
-              className="w-full bg-brand-secondary text-white py-5 rounded-4xl font-black uppercase italic text-[10px] tracking-widest hover:bg-white hover:text-brand-primary transition-all flex items-center justify-center gap-2 mt-4 shadow-xl"
+              className="w-full bg-brand-secondary text-white py-5 rounded-4xl font-black uppercase italic text-[10px] tracking-widest hover:bg-brand-surface hover:text-brand-text transition-all flex items-center justify-center gap-2 mt-4 shadow-xl"
             >
               <FiEdit3 className="text-sm" /> Actualizar Hoja de Ruta
             </button>
@@ -321,12 +321,12 @@ const AdminShippingDetail = () => {
 
       {/* COLUMNA DERECHA: MAPA TÁCTICO */}
       <main className="lg:col-span-8">
-        <div className="h-[650px] w-full bg-white p-3 rounded-[4rem] border border-gray-100 shadow-2xl relative z-0">
+        <div className="h-[650px] w-full bg-brand-surface p-3 rounded-[4rem] border border-brand-border shadow-2xl relative z-0">
           <div className="absolute top-8 left-8 z-10 bg-brand-primary text-white px-6 py-2 rounded-full text-[9px] font-black uppercase italic tracking-widest shadow-lg">
             Monitor de Ruta en Tiempo Real
           </div>
 
-          <div className="h-full w-full rounded-[3.2rem] overflow-hidden border border-gray-100">
+          <div className="h-full w-full rounded-[3.2rem] overflow-hidden border border-brand-border">
             {clientPos ? (
               <MapContainer center={PS_DEPOT} zoom={13} style={{ height: "100%", width: "100%" }} zoomControl={false}>
                 <RecenterMap points={[PS_DEPOT, clientPos]} />
@@ -335,7 +335,7 @@ const AdminShippingDetail = () => {
                 {/* Marcador Depósito */}
                 <Marker position={PS_DEPOT}>
                   <Popup>
-                    <div className="font-black uppercase italic text-[10px] text-brand-primary">Base Patrician Software</div>
+                    <div className="font-black uppercase italic text-[10px] text-brand-text">Base Patrician Software</div>
                   </Popup>
                 </Marker>
 
@@ -358,7 +358,7 @@ const AdminShippingDetail = () => {
                 )}
               </MapContainer>
             ) : (
-              <div className="h-full w-full flex items-center justify-center bg-gray-50 text-[10px] font-black text-gray-300 uppercase italic">
+              <div className="h-full w-full flex items-center justify-center bg-brand-surface text-[10px] font-black text-brand-text-muted/50 uppercase italic">
                 Coordenadas de destino no disponibles
               </div>
             )}

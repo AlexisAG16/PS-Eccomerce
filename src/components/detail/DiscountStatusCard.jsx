@@ -1,9 +1,9 @@
 const DiscountStatusCard = ({ discount }) => (
-  <div className="bg-gray-50 p-6 rounded-4xl border border-gray-100 mt-4">
-    <p className="text-[11px] font-black text-blue-500 uppercase mb-2">
+  <div className="bg-brand-bg p-6 rounded-4xl border border-brand-border mt-4">
+    <p className="text-[11px] font-black text-brand-highlight uppercase mb-2">
       {discount ? '🏷️ Campaña Vigente' : 'Campaña'}
     </p>
-    <p className="text-xs font-bold text-gray-500 uppercase italic">
+    <p className="text-xs font-bold text-brand-text-muted uppercase italic">
       {discount?.name || 'No hay campañas vinculadas.'}
     </p>
   </div>

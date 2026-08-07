@@ -34,7 +34,7 @@ const AffiliateFormFields = ({ register, watch, setValue, formState: { errors },
 
       {/* --- SECCIÓN 1: VÍNCULO CON USUARIO --- */}
       <fieldset className="space-y-5">
-        <div className="flex items-center gap-2 border-b border-gray-100 pb-2">
+        <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiUser className="text-brand-secondary" />
           <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Usuario Vinculado</legend>
         </div>
@@ -42,12 +42,12 @@ const AffiliateFormFields = ({ register, watch, setValue, formState: { errors },
         {!isEditMode && !selectedUser ? (
           <div className="flex gap-2">
             <div className="relative flex-1">
-              <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300" />
+              <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-muted/50" />
               <input
                 placeholder="Buscar por nombre o email..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full border-2 border-gray-100 rounded-xl p-3 pl-10 outline-none focus:border-brand-primary font-bold"
+                className="w-full border-2 border-brand-border rounded-xl p-3 pl-10 outline-none focus:border-brand-primary font-bold"
               />
             </div>
             <button
@@ -63,14 +63,14 @@ const AffiliateFormFields = ({ register, watch, setValue, formState: { errors },
         {/* Lista de resultados / Usuario seleccionado */}
         <div className="space-y-2">
           {usersFound.length > 0 && !selectedUser && (
-            <div className="bg-gray-50 p-2 rounded-xl border border-gray-100 max-h-40 overflow-y-auto">
+            <div className="bg-brand-surface p-2 rounded-xl border border-brand-border max-h-40 overflow-y-auto">
               {usersFound.map(u => (
                 <div
                   key={u._id}
                   onClick={() => setValue("user", u._id)}
-                  className="p-2 hover:bg-white hover:shadow-sm rounded-lg cursor-pointer flex justify-between items-center group transition-all"
+                  className="p-2 hover:bg-brand-surface hover:shadow-sm rounded-lg cursor-pointer flex justify-between items-center group transition-all"
                 >
-                  <span className="text-[11px] font-bold text-gray-600 uppercase">{u.firstName} {u.lastName}</span>
+                  <span className="text-[11px] font-bold text-brand-text-muted uppercase">{u.firstName} {u.lastName}</span>
                   <span className="text-[9px] font-black text-brand-primary opacity-0 group-hover:opacity-100 italic tracking-tighter">Seleccionar +</span>
                 </div>
               ))}
@@ -96,17 +96,17 @@ const AffiliateFormFields = ({ register, watch, setValue, formState: { errors },
       </fieldset>
 
       {/* --- SECCIÓN 2: CONFIGURACIÓN AFILIADO --- */}
-      <fieldset className="space-y-5 bg-gray-50/50 p-5 rounded-4xl border border-gray-100">
-        <div className="flex items-center gap-2 border-b border-gray-100 pb-2">
+      <fieldset className="space-y-5 bg-brand-surface/50 p-5 rounded-4xl border border-brand-border">
+        <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiCode className="text-brand-secondary" />
           <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Configuración de Cuenta</legend>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">Código de Afiliado</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Código de Afiliado</label>
             <div className="relative">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 font-bold text-xs">@</span>
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-muted/50 font-bold text-xs">@</span>
               <input
                 {...register("affiliateCode", { required: "Campo obligatorio" })}
                 placeholder="ej: ofertas2026"
@@ -115,9 +115,9 @@ const AffiliateFormFields = ({ register, watch, setValue, formState: { errors },
             </div>
           </div>
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">Comisión Base (%)</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Comisión Base (%)</label>
             <div className="relative">
-              <FiDollarSign className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300" />
+              <FiDollarSign className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-muted/50" />
               <input
                 type="number"
                 {...register("defaultCommission", { required: "Campo obligatorio" })}
@@ -130,17 +130,17 @@ const AffiliateFormFields = ({ register, watch, setValue, formState: { errors },
 
       {/* --- SECCIÓN 3: MÉTODO DE PAGO --- */}
       <fieldset className="space-y-5">
-        <div className="flex items-center gap-2 border-b border-gray-100 pb-2">
+        <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiCreditCard className="text-brand-secondary" />
           <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Información de Cobro</legend>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">Vía de Pago</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Vía de Pago</label>
             <select
               {...register("paymentMethod.type")}
-              className="border-2 border-gray-100 rounded-xl p-3 font-bold text-brand-primary outline-none"
+              className="border-2 border-brand-border rounded-xl p-3 font-bold text-brand-primary outline-none"
             >
               <option value="ALIAS">ALIAS</option>
               <option value="CBU">CBU / CVU</option>
@@ -149,22 +149,22 @@ const AffiliateFormFields = ({ register, watch, setValue, formState: { errors },
             </select>
           </div>
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">Identificador (CBU/Alias/Email)</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Identificador (CBU/Alias/Email)</label>
             <input
               {...register("paymentMethod.identifier", { required: "Dato necesario para pagar" })}
-              className="border-2 border-gray-100 rounded-xl p-3 font-bold"
+              className="border-2 border-brand-border rounded-xl p-3 font-bold"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">Titular de Cuenta</label>
-            <input {...register("paymentMethod.holderName")} className="border-2 border-gray-100 rounded-xl p-3 font-bold" />
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">Titular de Cuenta</label>
+            <input {...register("paymentMethod.holderName")} className="border-2 border-brand-border rounded-xl p-3 font-bold" />
           </div>
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-black text-gray-400 uppercase ml-1">DNI / CUIT Titular</label>
-            <input {...register("paymentMethod.holderDocument")} className="border-2 border-gray-100 rounded-xl p-3 font-bold" />
+            <label className="text-[9px] font-black text-brand-text-muted uppercase ml-1">DNI / CUIT Titular</label>
+            <input {...register("paymentMethod.holderDocument")} className="border-2 border-brand-border rounded-xl p-3 font-bold" />
           </div>
         </div>
       </fieldset>

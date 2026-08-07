@@ -2,31 +2,33 @@ import { Link } from 'react-router';
 import { AiTwotoneEdit, AiTwotoneDelete } from "react-icons/ai";
 import { MdRestore } from "react-icons/md";
 
+const tableButtonClasses = "px-3 py-2 bg-brand-surface border border-brand-border text-brand-text rounded-xl disabled:opacity-30 hover:border-brand-secondary transition-all text-[10px] font-black uppercase tracking-tighter cursor-pointer disabled:cursor-not-allowed";
+
 const DefaultCell = ({ col, value, row, route }) => {
-  if (value === null || value === undefined) return <span className="text-gray-300">-</span>;
+  if (value === null || value === undefined) return <span className="text-brand-text-muted/50">-</span>;
 
   if (col.format === "date") {
     const date = new Date(value);
     return (
       <div className="flex flex-col leading-tight">
-        <span className="text-gray-700 font-medium">{date.toLocaleDateString('es-AR')}</span>
-        <span className="text-[10px] text-gray-400">{date.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' })} hs</span>
+        <span className="text-brand-text font-medium">{date.toLocaleDateString('es-AR')}</span>
+        <span className="text-[10px] text-brand-text-muted">{date.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' })} hs</span>
       </div>
     );
   }
 
   if (col.format === "currency") {
-    return <span className="font-mono font-bold text-gray-700">${value?.toLocaleString('es-AR')}</span>;
+    return <span className="font-mono font-bold text-brand-text">${value?.toLocaleString('es-AR')}</span>;
   }
 
   if (col.field === "_id") {
     return (
       <Link
         to={`${route}/detalle/${value}`}
-        className="text-brand-primary font-mono text-[10px] rounded flex flex-col items-center group/id"
+        className="text-brand-secondary font-mono text-[10px] rounded flex flex-col items-center group/id"
       >
         #{value.slice(-6)}
-        <span className='hover:underline rounded-2xl p-1 font-bold bg-brand-primary text-brand-surface text-center uppercase text-[8px] transition-colors'>
+        <span className='hover:underline rounded-2xl p-1 font-bold bg-brand-secondary text-white text-center uppercase text-[8px] transition-colors'>
           Ver Detalles
         </span>
       </Link>
@@ -42,7 +44,7 @@ const DefaultCell = ({ col, value, row, route }) => {
         {displayImages.map((img, i) => (
           <div
             key={i}
-            className="w-10 h-10 rounded-full border-2 border-white shadow-sm overflow-hidden bg-gray-50 shrink-0"
+            className="w-10 h-10 rounded-full border-2 border-brand-border shadow-sm overflow-hidden bg-brand-bg shrink-0"
           >
             <img
               src={img?.xs || img || "https://via.placeholder.com/100"}
@@ -52,8 +54,8 @@ const DefaultCell = ({ col, value, row, route }) => {
           </div>
         ))}
         {images.length > 3 && (
-          <div className="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center shadow-sm">
-            <span className="text-[8px] font-black text-gray-500">+{images.length - 3}</span>
+          <div className="w-10 h-10 rounded-full border-2 border-brand-border bg-brand-bg flex items-center justify-center shadow-sm">
+            <span className="text-[8px] font-black text-brand-text-muted">+{images.length - 3}</span>
           </div>
         )}
       </div>
@@ -61,7 +63,7 @@ const DefaultCell = ({ col, value, row, route }) => {
   }
 
   if (col.format === "categories-tags") {
-    if (!value || value.length === 0) return <span className="text-gray-300 italic text-[10px]">Sin categoría</span>;
+    if (!value || value.length === 0) return <span className="text-brand-text-muted/60 italic text-[10px]">Sin categoria</span>;
 
     return (
       <div className="flex flex-wrap gap-1.5 max-w-[200px]">
@@ -72,10 +74,10 @@ const DefaultCell = ({ col, value, row, route }) => {
             onClick={(e) => e.stopPropagation()}
             className={`text-[9px] font-black px-2.5 py-1 rounded-lg transition-all uppercase border flex items-center 
             ${index === 0
-                ? 'bg-brand-primary/5 border-brand-primary/20 text-brand-primary hover:bg-brand-primary hover:text-white'
-                : 'bg-gray-50 border-gray-100 text-gray-400 hover:text-brand-primary'}`}
+                ? 'bg-brand-secondary/20 border-brand-secondary/40 text-brand-text hover:bg-brand-secondary hover:text-white'
+                : 'bg-brand-bg border-brand-border text-brand-text-muted hover:text-brand-text'}`}
           >
-            {index === 0 && <span className="mr-1 text-[10px]">●</span>}
+            {index === 0 && <span className="mr-1 text-[10px]">•</span>}
             {cat.categoryName}
           </Link>
         ))}
@@ -83,7 +85,7 @@ const DefaultCell = ({ col, value, row, route }) => {
     );
   }
 
-  return <span className="text-gray-600">{value?.toString()}</span>;
+  return <span className="text-brand-text-muted">{value?.toString()}</span>;
 };
 
 const GenericTable = ({
@@ -112,7 +114,7 @@ const GenericTable = ({
   };
 
   return (
-    <div className="overflow-x-auto bg-brand-bg rounded-4xl shadow-sm border border-brand-secondary/30">
+    <div className="overflow-x-auto bg-brand-surface rounded-4xl shadow-xl border border-brand-border">
       <table className="w-full text-left border-separate border-spacing-0">
         <thead className="bg-brand-primary">
           <tr>
@@ -121,7 +123,7 @@ const GenericTable = ({
               return (
                 <th
                   key={index}
-                  className={`p-5 font-black text-brand-surface text-[10px] uppercase tracking-[0.2em] border-b border-white/5 transition-colors relative group 
+                  className={`p-5 font-black text-brand-text text-[10px] uppercase tracking-[0.2em] border-b border-white/5 transition-colors relative group
     ${(!col.field || col.sortable === false) ? 'cursor-default' : 'cursor-pointer hover:bg-white/10'}`}
                   onClick={() => handleSort(col)}
                 >
@@ -135,26 +137,26 @@ const GenericTable = ({
               );
             })}
             {(isEditable || isDeletable) && (
-              <th className="p-5 font-black text-brand-surface text-[10px] uppercase tracking-[0.2em] text-right border-b border-white/5"> Acciones </th>
+              <th className="p-5 font-black text-brand-text text-[10px] uppercase tracking-[0.2em] text-right border-b border-white/5"> Acciones </th>
             )}
           </tr>
         </thead>
 
-        <tbody className="divide-y divide-brand-secondary/20">
+        <tbody className="divide-y divide-brand-border">
           {data.length > 0 ? (
             data.map((row) => (
               <tr
                 key={row._id}
                 className={`
     transition-all duration-300 group
-    ${row.isActive === false ? 'opacity-50 grayscale bg-brand-bg/50' : 'bg-white'}
-    hover:bg-ps-claro/20
+    ${row.isActive === false ? 'opacity-50 grayscale bg-brand-bg/50' : 'bg-brand-surface'}
+    hover:bg-brand-primary-light
   `}
               >
                 {columns.map((col, index) => {
                   const value = getValue(row, col.field);
                   return (
-                    <td key={index} className="p-5 text-sm transition-colors group-hover:bg-brand-primary/5">
+                    <td key={index} className="p-5 text-sm transition-colors group-hover:bg-brand-primary/10">
                       {col.render ? (
                         col.render(value, row, handleFilterChange)
                       ) : (
@@ -165,20 +167,20 @@ const GenericTable = ({
                 })}
 
                 {(isEditable || isDeletable) && (
-                  <td className="p-5 text-right space-x-4 border-l-2 border-transparent group-hover:border-brand-primary transition-colors group-hover:bg-brand-primary/5">
+                  <td className="p-5 text-right space-x-4 border-l-2 border-transparent group-hover:border-brand-secondary transition-colors group-hover:bg-brand-primary/10">
                     {isEditable && (
                       onEdit ? (
                         <button
                           type="button"
                           onClick={() => onEdit(row)}
-                          className="text-brand-primary hover:text-brand-text cursor-pointer transition-colors"
+                          className="text-brand-secondary hover:text-brand-text cursor-pointer transition-colors"
                         >
                           <AiTwotoneEdit size={20} />
                         </button>
                       ) : (
                         <Link
                           to={`${route}/editar/${row._id}`}
-                          className="text-brand-primary hover:text-brand-text transition-colors"
+                          className="text-brand-secondary hover:text-brand-text transition-colors"
                         >
                           <AiTwotoneEdit size={20} />
                         </Link>
@@ -186,7 +188,7 @@ const GenericTable = ({
                     )}
 
                     <button
-                      className='text-brand-primary hover:text-brand-text cursor-pointer transition-colors'
+                      className='text-brand-secondary hover:text-brand-text cursor-pointer transition-colors'
                       onClick={() => onDelete(row._id, row.categoryName || row.name || "este registro", row.isActive)}
                     >
                       {row.isActive !== false ? <AiTwotoneDelete size={20} /> : <MdRestore size={20} />}
@@ -198,7 +200,7 @@ const GenericTable = ({
           ) : (
             <tr>
               <td colSpan={columns.length + 1} className="p-24 text-center">
-                <div className="flex flex-col items-center opacity-30 text-brand-text">
+                <div className="flex flex-col items-center opacity-50 text-brand-text-muted">
                   <span className="text-4xl mb-2">🔍</span>
                   <p className="text-[10px] font-black uppercase tracking-[0.3em]">No hay datos para mostrar</p>
                 </div>
@@ -209,16 +211,16 @@ const GenericTable = ({
       </table>
 
       {!loading && pagination?.totalPages > 1 && (
-        <div className="flex justify-between items-center p-6 bg-ps-claro/10 border-t border-brand-secondary/20 rounded-b-4xl">
-          <p className="text-[10px] text-brand-text font-black uppercase tracking-widest">
-            Sincronizados <span className="text-brand-primary">{data.length}</span> de <span className="text-brand-primary">{pagination.total}</span>
+        <div className="flex justify-between items-center p-6 bg-brand-bg border-t border-brand-border rounded-b-4xl">
+          <p className="text-[10px] text-brand-text-muted font-black uppercase tracking-widest">
+            Sincronizados <span className="text-brand-secondary">{data.length}</span> de <span className="text-brand-secondary">{pagination.total}</span>
           </p>
 
           <div className="flex gap-2 items-center">
             <button
               disabled={pagination.page === 1}
               onClick={() => onPageChange(1)}
-              className="px-3 py-2 bg-white border border-gray-100 rounded-xl disabled:opacity-30 hover:shadow-md transition-all text-[10px] font-black uppercase tracking-tighter cursor-pointer disabled:cursor-not-allowed"
+              className={tableButtonClasses}
               title="Primero"
             >
               «
@@ -227,21 +229,21 @@ const GenericTable = ({
             <button
               disabled={pagination.page === 1}
               onClick={() => onPageChange(pagination.page - 1)}
-              className="px-4 py-2 bg-white border border-gray-100 rounded-xl disabled:opacity-30 hover:shadow-md transition-all text-[10px] font-black uppercase tracking-tighter cursor-pointer disabled:cursor-not-allowed"
+              className={tableButtonClasses}
             >
               Anterior
             </button>
 
-            <div className="bg-white px-4 py-2 rounded-xl border border-gray-100 shadow-inner">
-              <span className="text-[10px] font-black text-brand-primary uppercase">
-                {pagination.page} <span className="mx-1 opacity-20">/</span> {pagination.totalPages}
+            <div className="bg-brand-primary px-4 py-2 rounded-xl border border-brand-border shadow-inner">
+              <span className="text-[10px] font-black text-brand-text uppercase">
+                {pagination.page} <span className="mx-1 opacity-30">/</span> {pagination.totalPages}
               </span>
             </div>
 
             <button
               disabled={pagination.page === pagination.totalPages}
               onClick={() => onPageChange(pagination.page + 1)}
-              className="px-4 py-2 bg-white border border-gray-100 rounded-xl disabled:opacity-30 hover:shadow-md transition-all text-[10px] font-black uppercase tracking-tighter cursor-pointer disabled:cursor-not-allowed"
+              className={tableButtonClasses}
             >
               Siguiente
             </button>
@@ -249,8 +251,8 @@ const GenericTable = ({
             <button
               disabled={pagination.page === pagination.totalPages}
               onClick={() => onPageChange(pagination.totalPages)}
-              className="px-3 py-2 bg-white border border-gray-100 rounded-xl disabled:opacity-30 hover:shadow-md transition-all text-[10px] font-black uppercase tracking-tighter cursor-pointer disabled:cursor-not-allowed"
-              title="Último"
+              className={tableButtonClasses}
+              title="Ultimo"
             >
               »
             </button>

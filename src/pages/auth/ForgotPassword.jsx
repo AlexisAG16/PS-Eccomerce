@@ -21,7 +21,7 @@ const ForgotPassword = () => {
       </div>
 
       {/* --- CONTENEDOR SÓLIDO --- */}
-      <div className="relative z-10 bg-white w-full max-w-md rounded-[3.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.06)] p-10 md:p-14 border border-white">
+      <div className="relative z-10 bg-brand-surface w-full max-w-md rounded-[3.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.06)] p-10 md:p-14 border border-white">
         
         <div className="mb-10 text-center">
           <h1 className="text-5xl font-black text-air-azul italic tracking-tighter uppercase leading-none">
@@ -44,7 +44,7 @@ const ForgotPassword = () => {
               <input
                 type="email"
                 required
-                className="w-full bg-[#F9F8FF] border border-transparent rounded-2xl px-6 py-4 focus:bg-white focus:border-air-azul/10 focus:outline-none transition-all text-[13px] font-bold text-air-azul"
+                className="w-full bg-[#F9F8FF] border border-transparent rounded-2xl px-6 py-4 focus:bg-brand-surface focus:border-air-azul/10 focus:outline-none transition-all text-[13px] font-bold text-air-azul"
                 placeholder="tu@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -59,7 +59,7 @@ const ForgotPassword = () => {
             Enviar Enlace
           </button>
 
-          <div className="pt-6 border-t border-gray-50 text-center">
+          <div className="pt-6 border-t border-brand-border text-center">
             <Link 
               to="/login" 
               className="text-[10px] font-black text-air-azul/40 uppercase tracking-[0.3em] hover:text-air-azul transition-colors italic"

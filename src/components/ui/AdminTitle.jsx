@@ -30,11 +30,11 @@ const AdminTitle = () => {
   const pathSegments = pathname.split('/').filter(seg => seg !== '' && seg !== 'admin');
 
   return (
-    <main className="p-6 min-h-screen">
+    <main className="p-6 min-h-screen bg-brand-bg text-brand-text">
       <AccesosDirectosAdmin/>
-      <header className="mb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-gray-100 pb-8">
+      <header className="mb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-brand-border pb-8">
         <div className="flex-1">
-          <nav className="flex items-center gap-2 text-[10px] text-gray-400 uppercase tracking-[0.2em] mb-4 overflow-x-auto whitespace-nowrap">
+          <nav className="flex items-center gap-2 text-[10px] text-brand-text-muted uppercase tracking-[0.2em] mb-4 overflow-x-auto whitespace-nowrap">
             <Link to="/admin/dashboard" className="hover:text-brand-primary transition-colors">Dashboard</Link>
 
             {pathSegments.map((segment, index) => {
@@ -49,7 +49,7 @@ const AdminTitle = () => {
 
               return (
                 <div key={url} className="flex items-center gap-2">
-                  <span className="text-gray-300">/</span>
+                  <span className="text-brand-text-muted/50">/</span>
                   {isLast ? (
                     <span className="text-brand-primary font-black italic">{label}</span>
                   ) : (
@@ -59,7 +59,7 @@ const AdminTitle = () => {
               );
             })}
           </nav>
-          <h1 className="text-4xl md:text-5xl font-black text-brand-primary uppercase italic tracking-tighter leading-none">
+          <h1 className="text-4xl md:text-5xl font-black text-brand-text uppercase italic tracking-tighter leading-none">
             {title}
           </h1>
         </div>

@@ -95,7 +95,7 @@ const OrderSuccess = () => {
   const isPickup = deliveryType === 'PICKUP';
 
   return (
-    <div className="max-w-2xl mx-auto my-20 p-10 bg-white rounded-[3rem] shadow-2xl text-center border border-green-50 relative overflow-hidden">
+    <div className="max-w-2xl mx-auto my-20 p-10 bg-brand-surface rounded-[3rem] shadow-2xl text-center border border-brand-border relative overflow-hidden text-brand-text">
       <div className="absolute -top-10 -left-10 w-40 h-40 bg-brand-primary/5 rounded-full" />
       <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-brand-secondary/10 rounded-full" />
 
@@ -104,11 +104,11 @@ const OrderSuccess = () => {
           ✓
         </div>
 
-        <h1 className="text-3xl font-black text-brand-primary uppercase italic tracking-tighter mb-2">
+        <h1 className="text-3xl font-black text-brand-text uppercase italic tracking-tighter mb-2">
           ¡Misión Cumplida!
         </h1>
 
-        <p className="text-gray-500 font-bold uppercase text-[10px] tracking-[0.2em] mb-10">
+        <p className="text-brand-text-muted font-bold uppercase text-[10px] tracking-[0.2em] mb-10">
           {isPickup ? "Tu pedido está listo para retirar" : "Tu pedido está en camino"}
         </p>
 
@@ -118,14 +118,14 @@ const OrderSuccess = () => {
             <div className="inline-block bg-linear-to-r from-yellow-400 to-orange-500 text-white px-6 py-2 rounded-full shadow-lg">
               <span className="text-xs font-black uppercase tracking-widest">¡Ganaste {earnedPoints} Puntos!</span>
             </div>
-            <p className="text-[9px] text-gray-400 mt-2 font-bold uppercase tracking-tighter">
+            <p className="text-[9px] text-brand-text-muted mt-2 font-bold uppercase tracking-tighter">
               Canjealos por premios en nuestra tienda de puntos
             </p>
           </div>
         )}
 
         {/* CONTENEDOR DEL QR */}
-        <div className="bg-white rounded-[2.5rem] border border-gray-100 inline-block mb-10 transition-transform hover:scale-105 duration-300">
+        <div className="bg-brand-bg/70 rounded-[2.5rem] border border-brand-border inline-block mb-10 transition-transform hover:scale-105 duration-300">
           <div className="p-4 bg-white inline-block rounded-4xl">
             <QRCodeSVG
               value={`https://ps-eccomerce.netlify.app/track/${orderId}`}
@@ -137,26 +137,26 @@ const OrderSuccess = () => {
           </div>
 
           <div className="mt-2 pb-6 px-4">
-            <span className="text-[10px] font-black uppercase text-gray-300 block mb-1 tracking-[0.2em]">
+          <span className="text-[10px] font-black uppercase text-brand-text-muted block mb-1 tracking-[0.2em]">
               ID de Operación
             </span>
-            <strong className="text-sm font-black text-brand-primary tracking-tight italic break-all">
+            <strong className="text-sm font-black text-brand-highlight tracking-tight italic break-all">
               {orderId?.toUpperCase()}
             </strong>
           </div>
         </div>
 
         {/* 🎯 SECCIÓN MINIJUEGO */}
-        <div className="mb-10 p-6 bg-brand-primary/5 rounded-4xl border-2 border-dashed border-brand-primary/20 max-w-sm mx-auto">
-          <p className="text-brand-primary text-[11px] font-black uppercase mb-3 tracking-wider">
+        <div className="mb-10 p-6 bg-brand-bg/70 rounded-4xl border-2 border-dashed border-brand-border max-w-sm mx-auto">
+          <p className="text-brand-highlight text-[11px] font-black uppercase mb-3 tracking-wider">
             ¿Querés más puntos? 🕹️
           </p>
-          <p className="text-gray-500 text-[10px] mb-4 leading-tight">
+          <p className="text-brand-text-muted text-[10px] mb-4 leading-tight">
             Jugá a nuestro minijuego y multiplicá tus chances de ganar descuentos exclusivos.
           </p>
           <button
             onClick={() => window.location.href = '/minijuego'}
-            className="w-full py-3 bg-white border-2 border-brand-primary text-brand-primary rounded-xl font-black uppercase italic text-[10px] tracking-widest hover:bg-brand-primary hover:text-white transition-all flex items-center justify-center gap-2"
+            className="w-full py-3 bg-brand-primary border-2 border-brand-border text-brand-text rounded-xl font-black uppercase italic text-[10px] tracking-widest hover:border-brand-highlight transition-all flex items-center justify-center gap-2"
           >
             <IoGameControllerOutline size={16} />
             Jugar Minijuego
@@ -164,8 +164,8 @@ const OrderSuccess = () => {
         </div>
 
         {isPickup && (
-          <div className="mb-8 p-4 bg-blue-50 rounded-2xl border border-blue-100 mx-auto max-w-sm">
-            <p className="text-brand-primary text-[10px] font-black uppercase italic">
+          <div className="mb-8 p-4 bg-brand-bg/70 rounded-2xl border border-brand-border mx-auto max-w-sm">
+            <p className="text-brand-highlight text-[10px] font-black uppercase italic">
               📍 Retirá por nuestra sucursal central
             </p>
             <a

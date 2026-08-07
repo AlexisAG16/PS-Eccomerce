@@ -106,7 +106,7 @@ const AdminFullOrderDetail = () => {
       customClass: {
         popup: 'rounded-[3rem] p-10 border-4 border-brand-primary/10',
         confirmButton: 'rounded-2xl font-black uppercase italic text-[10px] tracking-widest px-8 py-4',
-        cancelButton: 'rounded-2xl font-black uppercase italic text-[10px] tracking-widest px-8 py-4 bg-gray-100 text-gray-400'
+        cancelButton: 'rounded-2xl font-black uppercase italic text-[10px] tracking-widest px-8 py-4 bg-brand-bg text-brand-text-muted'
       }
     });
 
@@ -146,7 +146,7 @@ const AdminFullOrderDetail = () => {
   };
 
   if (loading) return <div className="h-screen flex items-center justify-center"><ClipLoader color="#1a5276" size={50} /></div>;
-  if (!order) return <div className="pt-40 text-center uppercase font-black italic text-brand-primary">Orden no encontrada</div>;
+  if (!order) return <div className="pt-40 text-center uppercase font-black italic text-brand-text">Orden no encontrada</div>;
 
   return (
     <>
@@ -154,7 +154,7 @@ const AdminFullOrderDetail = () => {
       <header className="mb-10 flex flex-col md:flex-row justify-between items-end gap-6">
         <div>
           <p className="text-brand-secondary text-[10px] font-black uppercase tracking-[0.4em] mb-2">Gestión Integral</p>
-          <h1 className="text-4xl font-black text-brand-primary uppercase italic tracking-tighter">
+          <h1 className="text-4xl font-black text-brand-text uppercase italic tracking-tighter">
             Orden #{order._id.slice(-6).toUpperCase()}
           </h1>
         </div>
@@ -168,35 +168,35 @@ const AdminFullOrderDetail = () => {
         <main className="lg:col-span-8 space-y-6">
 
           {/* PRODUCTOS */}
-          <div className="bg-white rounded-[3rem] p-12 border border-gray-100 shadow-xl">
-            <h3 className="text-brand-primary font-black uppercase italic text-xs mb-8">Productos</h3>
+          <div className="bg-brand-surface rounded-[3rem] p-12 border border-brand-border shadow-xl">
+            <h3 className="text-brand-text font-black uppercase italic text-xs mb-8">Productos</h3>
             <div className="space-y-4">
               {order.items.map((item, idx) => (
-                <Link to={`/admin/productos/detalle/${item.productId._id}`} key={idx} className="flex items-center gap-4 p-5 bg-gray-50 rounded-3xl">
+                <Link to={`/admin/productos/detalle/${item.productId._id}`} key={idx} className="flex items-center gap-4 p-5 bg-brand-surface rounded-3xl">
                   {/* Miniatura del producto (opcional, ya que ahora lo tenés en el populate) */}
                   {item.productId?.images?.[0]?.xs && (
                     <img src={item.productId.images[0].xs} className="w-12 h-12 rounded-xl object-cover" alt="prod" />
                   )}
                   <div className="flex-1">
                     <p className="font-black uppercase text-sm">{item.productName}</p>
-                    <p className="text-[10px] text-gray-400 font-bold uppercase">Cant: {item.quantity} x ${item.unitPrice.toLocaleString()}</p>
+                    <p className="text-[10px] text-brand-text-muted font-bold uppercase">Cant: {item.quantity} x ${item.unitPrice.toLocaleString()}</p>
                   </div>
-                  <p className="font-black italic text-brand-primary">${item.subtotal.toLocaleString()}</p>
+                  <p className="font-black italic text-brand-text">${item.subtotal.toLocaleString()}</p>
                 </Link>
               ))}
             </div>
 
             {/* RESUMEN DE DINERO */}
-            <div className="mt-8 pt-8 border-t border-dashed border-gray-200 space-y-2">
-              <div className="flex justify-between text-xs font-bold uppercase text-gray-400">
+            <div className="mt-8 pt-8 border-t border-dashed border-brand-border space-y-2">
+              <div className="flex justify-between text-xs font-bold uppercase text-brand-text-muted">
                 <span>Subtotal</span>
                 <span>${order.subtotal.toLocaleString()}</span>
               </div>
-              <div className="flex justify-between text-xs font-bold uppercase text-gray-400">
+              <div className="flex justify-between text-xs font-bold uppercase text-brand-text-muted">
                 <span>Envío</span>
                 <span>${order.shippingCost.toLocaleString()}</span>
               </div>
-              <div className="flex justify-between text-xl font-black uppercase text-brand-primary italic pt-4">
+              <div className="flex justify-between text-xl font-black uppercase text-brand-text italic pt-4">
                 <span>Total</span>
                 <span>${order.total.toLocaleString()}</span>
               </div>
@@ -251,7 +251,7 @@ const AdminFullOrderDetail = () => {
                   </p>
                 </div>
 
-                <div className="mt-6 p-4 bg-white/5 rounded-2xl border border-white/10">
+                <div className="mt-6 p-4 bg-brand-surface/5 rounded-2xl border border-white/10">
                   <p className="text-[8px] font-black uppercase text-white/40 mb-1">Estado en Pasarela</p>
                   <div className="flex items-center gap-2">
                     <div className={`w-2 h-2 rounded-full ${order.lastPayment.status === 'APPROVED' ? 'bg-green-400' : 'bg-orange-400'} animate-pulse`} />
@@ -267,7 +267,7 @@ const AdminFullOrderDetail = () => {
 
                 <button
                   onClick={() => navigate(`/admin/pagos/detalle/${order.lastPayment._id}`)}
-                  className="w-full mt-4 bg-white/10 hover:bg-brand-secondary text-white py-4 rounded-2xl font-black uppercase italic text-[9px] tracking-widest transition-all border border-white/20"
+                  className="w-full mt-4 bg-brand-surface/10 hover:bg-brand-secondary text-white py-4 rounded-2xl font-black uppercase italic text-[9px] tracking-widest transition-all border border-white/20"
                 >
                   👁️ Ver Detalles de Pago
                 </button>
@@ -283,12 +283,12 @@ const AdminFullOrderDetail = () => {
         <aside className="lg:col-span-4 space-y-6">
 
           {/* INFO CLIENTE Y DIRECCIÓN */}
-          <div className="bg-white rounded-[3rem] p-8 border border-gray-100 shadow-xl">
-            <h3 className="text-brand-primary font-black uppercase italic text-xs mb-6">Entrega y Cliente</h3>
+          <div className="bg-brand-surface rounded-[3rem] p-8 border border-brand-border shadow-xl">
+            <h3 className="text-brand-text font-black uppercase italic text-xs mb-6">Entrega y Cliente</h3>
             <div className="space-y-6">
               {/* Datos Personales (Soporta Invitado y Usuario Logueado) */}
               <div>
-                <p className="text-[9px] font-black text-gray-400 uppercase mb-1">Comprador</p>
+                <p className="text-[9px] font-black text-brand-text-muted uppercase mb-1">Comprador</p>
 
                 {order.guest ? (
                   // 🛒 CASO 1: COMPRA COMO INVITADO
@@ -296,8 +296,8 @@ const AdminFullOrderDetail = () => {
                     <p className="font-black text-sm uppercase">
                       {order.guest.firstName} {order.guest.lastName}
                     </p>
-                    <p className="text-[10px] text-gray-500 font-bold">{order.guest.email}</p>
-                    <p className="text-[10px] text-gray-500 font-bold">{order.guest.phone}</p>
+                    <p className="text-[10px] text-brand-text-muted font-bold">{order.guest.email}</p>
+                    <p className="text-[10px] text-brand-text-muted font-bold">{order.guest.phone}</p>
                   </>
                 ) : (
                   // 👤 CASO 2: COMPRA COMO USUARIO LOGUEADO
@@ -305,8 +305,8 @@ const AdminFullOrderDetail = () => {
                     <p className="font-black text-sm uppercase">
                       {order.userId?.firstName || 'Usuario'} {order.userId?.lastName || 'Registrado'}
                     </p>
-                    <p className="text-[10px] text-gray-500 font-bold">{order.userId?.email || 'Sin Email'}</p>
-                    <p className="text-[10px] text-gray-500 font-bold">{order.userId?.phone || 'Sin Teléfono'}</p>
+                    <p className="text-[10px] text-brand-text-muted font-bold">{order.userId?.email || 'Sin Email'}</p>
+                    <p className="text-[10px] text-brand-text-muted font-bold">{order.userId?.phone || 'Sin Teléfono'}</p>
                   </>
                 )}
               </div>
@@ -316,7 +316,7 @@ const AdminFullOrderDetail = () => {
                 {order.userId ? (
                   <div className="bg-green-50 border-green-200 text-green-600 p-2 rounded-xl">
                     👤 Usuario Registrado
-                    <p className="text-[8px] font-medium text-gray-400 mt-1 lowercase">
+                    <p className="text-[8px] font-medium text-brand-text-muted mt-1 lowercase">
                       ID: {order.userId._id || order.userId}
                     </p>
                   </div>
@@ -335,11 +335,11 @@ const AdminFullOrderDetail = () => {
                     {order.shippingAddress.street} {order.shippingAddress.number}
                     {order.shippingAddress.apartment && ` - ${order.shippingAddress.apartment}`}
                   </p>
-                  <p className="text-[10px] font-bold text-gray-600 uppercase">
+                  <p className="text-[10px] font-bold text-brand-text-muted uppercase">
                     {order.shippingAddress.city} ({order.shippingAddress.postalCode})
                   </p>
                   {order.shippingAddress.reference && (
-                    <p className="text-[9px] italic text-gray-400 mt-2">Ref: {order.shippingAddress.reference}</p>
+                    <p className="text-[9px] italic text-brand-text-muted mt-2">Ref: {order.shippingAddress.reference}</p>
                   )}
                 </div>
               )}
@@ -348,12 +348,12 @@ const AdminFullOrderDetail = () => {
 
           {/* LOGÍSTICA (Botón de Gestión) */}
           {order.deliveryType === 'SHIPPING' && (
-            <div className="bg-white rounded-[3rem] p-8 border border-gray-100 shadow-xl">
-              <h3 className="text-brand-primary font-black uppercase italic text-xs mb-4">Estado Logístico</h3>
+            <div className="bg-brand-surface rounded-[3rem] p-8 border border-brand-border shadow-xl">
+              <h3 className="text-brand-text font-black uppercase italic text-xs mb-4">Estado Logístico</h3>
               {order.shipping ? (
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-[10px] font-black uppercase bg-gray-100 px-3 py-1 rounded-full">
+                    <span className="text-[10px] font-black uppercase bg-brand-bg px-3 py-1 rounded-full">
                       {order.shipping.status}
                     </span>
                   </div>
@@ -365,7 +365,7 @@ const AdminFullOrderDetail = () => {
                   </button>
                 </div>
               ) : (
-                <p className="text-[10px] italic text-gray-400 font-bold">Envío no inicializado.</p>
+                <p className="text-[10px] italic text-brand-text-muted font-bold">Envío no inicializado.</p>
               )}
             </div>
           )}
@@ -390,7 +390,7 @@ const AdminFullOrderDetail = () => {
 
                 if (actions.length === 0) {
                   return (
-                    <div className="text-center py-6 border-2 border-white/10 rounded-3xl bg-white/5">
+                    <div className="text-center py-6 border-2 border-white/10 rounded-3xl bg-brand-surface/5">
                       <p className="text-[10px] font-black uppercase italic text-brand-secondary tracking-widest">
                         {current === "COMPLETED" ? "✓ Pedido Finalizado" : "✕ Venta Anulada"}
                       </p>
@@ -407,7 +407,7 @@ const AdminFullOrderDetail = () => {
             transition-all duration-300 shadow-lg border-2
             ${st === 'CANCELLED'
                         ? 'bg-transparent border-red-500/50 text-red-400 hover:bg-red-500 hover:text-white'
-                        : 'bg-white/10 border-white/10 hover:border-brand-secondary hover:text-brand-secondary'}
+                        : 'bg-brand-surface/10 border-white/10 hover:border-brand-secondary hover:text-brand-secondary'}
             cursor-pointer
           `}
                   >
@@ -425,14 +425,14 @@ const AdminFullOrderDetail = () => {
           </div>
 
           {/* INFO CLIENTE */}
-          <div className="bg-white rounded-[3rem] p-8 border border-gray-100 shadow-xl print:border-black print:rounded-2xl">
-            <h3 className="text-brand-primary font-black uppercase italic text-xs mb-6 border-b pb-4 print:text-black print:border-black">
+          <div className="bg-brand-surface rounded-[3rem] p-8 border border-brand-border shadow-xl print:border-black print:rounded-2xl">
+            <h3 className="text-brand-text font-black uppercase italic text-xs mb-6 border-b pb-4 print:text-black print:border-black">
               Datos de Entrega
             </h3>
             <div className="space-y-6">
               <div>
-                <p className="text-[9px] font-black text-gray-400 uppercase mb-1 print:text-black">Método</p>
-                <p className="font-black text-brand-primary uppercase italic text-sm print:text-black">
+                <p className="text-[9px] font-black text-brand-text-muted uppercase mb-1 print:text-black">Método</p>
+                <p className="font-black text-brand-text uppercase italic text-sm print:text-black">
                   {order.deliveryType === 'PICKUP' ? '📍 Retiro en Local' : '🚚 Envío a Domicilio'}
                 </p>
               </div>

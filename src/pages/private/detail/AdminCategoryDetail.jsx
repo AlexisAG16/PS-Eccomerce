@@ -56,11 +56,11 @@ const AdminCategoryDetail = () => {
   if (loading) return (
     <div className="h-screen flex flex-col items-center justify-center">
       <ClipLoader color="#1a5276" size={50} />
-      <p className="mt-4 text-[10px] font-black text-gray-400 uppercase tracking-widest italic animate-pulse">Sincronizando índice de categorías...</p>
+      <p className="mt-4 text-[10px] font-black text-brand-text-muted uppercase tracking-widest italic animate-pulse">Sincronizando índice de categorías...</p>
     </div>
   );
 
-  if (!category) return <div className="pt-40 text-center uppercase font-black italic text-brand-primary">Categoría no encontrada</div>;
+  if (!category) return <div className="pt-40 text-center uppercase font-black italic text-brand-text">Categoría no encontrada</div>;
 
   const headerActions = (
     <div className="flex gap-3">
@@ -81,7 +81,7 @@ const AdminCategoryDetail = () => {
           label="Total Productos"
           value={loading ? "..." : (products.length || 0)}
           icon={FiPackage}
-          colorClass="text-brand-primary"
+          colorClass="text-brand-text"
         />
         <MetricItem
           label="Estado Visibilidad"
@@ -99,15 +99,15 @@ const AdminCategoryDetail = () => {
           label="Identificador"
           value={id.slice(-6).toUpperCase()}
           icon={FiInfo}
-          colorClass="text-gray-400"
+          colorClass="text-brand-text-muted"
         />
       </div>
 
       {/* COLUMNA IZQUIERDA: VISUAL Y DESCRIPCIÓN */}
       <main className="lg:col-span-7">
-        <div className="bg-white rounded-[3.5rem] overflow-hidden border border-gray-100 shadow-xl mb-6 relative group">
+        <div className="bg-brand-surface rounded-[3.5rem] overflow-hidden border border-brand-border shadow-xl mb-6 relative group">
           {/* Fondo con degradado y patrón sutil */}
-          <div className="aspect-21/9 w-full bg-linear-to-br from-gray-50 to-gray-200 flex items-center justify-center relative overflow-hidden">
+          <div className="aspect-21/9 w-full bg-linear-to-br from-brand-surface to-gray-200 flex items-center justify-center relative overflow-hidden">
 
             {/* Icono gigante de fondo (decorativo) */}
             <FiGrid className="absolute -right-10 -bottom-10 text-[15rem] text-gray-200/50 rotate-12" />
@@ -117,15 +117,15 @@ const AdminCategoryDetail = () => {
               <span className="block text-[10px] font-black uppercase tracking-[0.5em] text-brand-secondary mb-2 drop-shadow-sm">
                 Rama de Catálogo
               </span>
-              <h1 className="text-5xl md:text-6xl font-black italic text-brand-primary uppercase tracking-tighter leading-none">
+              <h1 className="text-5xl md:text-6xl font-black italic text-brand-text uppercase tracking-tighter leading-none">
                 {category.categoryName}
               </h1>
               <div className="h-1.5 w-24 bg-brand-secondary mx-auto mt-4 rounded-full" />
             </div>
           </div>
         </div>
-        {/* <div className="bg-white rounded-[3.5rem] overflow-hidden border border-gray-100 shadow-xl mb-6">
-          <div className="aspect-video w-full bg-gray-100 relative group">
+        {/* <div className="bg-brand-surface rounded-[3.5rem] overflow-hidden border border-brand-border shadow-xl mb-6">
+          <div className="aspect-video w-full bg-brand-bg relative group">
             <img
               src={category.image?.url || '/placeholder-category.jpg'}
               alt={category.name}
@@ -139,16 +139,16 @@ const AdminCategoryDetail = () => {
         </div> */}
 
         {/* <DetailCard title="Descripción General">
-          <div className="p-8 bg-gray-50 rounded-[2.5rem] border border-gray-100 italic text-gray-600 leading-relaxed">
+          <div className="p-8 bg-brand-surface rounded-[2.5rem] border border-brand-border italic text-brand-text-muted leading-relaxed">
             {category.description || "Esta categoría no posee una descripción técnica registrada en el sistema."}
           </div>
         </DetailCard> */}
 
         {/* Columna Productos Vinculados */}
         <div className="lg:col-span-2">
-          <section className="bg-white rounded-[2.5rem] p-8 md:p-10 border border-gray-100 shadow-sm min-h-[400px]">
-            <div className="flex justify-between items-center mb-8 border-b border-gray-50 pb-6">
-              <h2 className="text-xl font-black text-brand-primary uppercase italic tracking-tight">
+          <section className="bg-brand-surface rounded-[2.5rem] p-8 md:p-10 border border-brand-border shadow-sm min-h-[400px]">
+            <div className="flex justify-between items-center mb-8 border-b border-brand-border pb-6">
+              <h2 className="text-xl font-black text-brand-text uppercase italic tracking-tight">
                 Productos en esta Categoría
               </h2>
               <span className="bg-brand-primary text-white text-[10px] font-black px-3 py-1 rounded-lg">
@@ -162,9 +162,9 @@ const AdminCategoryDetail = () => {
                   <Link
                     key={prod._id}
                     to={`/admin/productos/detalle/${prod._id}`}
-                    className="flex items-center gap-4 p-4 rounded-2xl border border-gray-50 hover:border-brand-secondary hover:shadow-md transition-all group"
+                    className="flex items-center gap-4 p-4 rounded-2xl border border-brand-border hover:border-brand-secondary hover:shadow-md transition-all group"
                   >
-                    <div className="w-12 h-12 bg-gray-50 rounded-xl overflow-hidden shrink-0 border border-gray-100">
+                    <div className="w-12 h-12 bg-brand-surface rounded-xl overflow-hidden shrink-0 border border-brand-border">
                       <img
                         src={prod.images?.[0]?.xs || "https://via.placeholder.com/100"}
                         alt="p"
@@ -172,10 +172,10 @@ const AdminCategoryDetail = () => {
                       />
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-xs font-black text-gray-800 group-hover:text-brand-primary uppercase leading-tight line-clamp-1">
+                      <span className="text-xs font-black text-brand-text group-hover:text-brand-text uppercase leading-tight line-clamp-1">
                         {prod.productName}
                       </span>
-                      <span className="text-[9px] font-mono text-gray-400">SKU: {prod.sku || 'S/N'}</span>
+                      <span className="text-[9px] font-mono text-brand-text-muted">SKU: {prod.sku || 'S/N'}</span>
                     </div>
                     <div className="ml-auto text-right">
                       <span className="text-[10px] font-black text-brand-secondary italic">
@@ -188,8 +188,8 @@ const AdminCategoryDetail = () => {
             ) : (
               <div className="flex flex-col items-center justify-center py-20 text-center">
                 <div className="text-4xl mb-4">📦</div>
-                <p className="text-[10px] font-black text-gray-300 uppercase tracking-widest">No hay productos asignados</p>
-                <Link to="/admin/productos/crear" className="text-brand-primary text-[9px] font-bold uppercase mt-2 hover:underline">
+                <p className="text-[10px] font-black text-brand-text-muted/50 uppercase tracking-widest">No hay productos asignados</p>
+                <Link to="/admin/productos/crear" className="text-brand-text text-[9px] font-bold uppercase mt-2 hover:underline">
                   + Empezar a cargar
                 </Link>
               </div>
@@ -214,7 +214,7 @@ const AdminCategoryDetail = () => {
           </p>
           <Link
             to={`/admin/productos?categoryId=${category._id}`}
-            className="inline-block bg-brand-secondary text-white font-black uppercase italic text-[10px] px-8 py-3 rounded-full hover:bg-white hover:text-brand-primary transition-all"
+            className="inline-block bg-brand-secondary text-white font-black uppercase italic text-[10px] px-8 py-3 rounded-full hover:bg-brand-surface hover:text-brand-text transition-all"
           >
             Ver Inventario Relacionado
           </Link>

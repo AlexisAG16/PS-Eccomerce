@@ -13,8 +13,8 @@ const columns = [
     field: "code",
     render: (val, row) => (
       <div className="flex flex-col">
-        <span className="font-mono font-black text-brand-primary text-sm uppercase tracking-wider">{val}</span>
-        <span className="text-[10px] text-gray-400 italic">Origen: {row.origin || 'MARKETING_CAMPAIGN'}</span>
+        <span className="font-mono font-black text-brand-text text-sm uppercase tracking-wider">{val}</span>
+        <span className="text-[10px] text-brand-text-muted italic">Origen: {row.origin || 'MARKETING_CAMPAIGN'}</span>
       </div>
     )
   },
@@ -22,7 +22,7 @@ const columns = [
     label: "Valor",
     field: "value",
     render: (val, row) => (
-      <span className="font-mono font-black text-gray-700 bg-gray-100 px-2 py-1 rounded-lg">
+      <span className="font-mono font-black text-brand-text bg-brand-bg px-2 py-1 rounded-lg">
         {row.discountType === 'percentage' ? `${val}%` : `$${val.toLocaleString('es-AR')}`}
       </span>
     )
@@ -31,7 +31,7 @@ const columns = [
     label: "Usos (Cant.)",
     field: "usedCount",
     render: (val, row) => (
-      <span className="text-xs font-medium text-gray-600">
+      <span className="text-xs font-medium text-brand-text-muted">
         {val} / {row.usageLimit ?? '∞'}
       </span>
     )
@@ -106,7 +106,7 @@ const AdminCoupons = () => {
       {loading ? (
         <div className="text-center py-20 flex flex-col items-center">
           <ClipLoader color="#1a5276" size={80} />
-          <p className='mt-5 text-[10px] font-black uppercase text-gray-400 tracking-widest'>Cargando cupones...</p>
+          <p className='mt-5 text-[10px] font-black uppercase text-brand-text-muted tracking-widest'>Cargando cupones...</p>
         </div>
       ) : (
         <GenericTable

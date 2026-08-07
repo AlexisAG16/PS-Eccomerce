@@ -15,8 +15,8 @@ const columns = [
     field: "title",
     render: (val, row) => (
       <div className="flex flex-col">
-        <span className="font-bold text-gray-800 uppercase italic tracking-tighter leading-none mb-1">{val}</span>
-        <span className="text-[9px] text-brand-primary font-black uppercase tracking-widest">
+        <span className="font-bold text-brand-text uppercase italic tracking-tighter leading-none mb-1">{val}</span>
+        <span className="text-[9px] text-brand-text font-black uppercase tracking-widest">
           Tipo: {row.config?.discountType === 'percentage' ? 'Porcentaje' : 'Monto Fijo'}
         </span>
       </div>
@@ -27,8 +27,8 @@ const columns = [
     field: "pointsCost",
     render: (val) => (
       <div className="flex items-center gap-1">
-        <span className="font-mono font-black text-brand-primary text-lg">{val}</span>
-        <span className="text-[8px] font-bold text-gray-400 uppercase">pts</span>
+        <span className="font-mono font-black text-brand-text text-lg">{val}</span>
+        <span className="text-[8px] font-bold text-brand-text-muted uppercase">pts</span>
       </div>
     )
   },
@@ -36,7 +36,7 @@ const columns = [
     label: "Beneficio",
     field: "config",
     render: (config) => (
-      <span className="bg-brand-surface text-brand-text px-3 py-1 rounded-full font-black text-[10px] border border-gray-100">
+      <span className="bg-brand-surface text-brand-text px-3 py-1 rounded-full font-black text-[10px] border border-brand-border">
         {config?.discountType === 'percentage' ? `${config?.value}% OFF` : `$${config?.value?.toLocaleString('es-AR')} OFF`}
       </span>
     )
@@ -50,9 +50,9 @@ const columns = [
     label: "Restricción",
     field: "config",
     render: (config) => {
-      if (!config?.categoryRestriction) return <span className="text-[9px] text-gray-400 italic">Sin restricciones</span>;
+      if (!config?.categoryRestriction) return <span className="text-[9px] text-brand-text-muted italic">Sin restricciones</span>;
       return (
-        <span className="text-[9px] font-bold text-gray-500 uppercase italic">
+        <span className="text-[9px] font-bold text-brand-text-muted uppercase italic">
           Solo {config.categoryRestriction?.categoryName || 'Categoría específica'}
         </span>
       );
@@ -62,7 +62,7 @@ const columns = [
     label: "Min. Compra",
     field: "config.minOrderAmount",
     render: (_, row) => (
-      <span className="text-xs font-mono text-gray-600">
+      <span className="text-xs font-mono text-brand-text-muted">
         ${row.config?.minOrderAmount?.toLocaleString('es-AR') || '0'}
       </span>
     )
@@ -136,7 +136,7 @@ const AdminRewards = () => {
       {loading ? (
         <div className="text-center py-20 flex flex-col items-center">
           <ClipLoader size={100} color="#1a5276" />
-          <p className='mt-5 font-black uppercase italic text-gray-400 tracking-tighter'>Sincronizando Recompensas...</p>
+          <p className='mt-5 font-black uppercase italic text-brand-text-muted tracking-tighter'>Sincronizando Recompensas...</p>
         </div>
       ) : (
         <GenericTable

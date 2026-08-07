@@ -13,7 +13,7 @@ const columns = [
     field: "categoryName",
     render: (val, row) => (
       <div className="flex items-center gap-3">
-        <span className={`font-black uppercase italic tracking-tighter text-base ${row.isActive ? 'text-brand-primary' : 'text-gray-400'}`}>
+        <span className={`font-black uppercase italic tracking-tighter text-base ${row.isActive ? 'text-brand-text' : 'text-brand-text-muted'}`}>
           {val} {!row.isActive && "(INACTIVO)"}
         </span>
       </div>
@@ -22,7 +22,7 @@ const columns = [
   {
     label: "Ruta SEO",
     field: "categorySlug",
-    render: (val) => <code className="text-[10px] text-gray-400 bg-gray-50 px-2 py-1 rounded">/catalogo/{val}</code>
+    render: (val) => <code className="text-[10px] text-brand-text-muted bg-brand-surface px-2 py-1 rounded">/catalogo/{val}</code>
   },
   { label: "Creado", field: "createdAt", format: "date" }
 ];
@@ -88,7 +88,7 @@ const AdminCategories = () => {
       {loading ? (
         <div className="text-center py-20 flex flex-col items-center">
           <ClipLoader size={80} color="#1a5276" />
-          <p className="mt-4 text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] animate-pulse">
+          <p className="mt-4 text-[10px] font-black text-brand-text-muted uppercase tracking-[0.3em] animate-pulse">
             Cargando Estructura...
           </p>
         </div>

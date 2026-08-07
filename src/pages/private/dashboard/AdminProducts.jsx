@@ -16,7 +16,7 @@ const columns = [
     field: "productName",
     render: (val, row) => (
       <div className="flex flex-col">
-        <span className="font-bold text-gray-800 uppercase italic tracking-tighter leading-none mb-1">{val}</span>
+        <span className="font-bold text-brand-text uppercase italic tracking-tighter leading-none mb-1">{val}</span>
         <span className="text-[9px] text-brand-secondary font-mono">SKU: {row.sku}</span>
       </div>
     )
@@ -44,18 +44,18 @@ const columns = [
     field: "brand",
     sortable: false,
     render: (brand) => {
-      if (!brand) return <span className="text-gray-400 italic text-[10px]">-</span>;
+      if (!brand) return <span className="text-brand-text-muted italic text-[10px]">-</span>;
 
       return (
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full border border-gray-100 overflow-hidden bg-white shadow-sm shrink-0">
+          <div className="w-8 h-8 rounded-full border border-brand-border overflow-hidden bg-brand-surface shadow-sm shrink-0">
             <img
               src={brand.logo || "https://via.placeholder.com/50"}
               className="w-full h-full object-contain"
               alt={brand.name}
             />
           </div>
-          <span className="text-[10px] font-black text-gray-500 uppercase tracking-tighter">
+          <span className="text-[10px] font-black text-brand-text-muted uppercase tracking-tighter">
             {brand.name}
           </span>
         </div>
@@ -66,7 +66,7 @@ const columns = [
   {
     label: "Precio",
     field: "priceRetail",
-    render: (val) => <span className="font-mono font-bold text-gray-700">${val?.toLocaleString('es-AR')}</span>
+    render: (val) => <span className="font-mono font-bold text-brand-text">${val?.toLocaleString('es-AR')}</span>
   },
   { label: "Stock", field: "stock", render: (val) => <BadgeStock stock={val} /> },
   { label: "Creado", field: "createdAt", format: "date" }

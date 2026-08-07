@@ -11,8 +11,8 @@
   --color-brand-success: #10b981;
   --color-brand-danger: #ef4444;
   --color-brand-bg: #080d1a;
-  --color-brand-surface: #111b2f;
-  --color-brand-border: #1e293b;
+  --color-brand-surface: #162238;
+  --color-brand-border: #526176;
   --color-brand-text: #f8fafc;
   --color-brand-text-muted: #94a3b8;
   --color-brand-secondary: #3b82f6;
@@ -54,15 +54,20 @@
 }
 
 .input-airtotal {
-  @apply w-full p-4 bg-brand-primary-soft rounded-2xl border-none outline-none focus:ring-2 focus:ring-brand-accent/30 text-sm font-bold text-brand-primary transition-all;
+  @apply w-full p-4 bg-brand-bg/80 rounded-2xl border border-brand-border outline-none focus:ring-2 focus:ring-brand-highlight/40 text-sm font-bold text-brand-text placeholder:text-brand-text-muted transition-all;
+}
+
+.input-airtotal:read-only,
+.input-airtotal:disabled {
+  @apply bg-brand-primary/70 text-brand-text-muted cursor-not-allowed;
 }
 
 .input-airtotal-phone .PhoneInputInput {
-  @apply bg-transparent outline-none border-none text-sm font-bold text-brand-primary ml-2;
+  @apply bg-transparent outline-none border-none text-sm font-bold text-brand-text ml-2 placeholder:text-brand-text-muted;
 }
 
 .input-airtotal-phone {
-  @apply flex items-center w-full p-4 bg-brand-primary-soft rounded-2xl border-none outline-none focus-within:ring-2 focus-within:ring-brand-accent/30 transition-all;
+  @apply flex items-center w-full p-4 bg-brand-bg/80 rounded-2xl border border-brand-border outline-none focus-within:ring-2 focus-within:ring-brand-highlight/40 transition-all;
 }
 
 /* Animación del fondo (Overlay) */
@@ -160,16 +165,17 @@
 .iti input {
   border-radius: 1rem !important;
   /* rounded-2xl */
-  border: 2px solid #dbe4ef !important;
+  border: 1px solid #526176 !important;
   /* border-gray-100 */
   padding: 1rem 1rem 1rem 3rem !important;
   /* Ajuste para la bandera */
   font-weight: 700 !important;
-  color: #0b1325 !important;
+  color: #f8fafc !important;
+  background: #080d1a !important;
   outline: none !important;
 }
 
 .iti input:focus {
-  border-color: #3b82f6 !important;
+  border-color: #f59e0b !important;
 }
 

@@ -51,11 +51,11 @@ const AdminBrandDetail = () => {
   if (loading) return (
     <div className="h-screen flex flex-col items-center justify-center">
       <ClipLoader color="#1a5276" size={50} />
-      <p className="mt-4 text-[10px] font-black text-gray-400 uppercase tracking-widest italic animate-pulse">Sincronizando Identidad de Marca...</p>
+      <p className="mt-4 text-[10px] font-black text-brand-text-muted uppercase tracking-widest italic animate-pulse">Sincronizando Identidad de Marca...</p>
     </div>
   );
 
-  if (!brand) return <div className="pt-40 text-center uppercase font-black italic text-brand-primary">Marca no encontrada</div>;
+  if (!brand) return <div className="pt-40 text-center uppercase font-black italic text-brand-text">Marca no encontrada</div>;
 
   const headerActions = (
     <div className="flex gap-3">
@@ -77,7 +77,7 @@ const AdminBrandDetail = () => {
             label="Productos Vinculados"
             value={products.length}
             icon={FiPackage}
-            colorClass="text-brand-primary"
+            colorClass="text-brand-text"
           />
           <MetricItem
             label="Estado de Marca"
@@ -95,22 +95,22 @@ const AdminBrandDetail = () => {
             label="ID Corto"
             value={id.slice(-6).toUpperCase()}
             icon={FiHash}
-            colorClass="text-gray-400"
+            colorClass="text-brand-text-muted"
           />
         </div>
 
         {/* COLUMNA IZQUIERDA: LOGO Y INFO */}
         <main className="lg:col-span-4 space-y-6">
-          <div className="bg-white rounded-[3.5rem] p-12 border border-gray-100 shadow-xl flex flex-col items-center justify-center relative overflow-hidden group">
+          <div className="bg-brand-surface rounded-[3.5rem] p-12 border border-brand-border shadow-xl flex flex-col items-center justify-center relative overflow-hidden group">
             <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-brand-primary to-brand-secondary" />
-            <div className="w-48 h-48 bg-gray-50 rounded-[2.5rem] border border-gray-100 flex items-center justify-center overflow-hidden p-6 transition-transform duration-500 group-hover:scale-105">
+            <div className="w-48 h-48 bg-brand-surface rounded-[2.5rem] border border-brand-border flex items-center justify-center overflow-hidden p-6 transition-transform duration-500 group-hover:scale-105">
               {brand.logo ? (
                 <img src={brand.logo} alt={brand.name} className="w-full h-full object-contain" />
               ) : (
                 <span className="text-6xl font-black text-gray-200">{brand.name.charAt(0)}</span>
               )}
             </div>
-            <p className="mt-8 text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">Logo Oficial</p>
+            <p className="mt-8 text-[10px] font-black text-brand-text-muted uppercase tracking-[0.3em]">Logo Oficial</p>
           </div>
 
           <DetailCard title="Parámetros de Identidad" dark>
@@ -121,7 +121,7 @@ const AdminBrandDetail = () => {
                 href={brand.logo}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-2 p-4 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-black uppercase italic hover:bg-white/10 transition-all"
+                className="flex items-center justify-center gap-2 p-4 bg-brand-surface/5 border border-white/10 rounded-2xl text-[10px] font-black uppercase italic hover:bg-brand-surface/10 transition-all"
               >
                 <FiExternalLink /> Abrir CDN del Logo
               </a>
@@ -140,9 +140,9 @@ const AdminBrandDetail = () => {
                     <Link
                       key={prod._id}
                       to={`/admin/productos/detalle/${prod._id}`}
-                      className="flex items-center gap-4 p-4 rounded-4xl border border-gray-50 hover:border-brand-secondary hover:shadow-lg transition-all group bg-white"
+                      className="flex items-center gap-4 p-4 rounded-4xl border border-brand-border hover:border-brand-secondary hover:shadow-lg transition-all group bg-brand-surface"
                     >
-                      <div className="w-16 h-16 bg-gray-50 rounded-2xl overflow-hidden shrink-0 border border-gray-100 p-2">
+                      <div className="w-16 h-16 bg-brand-surface rounded-2xl overflow-hidden shrink-0 border border-brand-border p-2">
                         <img
                           // Usamos 'md' para que la página cargue rápido, o 'original' si querés máxima calidad
                           src={prod.images?.[0]?.md || prod.images?.[0]?.original || "https://via.placeholder.com/100"}
@@ -151,25 +151,25 @@ const AdminBrandDetail = () => {
                         />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-[11px] font-black text-brand-primary uppercase leading-tight line-clamp-1">
+                        <span className="text-[11px] font-black text-brand-text uppercase leading-tight line-clamp-1">
                           {prod.name}
                         </span>
-                        <span className="text-[9px] font-bold text-gray-400 uppercase tracking-tighter">SKU: {prod.sku || 'N/A'}</span>
+                        <span className="text-[9px] font-bold text-brand-text-muted uppercase tracking-tighter">SKU: {prod.sku || 'N/A'}</span>
                         <span className="text-sm font-black text-brand-secondary italic mt-1">
                           ${prod.priceRetail?.toLocaleString()}
                         </span>
                       </div>
-                      <div className="ml-auto p-2 bg-gray-50 rounded-full group-hover:bg-brand-secondary/10 transition-colors">
-                        <FiExternalLink className="text-gray-300 group-hover:text-brand-secondary" />
+                      <div className="ml-auto p-2 bg-brand-surface rounded-full group-hover:bg-brand-secondary/10 transition-colors">
+                        <FiExternalLink className="text-brand-text-muted/50 group-hover:text-brand-secondary" />
                       </div>
                     </Link>
                   )
                 })}
               </div>
             ) : (
-              <div className="flex flex-col items-center justify-center py-20 bg-gray-50 rounded-[2.5rem] border border-dashed border-gray-200">
+              <div className="flex flex-col items-center justify-center py-20 bg-brand-surface rounded-[2.5rem] border border-dashed border-brand-border">
                 <FiPackage className="text-5xl text-gray-200 mb-4" />
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Sin productos asociados</p>
+                <p className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest">Sin productos asociados</p>
               </div>
             )}
           </DetailCard>

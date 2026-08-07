@@ -40,7 +40,7 @@ const RedemptionGallery = ({ onRedeemSuccess }) => {
         icon: 'error',
         title: 'Puntos insuficientes',
         text: `Te faltan ${cost - userPoints} puntos.`,
-        confirmButtonColor: '#6c6bc8',
+        confirmButtonColor: '#3b82f6',
       });
     }
 
@@ -73,7 +73,7 @@ const RedemptionGallery = ({ onRedeemSuccess }) => {
         : `Vas a canjear ${cost} puntos por "${reward.title}"`,
       icon: 'question',
       showCancelButton: true,
-      confirmButtonColor: '#6c6bc8',
+      confirmButtonColor: '#3b82f6',
       cancelButtonColor: '#d33',
       confirmButtonText: reward.isGame ? '¡Jugar!' : '¡Sí, lo quiero!',
     });
@@ -121,7 +121,7 @@ const RedemptionGallery = ({ onRedeemSuccess }) => {
     <section className="mt-12">
       <div className="mb-8">
         <h3 className="text-2xl font-black italic text-brand-secondary uppercase tracking-tighter leading-none">
-          Canjeá tus <span className="text-brand-primary">Patrician Software Points</span>
+          Canjeá tus <span className="text-brand-highlight">Patrician Software Points</span>
         </h3>
       </div>
 
@@ -132,27 +132,27 @@ const RedemptionGallery = ({ onRedeemSuccess }) => {
           const isProcessing = redeemingId === reward._id;
 
           return (
-            <div key={reward._id} className={`relative bg-white p-8 rounded-[2.5rem] border-2 flex flex-col items-center overflow-hidden transition-all ${canAfford ? 'border-gray-50' : 'opacity-75 grayscale'}`}>
+            <div key={reward._id} className={`relative bg-brand-surface p-8 rounded-[2.5rem] border-2 flex flex-col items-center overflow-hidden transition-all ${canAfford ? 'border-brand-border' : 'opacity-75 grayscale'}`}>
               <div className="absolute -right-4 -top-4 text-brand-surface text-8xl rotate-12 z-0">
                 {reward.isGame ? <FiPlay /> : <FiGift />}
               </div>
 
-              <div className={`relative z-10 w-20 h-20 rounded-full mb-6 flex items-center justify-center text-2xl shadow-inner ${canAfford ? 'bg-brand-surface text-brand-primary' : 'bg-gray-100'}`}>
+              <div className={`relative z-10 w-20 h-20 rounded-full mb-6 flex items-center justify-center text-2xl shadow-inner ${canAfford ? 'bg-brand-surface text-brand-highlight' : 'bg-brand-primary/70'}`}>
                 {reward.isGame ? <FiPlay /> : (reward.config?.discountType === 'percentage' ? `${reward.config.value}%` : '🎁')}
               </div>
 
               <div className="relative z-10 text-center grow">
-                <h4 className="font-black text-gray-800 uppercase italic text-lg leading-tight mb-2">{reward.title}</h4>
+                <h4 className="font-black text-brand-text uppercase italic text-lg leading-tight mb-2">{reward.title}</h4>
                 <div className="inline-flex items-center gap-1.5 mb-6 bg-brand-surface px-4 py-1.5 rounded-full border">
-                  <span className="font-black text-sm italic text-brand-primary">{rewardCost}</span>
-                  <span className="text-[8px] font-black text-gray-400 uppercase">Points</span>
+                  <span className="font-black text-sm italic text-brand-highlight">{rewardCost}</span>
+                  <span className="text-[8px] font-black text-brand-text-muted uppercase">Points</span>
                 </div>
               </div>
 
               <button
                 onClick={() => handleRedeem(reward)}
                 disabled={!canAfford || isProcessing}
-                className="w-full py-4 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] bg-brand-primary text-white hover:bg-brand-secondary transition-all disabled:bg-gray-200"
+                className="w-full py-4 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] bg-brand-primary text-brand-text hover:bg-brand-accent transition-all disabled:bg-brand-border disabled:text-brand-text-muted"
               >
                 {isProcessing ? <ClipLoader size={12} color="#ffffff" /> : reward.isGame ? 'Jugar ahora' : 'Confirmar Canje'}
               </button>

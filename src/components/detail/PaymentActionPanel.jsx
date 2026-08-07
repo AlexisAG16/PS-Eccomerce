@@ -1,22 +1,13 @@
-import {
-  FiCornerUpLeft
-} from 'react-icons/fi';
-
-// En tu archivo src/components/detail/PaymentActionPanel.jsx
 const PaymentActionPanel = ({ payment, onRefund }) => {
-  // Aseguramos mayúsculas para comparar bien
   const status = (payment.status || "").toUpperCase();
-
-  // Lógica: Si el pago está aprobado, mostramos "Reembolsar".
-  // Si ya es REFUNDED, CANCELLED o REJECTED, no mostramos nada.
   const canRefund = status === 'APPROVED';
   const isFinalized = ['REFUNDED', 'CANCELLED', 'REJECTED'].includes(status);
 
   if (isFinalized) {
     return (
-      <div className="p-4 border border-dashed border-gray-300 rounded-2xl text-center bg-gray-50">
-        <p className="text-[10px] font-black uppercase text-gray-400">Transacción Finalizada</p>
-        <p className="text-[10px] font-black uppercase text-gray-600 italic">{status}</p>
+      <div className="p-4 border border-dashed border-brand-border rounded-2xl text-center bg-brand-bg">
+        <p className="text-[10px] font-black uppercase text-brand-text-muted">Transaccion Finalizada</p>
+        <p className="text-[10px] font-black uppercase text-brand-text italic">{status}</p>
       </div>
     );
   }
@@ -27,7 +18,7 @@ const PaymentActionPanel = ({ payment, onRefund }) => {
       {canRefund && (
         <button
           onClick={onRefund}
-          className="w-full py-3 bg-white text-red-700 rounded-xl font-black uppercase italic text-[10px] hover:bg-gray-100 transition-all"
+          className="w-full py-3 bg-brand-text text-red-700 rounded-xl font-black uppercase italic text-[10px] hover:bg-brand-text/90 transition-all"
         >
           Confirmar Reembolso
         </button>

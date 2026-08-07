@@ -103,7 +103,7 @@ const BaseForm = ({ initialData, endpoint, successRedirect, children, isMultipar
         <button
           type="button"
           onClick={onSuccess || (() => navigate(-1))}
-          className="flex-1 max-w-[150px] py-4 bg-gray-100 hover:bg-gray-200 text-gray-400 rounded-2xl font-black uppercase text-[11px] tracking-widest transition-all cursor-pointer"
+          className="flex-1 max-w-[150px] py-4 bg-brand-bg hover:bg-brand-primary-light text-brand-text-muted rounded-2xl font-black uppercase text-[11px] tracking-widest transition-all cursor-pointer border border-brand-border"
         >
           Cancelar
         </button>

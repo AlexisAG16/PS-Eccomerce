@@ -1,11 +1,11 @@
-const MetricItem = ({ label, value, sub, colorClass = "text-gray-400", icon: Icon }) => (
+const MetricItem = ({ label, value, sub, colorClass = "text-brand-text-muted", icon: Icon }) => (
   // 🎯 CAMBIO 1: p-4 en mobile y p-6 en desktop. gap-2 en mobile para que no empuje tanto el ícono.
-  <div className="bg-white p-4 md:p-6 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group flex items-center gap-2 md:gap-4 min-w-0">
+  <div className="bg-brand-surface p-4 md:p-6 rounded-[2.5rem] border border-brand-border shadow-sm hover:shadow-xl transition-all duration-300 group flex items-center gap-2 md:gap-4 min-w-0">
 
     {/* Contenedor del Ícono */}
     {Icon && (
       // 🎯 CAMBIO 2: p-3 en mobile para que el círculo no coma tanto espacio horizontal
-      <div className={`p-3 md:p-4 rounded-3xl bg-gray-50 group-hover:scale-110 transition-transform duration-300 shrink-0`}>
+      <div className={`p-3 md:p-4 rounded-3xl bg-brand-bg group-hover:scale-110 transition-transform duration-300 shrink-0`}>
         <Icon className={`text-lg md:text-xl ${colorClass}`} />
       </div>
     )}
@@ -13,7 +13,7 @@ const MetricItem = ({ label, value, sub, colorClass = "text-gray-400", icon: Ico
     {/* 🎯 CAMBIO 3: min-w-0 obligatorio en el padre para que el truncate de los hijos funcione dentro de un Flexbox */}
     <div className="flex-1 min-w-0">
       {/* 🎯 CAMBIO 4: truncate para el label */}
-      <p className="text-[9px] font-black text-gray-400 uppercase mb-1 tracking-widest leading-none truncate">
+      <p className="text-[9px] font-black text-brand-text-muted uppercase mb-1 tracking-widest leading-none truncate">
         {label}
       </p>
 
@@ -24,7 +24,7 @@ const MetricItem = ({ label, value, sub, colorClass = "text-gray-400", icon: Ico
 
       {/* 🎯 CAMBIO 6: truncate para el subtexto */}
       {sub && (
-        <p className="text-[9px] font-bold text-gray-400 uppercase opacity-60 mt-1 truncate">
+        <p className="text-[9px] font-bold text-brand-text-muted uppercase opacity-70 mt-1 truncate">
           {sub}
         </p>
       )}

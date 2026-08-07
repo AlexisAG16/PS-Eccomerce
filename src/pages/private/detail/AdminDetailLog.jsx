@@ -37,7 +37,7 @@ const AdminLogDetail = () => {
     </div>
   );
 
-  if (!log) return <div className="pt-40 text-center uppercase font-black italic text-brand-primary">Log no encontrado</div>;
+  if (!log) return <div className="pt-40 text-center uppercase font-black italic text-brand-text">Log no encontrado</div>;
 
   return (
     <AdminDetailLayout
@@ -47,10 +47,10 @@ const AdminLogDetail = () => {
     >
       {/* MÉTRICAS RÁPIDAS */}
       <div className="lg:col-span-12 grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-        <MetricItem label="Entidad" value={log.entity} icon={FiLayers} colorClass="text-brand-primary" />
+        <MetricItem label="Entidad" value={log.entity} icon={FiLayers} colorClass="text-brand-text" />
         <MetricItem label="Usuario IP" value={log.ip || "Local"} icon={FiMapPin} colorClass="text-brand-text" />
         <MetricItem label="Fecha" value={new Date(log.createdAt).toLocaleDateString()} icon={FiClock} colorClass="text-brand-text" />
-        <MetricItem label="Admin" value={log.adminId?.firstName || "Sistema"} icon={FiUser} colorClass="text-brand-primary" />
+        <MetricItem label="Admin" value={log.adminId?.firstName || "Sistema"} icon={FiUser} colorClass="text-brand-text" />
       </div>
 
       {/* COLUMNA IZQUIERDA: DIFERENCIA DE DATOS (EL "DIFF") */}
@@ -96,7 +96,7 @@ const AdminLogDetail = () => {
 
         <DetailCard title="Dispositivo y Origen">
           <div className="flex items-start gap-4 p-2">
-            <FiCpu className="text-brand-primary mt-1" size={24} />
+            <FiCpu className="text-brand-text mt-1" size={24} />
             <div className="flex flex-col">
               <span className="text-[10px] font-black uppercase text-brand-text mb-1">User Agent</span>
               <p className="text-[11px] leading-relaxed text-brand-text italic">

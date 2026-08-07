@@ -11,7 +11,7 @@ const columns = [
     label: "Juego",
     field: "gameName",
     render: (val) => (
-      <span className="font-black text-gray-800 uppercase italic tracking-tighter text-lg">
+      <span className="font-black text-brand-text uppercase italic tracking-tighter text-lg">
         {val}
       </span>
     )
@@ -32,7 +32,7 @@ const columns = [
     sortable: false,
     render: (_, row) => (
       <div className="flex flex-col gap-1">
-        <span className="text-[10px] text-gray-400 font-mono">
+        <span className="text-[10px] text-brand-text-muted font-mono">
           {row.gameName === 'scratch' ? 'Premios: ' + row.config?.prizes?.length : 'Config: Custom'}
         </span>
       </div>
@@ -101,7 +101,7 @@ const AdminMinigameDashboard = () => {
       {loading ? (
         <div className="text-center py-20 flex flex-col items-center">
           <ClipLoader size={100} color="#your-brand-color" />
-          <p className='mt-5 font-bold uppercase italic text-gray-400'>Cargando Arena de Juegos...</p>
+          <p className='mt-5 font-bold uppercase italic text-brand-text-muted'>Cargando Arena de Juegos...</p>
         </div>
       ) : (
         <GenericTable

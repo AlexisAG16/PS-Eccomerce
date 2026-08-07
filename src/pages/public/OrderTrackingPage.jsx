@@ -137,7 +137,7 @@ const OrderTrackingPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-[70vh] flex flex-col items-center justify-center bg-white">
+      <div className="min-h-[70vh] flex flex-col items-center justify-center bg-brand-bg">
         <ClipLoader color="#f29964" size={50} speedMultiplier={0.8} />
         <p className="mt-6 text-brand-primary font-black uppercase italic text-[10px] tracking-[0.3em] animate-pulse">
           Sincronizando con la central...
@@ -148,7 +148,7 @@ const OrderTrackingPage = () => {
 
   if (!order) {
     return (
-      <div className="fixed inset-0 z-100 bg-white flex flex-col items-center justify-center p-4">
+      <div className="fixed inset-0 z-100 bg-brand-bg flex flex-col items-center justify-center p-4">
         {/* Icono o Logo opcional */}
         <div className="mb-6 opacity-20">
           <img src={`${import.meta.env.BASE_URL}ps-icon.png`} alt="Patrician Software" className="w-32" />
@@ -158,7 +158,7 @@ const OrderTrackingPage = () => {
           <h1 className="font-black uppercase italic text-air-azul tracking-tighter text-4xl md:text-6xl mb-2">
             404
           </h1>
-          <p className="font-bold uppercase italic text-gray-400 tracking-tight text-lg mb-8">
+          <p className="font-bold uppercase italic text-brand-text-muted tracking-tight text-lg mb-8">
             Orden no encontrada
           </p>
 
@@ -185,10 +185,10 @@ const OrderTrackingPage = () => {
   const isShipping = order.deliveryType === 'SHIPPING';
 
   return (
-    < div className = "min-h-screen w-full bg-[#f8fafc] flex items-center justify-center p-4 md:p-10 border-t-8 border-brand-primary" >
+    < div className = "min-h-screen w-full bg-brand-bg flex items-center justify-center p-4 md:p-10 border-t-8 border-brand-highlight" >
 
       {/* --- CARD PRINCIPAL (Más ancho y con mejor aire) --- */ }
-      < div className = "w-full max-w-3xl bg-white rounded-[3.5rem] shadow-[0_20px_50px_rgba(26,82,118,0.1)] border border-gray-100 relative overflow-hidden flex flex-col md:flex-row" >
+      < div className = "w-full max-w-3xl bg-brand-bg rounded-[3.5rem] shadow-[0_20px_50px_rgba(26,82,118,0.1)] border border-brand-border relative overflow-hidden flex flex-col md:flex-row" >
 
         {/* Decoración Lateral (Solo visible en desktop) */ }
         < div className = "hidden md:block w-2 bg-brand-secondary" />
@@ -202,8 +202,8 @@ const OrderTrackingPage = () => {
                   Estado del <br /> Pedido
                 </h1>
               </div>
-              <div className="bg-gray-50 px-6 py-4 rounded-3xl border border-gray-100 text-center">
-                <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">ID Seguimiento</p>
+              <div className="bg-brand-surface px-6 py-4 rounded-3xl border border-brand-border text-center">
+                <p className="text-[9px] font-black text-brand-text-muted uppercase tracking-widest mb-1">ID Seguimiento</p>
                 <p className="font-black text-brand-primary text-lg">#{order._id.slice(-6).toUpperCase()}</p>
               </div>
             </div>
@@ -220,7 +220,7 @@ const OrderTrackingPage = () => {
               </div>
 
               {/* Barra de Progreso con Glow */}
-              <div className="w-full bg-gray-100 h-4 rounded-full p-1 border border-gray-200 shadow-inner">
+              <div className="w-full bg-brand-surface h-4 rounded-full p-1 border border-brand-border shadow-inner">
                 <div
                   className="h-full rounded-full transition-all duration-1000 bg-linear-to-r from-brand-primary to-brand-secondary shadow-[0_0_15px_rgba(242,153,100,0.4)]"
                   style={{
@@ -234,7 +234,7 @@ const OrderTrackingPage = () => {
 
             {/* --- MENSAJE DINÁMICO --- */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-              <div className="bg-brand-primary/5 p-8 rounded-[2.5rem] border border-brand-primary/10 flex flex-col justify-center text-center md:text-left">
+              <div className="bg-brand-primary/5 p-8 rounded-[2.5rem] border border-brand-highlight/10 flex flex-col justify-center text-center md:text-left">
               {isShipping ? (
                 <>
                   <p className="text-brand-primary font-black uppercase italic text-lg mb-2 leading-tight">
@@ -242,7 +242,7 @@ const OrderTrackingPage = () => {
                       ? `Tu envío está ${shipping.status}`
                       : "Estamos preparando tu paquete"}
                   </p>
-                  <p className="text-gray-500 text-[10px] font-bold uppercase leading-relaxed tracking-wider">
+                  <p className="text-brand-text-muted text-[10px] font-bold uppercase leading-relaxed tracking-wider">
                     {shipping?.trackingCode
                       ? `Seguimiento: ${shipping.trackingCode}`
                       : "Pronto recibirás un mail con los datos del transporte."}
@@ -261,9 +261,9 @@ const OrderTrackingPage = () => {
               </div>
 
             {/* Detalle de Productos Integrado */}
-            <div className="bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 flex flex-col justify-between">
+            <div className="bg-brand-surface p-8 rounded-[2.5rem] border border-brand-border flex flex-col justify-between">
               <div>
-                <p className="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] mb-4">Items comprados</p>
+                <p className="text-[9px] font-black text-brand-text-muted uppercase tracking-[0.2em] mb-4">Items comprados</p>
                 <div className="space-y-3 max-h-[120px] overflow-y-auto pr-2 custom-scrollbar">
                   {order.items.map((item, i) => (
                     <div key={i} className="flex justify-between items-center text-[10px] font-black uppercase text-brand-primary">
@@ -276,7 +276,7 @@ const OrderTrackingPage = () => {
               </div>
 
               {/* 🔥 NUEVO RESUMEN DE PRECIOS CON CUPÓN */}
-              <div className="mt-4 pt-4 border-t border-gray-200/60 space-y-1.5 text-[9px] font-black uppercase tracking-tight text-gray-400">
+              <div className="mt-4 pt-4 border-t border-brand-border space-y-1.5 text-[9px] font-black uppercase tracking-tight text-brand-text-muted">
                 {/* Si hubo un cupón/descuento aplicados en la orden original */}
                 {order.discount > 0 && (
                   <>
@@ -292,7 +292,7 @@ const OrderTrackingPage = () => {
                 )}
 
                 {/* Total real que se guardó en la orden de MongoDB */}
-                <div className="flex justify-between text-xs font-black text-brand-primary border-t border-dashed border-gray-200 pt-2 mt-1">
+                <div className="flex justify-between text-xs font-black text-brand-primary border-t border-dashed border-brand-border pt-2 mt-1">
                   <span className="text-brand-secondary italic">Total Pagado:</span>
                   <span className="text-base font-black italic text-brand-primary">${Number(order.total || 0).toLocaleString('es-AR')}</span>
                 </div>
@@ -307,14 +307,14 @@ const OrderTrackingPage = () => {
 
               {/* Card de Puntos Acumulados */}
               {earnedPoints > 0 && (
-                <div className="flex-1 p-6 bg-linear-to-br from-amber-50 to-orange-50 rounded-[2.5rem] border border-orange-100 flex flex-col justify-center items-center text-center shadow-xs">
+                <div className="flex-1 p-6 bg-linear-to-br from-brand-surface to-brand-bg rounded-[2.5rem] border border-brand-border flex flex-col justify-center items-center text-center shadow-xs">
                   <div className="bg-linear-to-r from-yellow-400 to-orange-500 text-white px-5 py-1.5 rounded-full shadow-md mb-2 animate-pulse">
                     <span className="text-[10px] font-black uppercase tracking-widest">
                       {user ? `¡Llevás ${earnedPoints} Puntos!` : `¡Sumás ${earnedPoints} Puntos!`}
                     </span>
                   </div>
                   {/* 🎯 TEXTO SINCERADO: Avisa que se entregan al recibir el producto */}
-                  <p className="text-[9px] text-gray-400 font-bold uppercase leading-relaxed tracking-tighter max-w-[200px]">
+                  <p className="text-[9px] text-brand-text-muted font-bold uppercase leading-relaxed tracking-tighter max-w-[200px]">
                     {user
                       ? "Se acreditarán en tu cuenta de forma automática en cuanto retires o se entregue tu pedido."
                       : "Esto recibirías si te hicieras una cuenta para no perder tus beneficios."}
@@ -323,7 +323,7 @@ const OrderTrackingPage = () => {
               )}
 
               {/* Card de Acceso al Minijuego */}
-              <div className="flex-1 p-6 bg-brand-primary/5 rounded-[2.5rem] border-2 border-dashed border-brand-primary/20 flex flex-col justify-between items-center text-center">
+              <div className="flex-1 p-6 bg-brand-primary/5 rounded-[2.5rem] border-2 border-dashed border-brand-highlight/20 flex flex-col justify-between items-center text-center">
                 {!user ? (
                   // 🔒 CASO 1: VISITANTE / INVITADO (No está logueado)
                   <>
@@ -331,7 +331,7 @@ const OrderTrackingPage = () => {
                       <p className="text-brand-secondary text-[11px] font-black uppercase mb-1 tracking-wider flex items-center justify-center gap-1">
                         ¡Multiplicá tus puntos! 🎯
                       </p>
-                      <p className="text-gray-500 text-[9px] font-medium uppercase tracking-tight mb-3 max-w-[220px] leading-tight">
+                      <p className="text-brand-text-muted text-[9px] font-medium uppercase tracking-tight mb-3 max-w-[220px] leading-tight">
                         Los minijuegos están reservados para la comunidad. Creá tu cuenta para guardar estos <span className="font-bold text-brand-primary">{earnedPoints} puntos</span> y canjearlos por premios espectaculares.
                       </p>
                     </div>
@@ -349,13 +349,13 @@ const OrderTrackingPage = () => {
                       <p className="text-amber-600 text-[11px] font-black uppercase mb-1 tracking-wider flex items-center justify-center gap-1">
                         Aboná tu pedido para jugar ⏱️
                       </p>
-                      <p className="text-gray-500 text-[9px] font-medium uppercase tracking-tight mb-3 max-w-[220px] leading-tight">
+                      <p className="text-brand-text-muted text-[9px] font-medium uppercase tracking-tight mb-3 max-w-[220px] leading-tight">
                         ¡La ruleta se desbloqueará de inmediato en cuanto registremos el pago de tu orden #{order._id.slice(-6).toUpperCase()}!
                       </p>
                     </div>
                     <button
                       disabled
-                      className="w-full py-3 bg-gray-100 border-2 border-gray-200 text-gray-400 rounded-2xl font-black uppercase italic text-[10px] tracking-widest cursor-not-allowed flex items-center justify-center gap-2"
+                      className="w-full py-3 bg-brand-surface border-2 border-brand-border text-brand-text-muted rounded-2xl font-black uppercase italic text-[10px] tracking-widest cursor-not-allowed flex items-center justify-center gap-2"
                     >
                       Esperando Acreditación...
                     </button>
@@ -367,13 +367,13 @@ const OrderTrackingPage = () => {
                       <p className="text-brand-primary text-[11px] font-black uppercase mb-1 tracking-wider flex items-center justify-center gap-1">
                         ¿Querés más puntos? 🕹️
                       </p>
-                      <p className="text-gray-500 text-[9px] font-medium uppercase tracking-tight mb-3 max-w-[220px] leading-tight">
+                      <p className="text-brand-text-muted text-[9px] font-medium uppercase tracking-tight mb-3 max-w-[220px] leading-tight">
                         ¡Pago verificado! Jugá ahora mismo a la ruleta y ganá beneficios exclusivos.
                       </p>
                     </div>
                     <button
                       onClick={handlePlayClick}
-                      className="w-full py-3 bg-white border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white rounded-2xl font-black uppercase italic text-[10px] tracking-widest transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+                      className="w-full py-3 bg-brand-bg border-2 border-brand-highlight text-brand-primary hover:bg-brand-secondary hover:text-white rounded-2xl font-black uppercase italic text-[10px] tracking-widest transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
                     >
                       <IoGameControllerOutline size={14} />
                       Jugar Ruleta
@@ -397,7 +397,7 @@ const OrderTrackingPage = () => {
             {["CREATED", "PENDING_PAYMENT"].includes(order.status) && (
               <button
                 onClick={handleCancelOrder}
-                className="w-full mt-4 py-3 border-2 border-gray-200 text-gray-400 hover:text-red-500 hover:border-red-500 rounded-4xl font-black uppercase italic text-[9px] tracking-[0.2em] transition-all duration-300 cursor-pointer"
+                className="w-full mt-4 py-3 border-2 border-brand-border text-brand-text-muted hover:text-red-500 hover:border-red-500 rounded-4xl font-black uppercase italic text-[9px] tracking-[0.2em] transition-all duration-300 cursor-pointer"
               >
                 Cancelar Compra
               </button>

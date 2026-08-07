@@ -33,26 +33,26 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
 
       {/* --- SECCIÓN 1: IDENTIDAD --- */}
       <fieldset className="space-y-6">
-        <div className="flex items-center gap-2 border-b border-gray-100 pb-2">
+        <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiPackage className="text-brand-secondary" />
           <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Identidad del Producto</legend>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col gap-2">
-            <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Nombre Comercial</label>
+            <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest ml-1">Nombre Comercial</label>
             <input
               {...register("productName", { required: "Obligatorio" })}
               placeholder="Ej: Filtro de Aire Industrial 200XP"
-              className="border-2 border-gray-100 rounded-2xl p-4 focus:border-brand-primary outline-none font-bold text-gray-700 shadow-sm placeholder:text-gray-400 placeholder:font-normal"
+              className="border-2 border-brand-border rounded-2xl p-4 focus:border-brand-primary outline-none font-bold text-brand-text shadow-sm placeholder:text-brand-text-muted/60 placeholder:font-normal"
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Tipo de Producto</label>
+            <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest ml-1">Tipo de Producto</label>
             <select
               {...register("productType", { required: true })}
-              className="border-2 border-gray-100 rounded-2xl p-4 focus:border-brand-primary outline-none font-bold text-gray-700 shadow-sm bg-white"
+              className="border-2 border-brand-border rounded-2xl p-4 focus:border-brand-primary outline-none font-bold text-brand-text shadow-sm bg-brand-surface"
             >
               <option value="" disabled>Selecciona el tipo...</option>
               <option value="PHYSICAL">Producto Físico</option>
@@ -62,11 +62,11 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Slug SEO</label>
+            <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest ml-1">Slug SEO</label>
             <input
               {...register("productSlug")}
               placeholder="generado-automaticamente"
-              className="border-2 border-gray-100 rounded-2xl p-4 bg-gray-50 text-brand-secondary font-mono text-xs outline-none placeholder:text-brand-secondary/80"
+              className="border-2 border-brand-border rounded-2xl p-4 bg-brand-surface text-brand-secondary font-mono text-xs outline-none placeholder:text-brand-secondary/80"
               readOnly
             />
           </div>
@@ -74,75 +74,75 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="flex flex-col gap-2 md:col-span-2">
-            <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Descripción</label>
+            <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest ml-1">Descripción</label>
             <textarea
               {...register("description")}
               rows="2"
               placeholder="Describe las especificaciones técnicas y compatibilidad del producto..."
-              className="border-2 border-gray-100 rounded-2xl p-4 focus:border-brand-primary outline-none font-medium text-gray-600 resize-none placeholder:text-gray-400 placeholder:font-normal"
+              className="border-2 border-brand-border rounded-2xl p-4 focus:border-brand-primary outline-none font-medium text-brand-text-muted resize-none placeholder:text-brand-text-muted/60 placeholder:font-normal"
             />
           </div>
           <div className="flex flex-col gap-2 md:col-span-3">
-            <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Meta Descripción (SEO)</label>
+            <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest ml-1">Meta Descripción (SEO)</label>
             <textarea
               {...register("metaDescription")}
               rows="2"
               placeholder="Resumen para Google (160 caracteres)..."
-              className="border-2 border-gray-100 rounded-2xl p-4 focus:border-brand-primary outline-none text-xs"
+              className="border-2 border-brand-border rounded-2xl p-4 focus:border-brand-primary outline-none text-xs"
             />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">SKU / Referencia</label>
+            <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest ml-1">SKU / Referencia</label>
             <input
               {...register("sku")}
               placeholder="Ej: AT-99234"
-              className="border-2 border-gray-100 rounded-2xl p-4 font-mono text-xs focus:border-brand-primary outline-none placeholder:text-gray-400"
+              className="border-2 border-brand-border rounded-2xl p-4 font-mono text-xs focus:border-brand-primary outline-none placeholder:text-brand-text-muted/60"
             />
           </div>
         </div>
       </fieldset>
 
       {/* --- SECCIÓN 2: PRECIOS Y AFILIADOS --- */}
-      <fieldset className="space-y-6 bg-gray-50/50 p-6 rounded-[2.5rem] border border-gray-100">
-        <div className="flex items-center gap-2 border-b border-gray-100 pb-2">
+      <fieldset className="space-y-6 bg-brand-surface/50 p-6 rounded-[2.5rem] border border-brand-border">
+        <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiDollarSign className="text-brand-secondary" />
           <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Estructura Comercial</legend>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="flex flex-col gap-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase">Precio Retail ($)</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase">Precio Retail ($)</label>
             <input type="number" step="0.01" {...register("priceRetail", { required: true })} className="border-2 border-white rounded-xl p-3 font-black text-brand-primary shadow-sm outline-none focus:border-brand-primary" />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase">Precio Mayorista ($)</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase">Precio Mayorista ($)</label>
             <input type="number" step="0.01" {...register("priceWholesale")} className="border-2 border-white rounded-xl p-3 font-bold shadow-sm outline-none focus:border-brand-primary" />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase">Costo ($)</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase">Costo ($)</label>
             <input type="number" step="0.01" {...register("costPrice")} className="border-2 border-white rounded-xl p-3 font-bold shadow-sm outline-none focus:border-brand-primary" />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase">Compra Mínima</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase">Compra Mínima</label>
             <input type="number" {...register("minPurchaseQty")} className="border-2 border-white rounded-xl p-3" />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase">Compra Máxima</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase">Compra Máxima</label>
             <input type="number" {...register("maxPurchaseQty")} className="border-2 border-white rounded-xl p-3" />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase">Puntos al Comprar</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase">Puntos al Comprar</label>
             <input type="number" {...register("points")} className="border-2 border-white rounded-xl p-3" />
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 mt-4 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
+        <div className="flex flex-col gap-2 mt-4 bg-brand-surface p-4 rounded-2xl border border-brand-border shadow-sm">
           <label className="text-[10px] font-black text-brand-primary uppercase tracking-widest ml-1">
             Descuento Aplicado (Individual)
           </label>
           <select
             {...register("discountRef")}
-            className="border-2 border-gray-50 rounded-xl p-3 outline-none focus:border-brand-secondary font-bold text-gray-600 bg-gray-50/50 text-xs"
+            className="border-2 border-brand-border rounded-xl p-3 outline-none focus:border-brand-secondary font-bold text-brand-text-muted bg-brand-surface/50 text-xs"
           >
             <option value="">Sin descuento específico</option>
             {discounts?.map(d => (
@@ -151,7 +151,7 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
               </option>
             ))}
           </select>
-          <p className="text-[8px] text-gray-400 italic px-1">
+          <p className="text-[8px] text-brand-text-muted italic px-1">
             * Si seleccionas un descuento aquí, tendrá prioridad sobre los descuentos por categoría.
           </p>
         </div>
@@ -159,41 +159,41 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
         <div className="flex flex-wrap gap-6 pt-2">
           <label className="flex items-center gap-3 cursor-pointer">
             <input type="checkbox" {...register("showPrice")} className="w-5 h-5 rounded border-gray-300 text-brand-primary" />
-            <span className="text-[10px] font-black text-gray-500 uppercase">Mostrar Precio</span>
+            <span className="text-[10px] font-black text-brand-text-muted uppercase">Mostrar Precio</span>
           </label>
         </div>
       </fieldset>
 
       {/* --- SECCIÓN 3: LOGÍSTICA --- */}
       <fieldset className="space-y-6">
-        <div className="flex items-center gap-2 border-b border-gray-100 pb-2">
+        <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiTruck className="text-brand-secondary" />
           <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Logística y Envío</legend>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="flex flex-col gap-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase">Peso (kg)</label>
-            <input type="number" step="0.01" {...register("weight")} className="border-2 border-gray-100 rounded-xl p-3 outline-none focus:border-brand-primary" />
+            <label className="text-[9px] font-black text-brand-text-muted uppercase">Peso (kg)</label>
+            <input type="number" step="0.01" {...register("weight")} className="border-2 border-brand-border rounded-xl p-3 outline-none focus:border-brand-primary" />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase">Ancho (cm)</label>
-            <input type="number" {...register("dimensions.width")} className="border-2 border-gray-100 rounded-xl p-3 outline-none focus:border-brand-primary" />
+            <label className="text-[9px] font-black text-brand-text-muted uppercase">Ancho (cm)</label>
+            <input type="number" {...register("dimensions.width")} className="border-2 border-brand-border rounded-xl p-3 outline-none focus:border-brand-primary" />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase">Alto (cm)</label>
-            <input type="number" {...register("dimensions.height")} className="border-2 border-gray-100 rounded-xl p-3 outline-none focus:border-brand-primary" />
+            <label className="text-[9px] font-black text-brand-text-muted uppercase">Alto (cm)</label>
+            <input type="number" {...register("dimensions.height")} className="border-2 border-brand-border rounded-xl p-3 outline-none focus:border-brand-primary" />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase">Largo (cm)</label>
-            <input type="number" {...register("dimensions.length")} className="border-2 border-gray-100 rounded-xl p-3 outline-none focus:border-brand-primary" />
+            <label className="text-[9px] font-black text-brand-text-muted uppercase">Largo (cm)</label>
+            <input type="number" {...register("dimensions.length")} className="border-2 border-brand-border rounded-xl p-3 outline-none focus:border-brand-primary" />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-[9px] font-black text-gray-400 uppercase">Talle / Size</label>
+            <label className="text-[9px] font-black text-brand-text-muted uppercase">Talle / Size</label>
             <input
               type="text"
               {...register("dimensions.size")}
               placeholder="Ej: XL, 42, Único"
-              className="border-2 border-gray-100 rounded-xl p-3 outline-none focus:border-brand-primary font-bold text-gray-700"
+              className="border-2 border-brand-border rounded-xl p-3 outline-none focus:border-brand-primary font-bold text-brand-text"
             />
           </div>
         </div>
@@ -203,11 +203,11 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Categorías */}
         <fieldset className="space-y-4">
-          <div className="flex items-center gap-2 border-b border-gray-100 pb-2">
+          <div className="flex items-center gap-2 border-b border-brand-border pb-2">
             <FiLayers className="text-brand-secondary" />
             <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Clasificación</legend>
           </div>
-          <div className="grid grid-cols-2 gap-2 bg-gray-50 p-4 rounded-3xl border border-gray-100 max-h-40 overflow-y-auto custom-scrollbar">
+          <div className="grid grid-cols-2 gap-2 bg-brand-surface p-4 rounded-3xl border border-brand-border max-h-40 overflow-y-auto custom-scrollbar">
             {categories.map(cat => (
               <label key={cat._id} className="flex items-center gap-2 cursor-pointer group">
                 <input
@@ -217,7 +217,7 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
                   {...register("categoriesId")}
                   className="w-4 h-4 rounded text-brand-primary"
                 />
-                <span className="text-[9px] font-black text-gray-500 uppercase group-hover:text-brand-primary">
+                <span className="text-[9px] font-black text-brand-text-muted uppercase group-hover:text-brand-primary">
                   {cat.categoryName}
                 </span>
               </label>
@@ -227,19 +227,19 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
         </fieldset>
         {/* Marca */}
         <fieldset className="space-y-4">
-          <div className="flex items-center gap-2 border-b border-gray-100 pb-2">
+          <div className="flex items-center gap-2 border-b border-brand-border pb-2">
             <FiLayers className="text-brand-secondary" />
             <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Marca</legend>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 bg-gray-50 p-4 rounded-3xl border border-gray-100 max-h-48 overflow-y-auto custom-scrollbar">
+          <div className="grid grid-cols-2 gap-3 bg-brand-surface p-4 rounded-3xl border border-brand-border max-h-48 overflow-y-auto custom-scrollbar">
 
             {/* 🎯 Opción para deseleccionar (Sin Marca) */}
             <label
               className={`relative flex flex-col items-center justify-center p-3 rounded-2xl border-2 transition-all cursor-pointer group
       ${!watch("brandId")
-                  ? "border-brand-primary bg-white shadow-sm"
-                  : "border-transparent bg-white/50 hover:bg-white hover:border-gray-200"
+                  ? "border-brand-primary bg-brand-surface shadow-sm"
+                  : "border-transparent bg-brand-surface/50 hover:bg-brand-surface hover:border-brand-border"
                 }`}
             >
               <input
@@ -251,13 +251,13 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
 
               {/* Círculo indicador vacío */}
               <div className={`w-10 h-10 rounded-full mb-2 flex items-center justify-center border-2 transition-all
-      ${!watch("brandId") ? "border-brand-primary/20 bg-gray-50" : "border-gray-100 bg-gray-50/50"}`}
+      ${!watch("brandId") ? "border-brand-primary/20 bg-brand-surface" : "border-brand-border bg-brand-surface/50"}`}
               >
-                <span className="text-[10px] font-black text-gray-400 uppercase">X</span>
+                <span className="text-[10px] font-black text-brand-text-muted uppercase">X</span>
               </div>
 
               <span className={`text-[9px] font-black uppercase tracking-tighter text-center
-      ${!watch("brandId") ? "text-brand-primary" : "text-gray-400 group-hover:text-gray-600"}`}>
+      ${!watch("brandId") ? "text-brand-primary" : "text-brand-text-muted group-hover:text-brand-text-muted"}`}>
                 Sin Marca
               </span>
 
@@ -274,8 +274,8 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
                   key={b._id}
                   className={`relative flex flex-col items-center justify-center p-3 rounded-2xl border-2 transition-all cursor-pointer group
           ${watch("brandId") === b._id
-                      ? "border-brand-primary bg-white shadow-sm"
-                      : "border-transparent bg-white/50 hover:bg-white hover:border-gray-200"
+                      ? "border-brand-primary bg-brand-surface shadow-sm"
+                      : "border-transparent bg-brand-surface/50 hover:bg-brand-surface hover:border-brand-border"
                     }`}
                 >
                   {/* Input de Radio sin la propiedad "required" */}
@@ -288,19 +288,19 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
 
                   {/* Logo o Inicial */}
                   <div className={`w-10 h-10 rounded-full mb-2 flex items-center justify-center overflow-hidden border-2 
-          ${watch("brandId") === b._id ? "border-brand-primary/20" : "border-gray-100"}`}
+          ${watch("brandId") === b._id ? "border-brand-primary/20" : "border-brand-border"}`}
                   >
                     {b.logo ? (
                       <img src={b.logo} alt={b.name} className="w-full h-full object-contain" />
                     ) : (
-                      <span className="text-[10px] font-black text-gray-300 uppercase">
+                      <span className="text-[10px] font-black text-brand-text-muted/50 uppercase">
                         {b.name?.substring(0, 2)}
                       </span>
                     )}
                   </div>
 
                   <span className={`text-[9px] font-black uppercase tracking-tighter text-center
-          ${watch("brandId") === b._id ? "text-brand-primary" : "text-gray-400 group-hover:text-gray-600"}`}>
+          ${watch("brandId") === b._id ? "text-brand-primary" : "text-brand-text-muted group-hover:text-brand-text-muted"}`}>
                     {b.name}
                   </span>
 
@@ -312,7 +312,7 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
               ))
             ) : (
               <div className="col-span-2 py-4 text-center">
-                <p className="text-[9px] font-black text-gray-400 uppercase italic">No hay marcas activas disponibles</p>
+                <p className="text-[9px] font-black text-brand-text-muted uppercase italic">No hay marcas activas disponibles</p>
               </div>
             )}
           </div>
@@ -325,22 +325,22 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
 
         {/* Stock Control */}
         <fieldset className="space-y-4">
-          <div className="flex items-center gap-2 border-b border-gray-100 pb-2">
+          <div className="flex items-center gap-2 border-b border-brand-border pb-2">
             <FiSettings className="text-brand-secondary" />
             <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Control de Stock</legend>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <label className="text-[9px] font-black text-gray-400 uppercase">Stock Actual</label>
-              <input type="number" {...register("stock")} className="border-2 border-gray-100 rounded-xl p-3 font-bold" />
+              <label className="text-[9px] font-black text-brand-text-muted uppercase">Stock Actual</label>
+              <input type="number" {...register("stock")} className="border-2 border-brand-border rounded-xl p-3 font-bold" />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-[9px] font-black text-gray-400 uppercase">Alerta Stock Bajo</label>
-              <input type="number" {...register("lowStockThreshold")} className="border-2 border-gray-100 rounded-xl p-3" />
+              <label className="text-[9px] font-black text-brand-text-muted uppercase">Alerta Stock Bajo</label>
+              <input type="number" {...register("lowStockThreshold")} className="border-2 border-brand-border rounded-xl p-3" />
             </div>
             <label className="flex items-center gap-3 cursor-pointer mt-2">
               <input type="checkbox" {...register("trackStock")} defaultChecked={true} className="w-4 h-4 rounded text-brand-primary" />
-              <span className="text-[10px] font-black text-gray-500 uppercase">Controlar Inventario</span>
+              <span className="text-[10px] font-black text-brand-text-muted uppercase">Controlar Inventario</span>
             </label>
           </div>
         </fieldset>
@@ -348,12 +348,12 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
 
       {/* --- SECCIÓN 5: MULTIMEDIA --- */}
       <fieldset className="space-y-4">
-        <div className="flex items-center gap-2 border-b border-gray-100 pb-2">
+        <div className="flex items-center gap-2 border-b border-brand-border pb-2">
           <FiImage className="text-brand-secondary" />
           <legend className="text-[11px] font-black text-brand-primary uppercase tracking-[0.2em]">Galería Patrician Software</legend>
         </div>
 
-        <div className="flex flex-wrap gap-3 p-4 bg-gray-50 rounded-4xl border border-gray-100 min-h-[100px] items-center justify-center">
+        <div className="flex flex-wrap gap-3 p-4 bg-brand-surface rounded-4xl border border-brand-border min-h-[100px] items-center justify-center">
 
           {/* Muestra imágenes YA EXISTENTES (Edición) */}
           {isEditMode && initialData?.images?.map((img, idx) => (
@@ -373,7 +373,7 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
 
           {/* Si no hay nada seleccionado ni existente */}
           {!isEditMode && newImagesPreview.length === 0 && (
-            <p className="text-[9px] text-gray-400 uppercase font-black tracking-widest">Sin archivos seleccionados</p>
+            <p className="text-[9px] text-brand-text-muted uppercase font-black tracking-widest">Sin archivos seleccionados</p>
           )}
         </div>
 
@@ -392,11 +392,11 @@ const ProductFormFields = ({ register, watch, setValue, formState: { errors }, c
               {errors.images.message}
             </span>
           )}
-          <div className="border-2 border-dashed border-gray-200 rounded-4xl p-8 flex flex-col items-center justify-center bg-white group-hover:border-brand-primary group-hover:bg-gray-50 transition-all">
-            <div className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+          <div className="border-2 border-dashed border-brand-border rounded-4xl p-8 flex flex-col items-center justify-center bg-brand-surface group-hover:border-brand-primary group-hover:bg-brand-surface transition-all">
+            <div className="w-10 h-10 bg-brand-surface rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
               <FiImage className="text-brand-primary" />
             </div>
-            <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest text-center">
+            <p className="text-[9px] font-black text-brand-text-muted uppercase tracking-widest text-center">
               {isEditMode ? "Reemplazar o añadir fotos" : "Click para subir fotos del producto"}
             </p>
           </div>

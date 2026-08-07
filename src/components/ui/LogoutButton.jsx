@@ -8,7 +8,7 @@ const LogoutButton = () => {
   return (
     <button
       onClick={() => logout()}
-      className="bg-white text-red-500 p-3 rounded-full hover:bg-red-50 transition shadow-lg flex items-center justify-center border border-gray-100 cursor-pointer group relative"
+      className="bg-brand-surface text-red-400 p-3 rounded-full hover:bg-red-500/10 transition shadow-lg flex items-center justify-center border border-brand-border cursor-pointer group relative"
       title="Cerrar Sesión"
     >
       <CiLogout size={22} />

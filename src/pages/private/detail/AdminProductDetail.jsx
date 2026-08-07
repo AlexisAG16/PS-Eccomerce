@@ -52,11 +52,11 @@ const AdminProductDetail = () => {
   if (loading) return (
     <div className="h-screen flex flex-col items-center justify-center">
       <ClipLoader color="#1a5276" size={50} />
-      <p className="mt-4 text-[10px] font-black text-gray-400 uppercase tracking-widest italic animate-pulse">Abriendo expediente técnico...</p>
+      <p className="mt-4 text-[10px] font-black text-brand-text-muted uppercase tracking-widest italic animate-pulse">Abriendo expediente técnico...</p>
     </div>
   );
 
-  if (!product) return <div className="pt-40 text-center uppercase font-black italic text-brand-primary">Producto no encontrado</div>;
+  if (!product) return <div className="pt-40 text-center uppercase font-black italic text-brand-text">Producto no encontrado</div>;
 
   {/* Lógica para determinar si hay una rebaja real */ }
   const hasActiveDiscount = product.finalPrice < product.priceRetail
@@ -95,8 +95,8 @@ const AdminProductDetail = () => {
         <MetricItem label="Stock Actual" value={product.stock} icon={FiBox} colorClass={isLowStock ? 'text-red-500 font-black animate-pulse' : 'text-green-500'} />
         <MetricItem label="Umbral Alerta" value={product.lowStockThreshold} icon={FiAlertCircle} colorClass="text-orange-400" />
         <MetricItem label="Margen Est." value={`${margin}%`} icon={FiTrendingUp} colorClass="text-brand-secondary" />
-        {/* <MetricItem label="Costo Base" value={`$${product.costPrice?.toLocaleString() || '0'}`} icon={FiDollarSign} colorClass="text-brand-primary" /> */}
-        <MetricItem label="Tipo Producto" value={product.productType} icon={FiSettings} colorClass="text-gray-400" />
+        {/* <MetricItem label="Costo Base" value={`$${product.costPrice?.toLocaleString() || '0'}`} icon={FiDollarSign} colorClass="text-brand-text" /> */}
+        <MetricItem label="Tipo Producto" value={product.productType} icon={FiSettings} colorClass="text-brand-text-muted" />
       </div>
 
       <main className="lg:col-span-7">
@@ -110,15 +110,15 @@ const AdminProductDetail = () => {
         <div className="mt-8 space-y-4">
           <div className="flex items-center gap-3 px-6">
             <div className="h-[2px] w-8 bg-brand-primary" />
-            <h3 className="text-xs font-black uppercase tracking-widest text-brand-primary">
+            <h3 className="text-xs font-black uppercase tracking-widest text-brand-text">
               Descripción Detallada
             </h3>
           </div>
 
-          <div className="relative overflow-hidden bg-linear-to-br from-white to-gray-50 rounded-[3rem] border border-gray-100 shadow-sm group">
+          <div className="relative overflow-hidden bg-linear-to-br from-white to-gray-50 rounded-[3rem] border border-brand-border shadow-sm group">
             <div className="relative p-10 md:p-14">
               {/* Agregamos whitespace-pre-line */}
-              <p className="text-gray-600 leading-relaxed text-md font-light whitespace-pre-line">
+              <p className="text-brand-text-muted leading-relaxed text-md font-light whitespace-pre-line">
                 {product.description || "No hay descripción disponible para este producto."}
               </p>
             </div>
@@ -127,8 +127,8 @@ const AdminProductDetail = () => {
           <DetailCard title="SEO & Indexación">
             <InfoRow label="Slug URL" value={`/${product.productSlug}`} />
             <div className="mt-2">
-              <label className="text-[10px] font-bold text-gray-400 uppercase">Meta Description</label>
-              <p className="text-xs text-gray-500 italic mt-1">
+              <label className="text-[10px] font-bold text-brand-text-muted uppercase">Meta Description</label>
+              <p className="text-xs text-brand-text-muted italic mt-1">
                 {product.metaDescription || "⚠️ Falta descripción para Google"}
               </p>
             </div>
@@ -145,11 +145,11 @@ const AdminProductDetail = () => {
               hasActiveDiscount ? (
                 <div className="flex flex-col items-end">
                   {/* Precio original tachado, pequeño y gris */}
-                  <span className="text-sm text-gray-400 line-through decoration-red-400/50 italic font-medium">
+                  <span className="text-sm text-brand-text-muted line-through decoration-red-400/50 italic font-medium">
                     ${product.priceRetail?.toLocaleString('es-AR')}
                   </span>
                   {/* Precio final (con descuento) grande y naranja */}
-                  <span className="text-2xl text-brand-primary font-black italic">
+                  <span className="text-2xl text-brand-text font-black italic">
                     ${product.finalPrice?.toLocaleString('es-AR')}
                   </span>
                 </div>
@@ -173,12 +173,12 @@ const AdminProductDetail = () => {
                     <span className="text-green-600 font-black animate-pulse">
                       🏷️ {product.discountRef?.name || 'DESCUENTO ACTIVO'}
                     </span>
-                    <span className="text-[10px] text-gray-400">
+                    <span className="text-[10px] text-brand-text-muted">
                       Ahorrás: ${savings.toLocaleString('es-AR')}
                     </span>
                   </div>
                 ) : (
-                  <span className="text-gray-400">Precio Regular</span>
+                  <span className="text-brand-text-muted">Precio Regular</span>
                 )
               }
             />
@@ -186,8 +186,8 @@ const AdminProductDetail = () => {
           <div className="space-y-3">
             {/* Título de sección más profesional */}
             <div className="flex items-center gap-2">
-              <div className="h-px w-4 bg-gray-200" />
-              <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
+              <div className="h-px w-4 bg-brand-border" />
+              <span className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest">
                 Clasificación / Categorías
               </span>
             </div>
@@ -203,7 +203,7 @@ const AdminProductDetail = () => {
           inline-flex items-center px-3 py-1.5 rounded-lg text-[10px] font-black uppercase italic tracking-wider transition-all
           ${index === 0
                       ? 'bg-brand-secondary text-white shadow-md' // Categoría Principal
-                      : 'bg-gray-100 text-gray-500 hover:bg-gray-200'} // Categorías Secundarias
+                      : 'bg-brand-bg text-brand-text-muted hover:bg-brand-border'} // Categorías Secundarias
           group-hover:scale-105 active:scale-95
         `}>
 
@@ -213,7 +213,7 @@ const AdminProductDetail = () => {
               ))}
 
               {(!product.categoriesId || product.categoriesId.length === 0) && (
-                <span className="text-[10px] text-gray-400 italic">Sin categorías asignadas</span>
+                <span className="text-[10px] text-brand-text-muted italic">Sin categorías asignadas</span>
               )}
             </div>
           </div>
@@ -265,7 +265,7 @@ const AdminProductDetail = () => {
                     ⭐ +{product.points} Puntos por Unidad
                   </span>
                 ) : (
-                  <span className="text-gray-400 italic">No otorga puntos</span>
+                  <span className="text-brand-text-muted italic">No otorga puntos</span>
                 )
               }
               highlight={product.points > 0}
@@ -301,4 +301,3 @@ const AdminProductDetail = () => {
 }
 
 export default AdminProductDetail;
-

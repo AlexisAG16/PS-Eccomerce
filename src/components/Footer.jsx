@@ -1,5 +1,5 @@
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa6";
-import logo from "/ps-logo-tr.svg";
+import logo from "/ps-logo-white.svg";
 
 const Footer = () => {
   return (
@@ -40,7 +40,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-brand-border mt-10 pt-6 flex flex-col md:flex-row items-center justify-center gap-3">
-          <img src={logo} alt="Patrician Software" className="h-8 w-auto object-contain" />
+          <img src={logo} alt="Patrician Software" className="h-8 w-auto object-contain drop-shadow-lg" />
           <p className="text-center text-brand-text-muted text-sm">
             2026 Patrician Software. Todos los derechos reservados.
           </p>

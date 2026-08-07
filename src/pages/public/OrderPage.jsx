@@ -177,13 +177,13 @@ const OrderPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] py-25 px-4">
+    <div className="min-h-screen bg-brand-bg py-25 px-4 text-brand-text">
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
 
         {/* COLUMNA IZQUIERDA: FORMULARIO */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100">
-            <h2 className="text-2xl font-black text-brand-primary italic uppercase mb-6">Datos de Entrega</h2>
+          <div className="bg-brand-surface p-8 rounded-[2.5rem] shadow-xl border border-brand-border">
+            <h2 className="text-2xl font-black text-brand-text italic uppercase mb-6">Datos de Entrega</h2>
 
             <form id="orderForm" onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -191,7 +191,7 @@ const OrderPage = () => {
                   type="text"
                   placeholder="Nombre"
                   required
-                  className={`input-airtotal ${user ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+                  className={`input-airtotal`}
                   value={formData.firstName}
                   readOnly={!!user} // Si hay user, no lo puede editar aquí
                   onChange={e => setFormData({ ...formData, firstName: e.target.value })}
@@ -200,7 +200,7 @@ const OrderPage = () => {
                   type="text"
                   placeholder="Apellido"
                   required
-                  className={`input-airtotal ${user ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+                  className={`input-airtotal`}
                   value={formData.lastName}
                   readOnly={!!user}
                   onChange={e => setFormData({ ...formData, lastName: e.target.value })}
@@ -211,7 +211,7 @@ const OrderPage = () => {
                 type="email"
                 placeholder="Correo Electrónico"
                 required
-                className={`input-airtotal ${user ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+                className={`input-airtotal`}
                 value={formData.email}
                 readOnly={!!user}
                 onChange={e => setFormData({ ...formData, email: e.target.value })}
@@ -229,13 +229,13 @@ const OrderPage = () => {
               </div>
 
               {/* TOGGLE DELIVERY (Port de toggleAddress) */}
-              <div className="flex bg-gray-100 p-1.5 rounded-2xl">
+              <div className="flex bg-brand-bg/80 p-1.5 rounded-2xl border border-brand-border">
                 <button type="button" onClick={() => setFormData({ ...formData, deliveryType: 'PICKUP' })}
-                  className={`flex-1 py-3 rounded-xl font-bold text-xs uppercase transition-all ${formData.deliveryType === 'PICKUP' ? 'bg-white text-brand-primary shadow-sm' : 'text-gray-400'}`}>
+                  className={`flex-1 py-3 rounded-xl font-bold text-xs uppercase transition-all ${formData.deliveryType === 'PICKUP' ? 'bg-brand-highlight text-brand-primary shadow-sm' : 'text-brand-text-muted hover:text-brand-text'}`}>
                   Retiro en Local
                 </button>
                 <button type="button" onClick={() => setFormData({ ...formData, deliveryType: 'SHIPPING' })}
-                  className={`flex-1 py-3 rounded-xl font-bold text-xs uppercase transition-all ${formData.deliveryType === 'SHIPPING' ? 'bg-white text-brand-primary shadow-sm' : 'text-gray-400'}`}>
+                  className={`flex-1 py-3 rounded-xl font-bold text-xs uppercase transition-all ${formData.deliveryType === 'SHIPPING' ? 'bg-brand-highlight text-brand-primary shadow-sm' : 'text-brand-text-muted hover:text-brand-text'}`}>
                   Envío a domicilio
                 </button>
               </div>
@@ -247,21 +247,21 @@ const OrderPage = () => {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="p-6 bg-brand-primary/5 border border-brand-primary/10 rounded-4xl space-y-3"
+                    className="p-6 bg-brand-bg/70 border border-brand-border rounded-4xl space-y-3"
                   >
                     <div className="flex items-start gap-4">
-                      <div className="bg-brand-primary p-3 rounded-2xl text-white">
+                      <div className="bg-brand-primary p-3 rounded-2xl text-brand-highlight border border-brand-border">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
                       </div>
                       <div>
-                        <h4 className="font-black text-brand-primary uppercase italic text-sm tracking-tighter">Punto de Retiro Patrician Software</h4>
-                        <p className="text-gray-600 text-xs font-bold mt-1 uppercase tracking-widest">
+                        <h4 className="font-black text-brand-text uppercase italic text-sm tracking-tighter">Punto de Retiro Patrician Software</h4>
+                        <p className="text-brand-text-muted text-xs font-bold mt-1 uppercase tracking-widest">
                           Av. Principal 1234, Catamarca Capital
                         </p>
-                        <p className="text-[10px] text-gray-400 mt-1">Horarios: Lunes a Viernes de 09:00 a 18:00 hs</p>
+                        <p className="text-[10px] text-brand-text-muted mt-1">Horarios: Lunes a Viernes de 09:00 a 18:00 hs</p>
                       </div>
                     </div>
 
@@ -269,7 +269,7 @@ const OrderPage = () => {
                       href="https://www.google.com/maps/search/?api=1&query=-28.4696,-65.7852"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 w-full py-3 bg-white border border-gray-200 rounded-xl text-[10px] font-black uppercase tracking-widest text-brand-primary hover:bg-gray-50 transition-colors shadow-sm"
+                      className="flex items-center justify-center gap-2 w-full py-3 bg-brand-primary border border-brand-border rounded-xl text-[10px] font-black uppercase tracking-widest text-brand-text hover:border-brand-highlight transition-colors shadow-sm"
                     >
                       <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" className="h-4" alt="Maps" />
                       Ver ubicación en Google Maps
@@ -292,7 +292,7 @@ const OrderPage = () => {
                         <input
                           type="text"
                           placeholder="Calle"
-                          className="input-airtotal bg-white border border-gray-100"
+                          className="input-airtotal"
                           required
                           value={formData.street} // 👈 Valor precargado
                           onChange={e => setFormData({ ...formData, street: e.target.value })}
@@ -301,7 +301,7 @@ const OrderPage = () => {
                       <input
                         type="text"
                         placeholder="N°"
-                        className="input-airtotal bg-white border border-gray-100"
+                        className="input-airtotal"
                         required
                         value={formData.number} // 👈 Valor precargado
                         onChange={e => setFormData({ ...formData, number: e.target.value })}
@@ -311,7 +311,7 @@ const OrderPage = () => {
                       <input
                         type="text"
                         placeholder="N° Departamento / Piso"
-                        className="input-airtotal bg-white border border-gray-100"
+                        className="input-airtotal"
                         value={formData.apartment} // 👈 Valor precargado
                         onChange={e => setFormData({ ...formData, apartment: e.target.value })}
                       />
@@ -322,9 +322,9 @@ const OrderPage = () => {
                           type="text"
                           value="S.F.V. de Catamarca"
                           readOnly
-                          className="input-airtotal bg-gray-100 text-gray-400 cursor-not-allowed border-none font-bold uppercase text-[10px]"
+                          className="input-airtotal font-bold uppercase text-[10px]"
                         />
-                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[8px] font-black text-brand-primary/30 uppercase">Ciudad</span>
+                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[8px] font-black text-brand-highlight uppercase">Ciudad</span>
                       </div>
 
                       {/* CP Lockeado (Ya la tenías, se mantiene igual) */}
@@ -333,9 +333,9 @@ const OrderPage = () => {
                           type="text"
                           value="4700"
                           readOnly
-                          className="input-airtotal bg-gray-100 text-gray-400 cursor-not-allowed border-none font-bold text-[10px]"
+                          className="input-airtotal font-bold text-[10px]"
                         />
-                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[8px] font-black text-brand-primary/30 uppercase">CP</span>
+                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[8px] font-black text-brand-highlight uppercase">CP</span>
                       </div>
                     </div>
 
@@ -343,13 +343,13 @@ const OrderPage = () => {
                     <input
                       type="text"
                       placeholder="Referencia (ej: Portón negro, frente a la plaza...)"
-                      className="input-airtotal bg-white border border-gray-100"
+                      className="input-airtotal"
                       value={formData.reference} // 👈 Valor precargado
                       onChange={e => setFormData({ ...formData, reference: e.target.value })}
                     />
 
                     {/* Mapa de Leaflet */}
-                    <div className="h-72 rounded-4xl overflow-hidden border-2 border-white shadow-inner relative z-0">
+                    <div className="h-72 rounded-4xl overflow-hidden border-2 border-brand-border shadow-inner relative z-0">
                       <MapContainer
                         // Usamos las coordenadas del usuario si existen, sino el centro por defecto
                         center={formData.lat && formData.lng ? [formData.lat, formData.lng] : DEFAULT_CENTER}
@@ -367,8 +367,8 @@ const OrderPage = () => {
                         <MapEventsHandler />
                       </MapContainer>
 
-                      <div className="absolute top-4 left-4 z-1000 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm">
-                        <p className="text-[9px] font-black text-brand-primary uppercase italic tracking-widest">
+                      <div className="absolute top-4 left-4 z-1000 bg-brand-primary/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm border border-brand-border">
+                        <p className="text-[9px] font-black text-brand-text uppercase italic tracking-widest">
                           {formData.lat ? "✅ Dirección configurada" : "📍 Toca el mapa para fijar tu casa"}
                         </p>
                       </div>
@@ -377,7 +377,7 @@ const OrderPage = () => {
                 )}
               </AnimatePresence>
 
-              <button type="submit" className="w-full py-5 bg-brand-primary text-white rounded-2xl font-black uppercase italic tracking-widest hover:bg-brand-secondary transition-all shadow-lg cursor-pointer">
+              <button type="submit" className="w-full py-5 bg-brand-primary text-brand-text rounded-2xl font-black uppercase italic tracking-widest hover:bg-brand-accent transition-all shadow-lg border border-brand-border cursor-pointer">
                 Procesar Orden
               </button>
             </form>
@@ -386,18 +386,18 @@ const OrderPage = () => {
 
         {/* COLUMNA DERECHA: RESUMEN (Sticky) */}
         <div className="lg:col-span-1">
-          <div className="bg-white p-6 rounded-[2.5rem] shadow-sm border border-gray-100 sticky top-10">
-            <h3 className="font-black text-brand-primary italic uppercase mb-4 tracking-tighter">Tu Carrito</h3>
+          <div className="bg-brand-surface p-6 rounded-[2.5rem] shadow-xl border border-brand-border sticky top-10">
+            <h3 className="font-black text-brand-text italic uppercase mb-4 tracking-tighter">Tu Carrito</h3>
             <div className="space-y-3 max-h-60 overflow-y-auto pr-2 custom-scrollbar">
               {cart.map(item => (
-                <div key={item.id} className="flex justify-between text-xs border-b border-gray-50 pb-2">
-                  <span className="text-gray-500 font-bold">{item.quantity}x {item.productName}</span>
-                  <span className="font-black text-brand-primary">${(item.price * item.quantity).toLocaleString()}</span>
+                <div key={item.id} className="flex justify-between text-xs border-b border-brand-border pb-2">
+                  <span className="text-brand-text-muted font-bold">{item.quantity}x {item.productName}</span>
+                  <span className="font-black text-brand-highlight">${(item.price * item.quantity).toLocaleString()}</span>
                 </div>
               ))}
             </div>
-            <div className="mt-6 pt-4 border-t-2 border-dashed border-gray-100 flex justify-between items-center">
-              <span className="text-[10px] font-black uppercase text-gray-400">Total</span>
+            <div className="mt-6 pt-4 border-t-2 border-dashed border-brand-border flex justify-between items-center">
+              <span className="text-[10px] font-black uppercase text-brand-text-muted">Total</span>
               <span className="text-2xl font-black text-brand-secondary italic">${total.toLocaleString()}</span>
             </div>
           </div>

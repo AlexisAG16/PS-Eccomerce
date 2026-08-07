@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import api from "../api/axiosConfig";
 
 const DISPLAY_CATEGORIES = [
   { _id: "fallback-servicios", categoryName: "Servicios", categorySlug: "servicios" },
@@ -9,9 +11,27 @@ const DISPLAY_CATEGORIES = [
 
 const CategorySection = ({ isMobile, onNavigate }) => {
   const navigate = useNavigate();
+  const [categories, setCategories] = useState(DISPLAY_CATEGORIES);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await api.get("/categories/categories-list");
+        const payload = Array.isArray(res.data) ? res.data : res.data?.data;
+        if (Array.isArray(payload) && payload.length > 0) {
+          setCategories(payload);
+        }
+      } catch (error) {
+        setCategories(DISPLAY_CATEGORIES);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   const handleCategoryClick = (cat) => {
-    const targetUrl = "/catalogo";
+    const categorySlug = cat.categorySlug || cat.slug || cat._id || cat.id;
+    const targetUrl = categorySlug ? `/categoria/${categorySlug}` : "/catalogo";
     if (onNavigate) {
       onNavigate(targetUrl);
     } else {
@@ -22,14 +42,14 @@ const CategorySection = ({ isMobile, onNavigate }) => {
   if (!isMobile) {
     return (
       <nav className="hidden md:flex items-center justify-center gap-2 py-2">
-        {DISPLAY_CATEGORIES.map((cat) => (
+        {categories.map((cat) => (
           <button
             type="button"
             key={cat._id}
             onClick={() => handleCategoryClick(cat)}
             className="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.16em] text-brand-primary hover:bg-brand-primary hover:text-white transition-all cursor-pointer"
           >
-            {cat.categoryName}
+            {cat.categoryName || cat.name || cat.title}
           </button>
         ))}
         <button
@@ -49,13 +69,13 @@ const CategorySection = ({ isMobile, onNavigate }) => {
         Categorias
       </p>
       <ul className="space-y-3 font-bold text-brand-text uppercase text-xs tracking-widest">
-        {DISPLAY_CATEGORIES.map((cat) => (
+        {categories.map((cat) => (
           <li
             key={cat._id}
             onClick={() => handleCategoryClick(cat)}
             className="hover:text-brand-highlight cursor-pointer"
           >
-            {cat.categoryName}
+            {cat.categoryName || cat.name || cat.title}
           </li>
         ))}
         <li

@@ -19,7 +19,7 @@ const STATUS_CONFIG = {
   PENDING: { label: 'Pendiente', color: 'text-amber-500', bg: 'bg-amber-500', text: 'El usuario aún debe completar el pago.' },
   REJECTED: { label: 'Rechazado', color: 'text-red-500', bg: 'bg-red-500', text: 'La transacción fue declinada.' },
   REFUNDED: { label: 'Reembolsado', color: 'text-purple-500', bg: 'bg-purple-500', text: 'El dinero fue devuelto al cliente.' },
-  CANCELLED: { label: 'Cancelado', color: 'text-gray-500', bg: 'bg-gray-500', text: 'El pago fue anulado.' }
+  CANCELLED: { label: 'Cancelado', color: 'text-brand-text-muted', bg: 'bg-brand-surface0', text: 'El pago fue anulado.' }
 };
 
 const AdminPaymentDetail = () => {
@@ -87,14 +87,14 @@ const AdminPaymentDetail = () => {
   if (loading) return (
     <div className="h-screen flex flex-col items-center justify-center">
       <ClipLoader color="#1a5276" size={50} />
-      <p className="mt-4 text-[10px] font-black text-gray-400 uppercase tracking-widest italic animate-pulse">Consultando Transacción...</p>
+      <p className="mt-4 text-[10px] font-black text-brand-text-muted uppercase tracking-widest italic animate-pulse">Consultando Transacción...</p>
     </div>
   );
 
-  if (!payment) return <div className="pt-40 text-center uppercase font-black italic text-brand-primary">Pago no encontrado</div>;
+  if (!payment) return <div className="pt-40 text-center uppercase font-black italic text-brand-text">Pago no encontrado</div>;
 
   const mpData = payment.rawResponse?.raw || {};
-  const statusInfo = STATUS_CONFIG[payment.status] || { label: payment.status, color: 'text-gray-400' };
+  const statusInfo = STATUS_CONFIG[payment.status] || { label: payment.status, color: 'text-brand-text-muted' };
 
   const headerActions = (
     <button
@@ -117,7 +117,7 @@ const AdminPaymentDetail = () => {
           label="Monto Bruto"
           value={`$${payment.amount?.toLocaleString('es-AR')}`}
           icon={FiDollarSign}
-          colorClass="text-brand-primary"
+          colorClass="text-brand-text"
         />
         <MetricItem
           label="Estado"
@@ -143,18 +143,18 @@ const AdminPaymentDetail = () => {
       <main className="lg:col-span-8 space-y-6">
         <DetailCard title="Desglose de Operación">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-            <div className="p-8 bg-gray-50 rounded-[2.5rem] border border-gray-100">
-              <p className="text-[10px] font-black text-gray-400 uppercase mb-2">Pasarela de Pago (Gateway)</p>
-              <p className="text-2xl font-black text-brand-primary uppercase italic">
+            <div className="p-8 bg-brand-surface rounded-[2.5rem] border border-brand-border">
+              <p className="text-[10px] font-black text-brand-text-muted uppercase mb-2">Pasarela de Pago (Gateway)</p>
+              <p className="text-2xl font-black text-brand-text uppercase italic">
                 {mpData.payment_method_id || 'N/A'}
               </p>
-              <p className="text-[10px] font-bold text-gray-400 mt-1 uppercase">
+              <p className="text-[10px] font-bold text-brand-text-muted mt-1 uppercase">
                 {mpData.payment_type_id} • **** {mpData.card?.last_four_digits || '0000'}
               </p>
             </div>
             <div className="p-8 bg-blue-50/50 rounded-[2.5rem] border border-blue-100">
               <p className="text-[10px] font-black text-blue-400 uppercase mb-2">Identificador Externo</p>
-              <p className="text-xl font-mono font-bold text-brand-primary">
+              <p className="text-xl font-mono font-bold text-brand-text">
                 {mpData.id || 'N/A'}
               </p>
               <p className="text-[10px] font-bold text-blue-400 mt-1 uppercase">ID Mercado Pago</p>
@@ -162,7 +162,7 @@ const AdminPaymentDetail = () => {
           </div>
 
           <div className="space-y-4 border-t border-dashed pt-8">
-            <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">Datos del Pagador</h4>
+            <h4 className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest mb-4">Datos del Pagador</h4>
             <InfoRow label="Email Registrado" value={mpData.payer?.email || 'No disponible'} />
             <InfoRow label="ID de Usuario MP" value={mpData.payer?.id || 'N/A'} />
           </div>
@@ -170,8 +170,8 @@ const AdminPaymentDetail = () => {
           {/* LOG TÉCNICO */}
           <div className="mt-10">
             <div className="flex justify-between items-center mb-4">
-              <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Respuesta de Sistema (Raw Data)</h4>
-              <span className="text-[8px] font-mono text-gray-300">Format: JSON_SERIALIZED</span>
+              <h4 className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest">Respuesta de Sistema (Raw Data)</h4>
+              <span className="text-[8px] font-mono text-brand-text-muted/50">Format: JSON_SERIALIZED</span>
             </div>
             <div className="bg-gray-900 rounded-4xl p-6 overflow-x-auto max-h-[300px] border-4 border-gray-800 shadow-inner">
               <pre className="text-green-400 font-mono text-[10px] leading-relaxed">
@@ -202,7 +202,7 @@ const AdminPaymentDetail = () => {
             />
           </div>
 
-          <div className="mt-4 p-4 bg-white/5 rounded-2xl border border-white/10">
+          <div className="mt-4 p-4 bg-brand-surface/5 rounded-2xl border border-white/10">
             <p className="text-[8px] font-black uppercase text-white/40 mb-1">Estado en Pasarela</p>
             <p className="text-sm font-black italic text-brand-secondary uppercase">{mpData.status || 'N/A'}</p>
             <p className="text-[10px] text-white/60 leading-tight mt-1">{mpData.status_detail || 'Esperando confirmación'}</p>
@@ -214,7 +214,7 @@ const AdminPaymentDetail = () => {
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className="w-full bg-gray-50 border-none rounded-2xl p-5 text-xs font-bold text-gray-600 focus:ring-2 focus:ring-brand-primary transition-all min-h-[120px] resize-none"
+            className="w-full bg-brand-surface border-none rounded-2xl p-5 text-xs font-bold text-brand-text-muted focus:ring-2 focus:ring-brand-primary transition-all min-h-[120px] resize-none"
             placeholder="Escriba observaciones sobre este pago..."
           />
           <button

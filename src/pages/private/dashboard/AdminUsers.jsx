@@ -14,7 +14,7 @@ const columns = [
     field: "firstName",
     render: (val, row) => (
       <div className="flex flex-col min-w-[130px]">
-        <span className="font-bold text-gray-800 uppercase italic tracking-tighter leading-none mb-1 truncate">
+        <span className="font-bold text-brand-text uppercase italic tracking-tighter leading-none mb-1 truncate">
           {val} {row.lastName}
         </span>
         <span className="text-[9px] text-brand-secondary font-mono truncate max-w-[150px]">
@@ -30,7 +30,7 @@ const columns = [
       const roleName = typeof val === 'object' ? val.name : val;
 
       const roleMapper = {
-        user: { label: 'Usuario', cls: 'bg-gray-100 text-gray-600 border-gray-200' },
+        user: { label: 'Usuario', cls: 'bg-brand-bg text-brand-text-muted border-brand-border' },
         affiliate: { label: 'Afiliado', cls: 'bg-indigo-50 text-indigo-600 border-indigo-100' },
         operator: { label: 'Operador', cls: 'bg-blue-50 text-blue-600 border-blue-100' },
         carrier: { label: 'Logística', cls: 'bg-orange-50 text-orange-600 border-orange-100' },
@@ -39,7 +39,7 @@ const columns = [
         super_admin: { label: 'Super Admin', cls: 'bg-black text-white border-black' }
       };
 
-      const config = roleMapper[roleName?.toLowerCase()] || { label: roleName, cls: 'bg-gray-50 text-gray-400' };
+      const config = roleMapper[roleName?.toLowerCase()] || { label: roleName, cls: 'bg-brand-surface text-brand-text-muted' };
 
       return (
         <span className={`text-[9px] font-black px-2 py-0.5 rounded-lg border uppercase italic whitespace-nowrap ${config.cls}`}>
@@ -53,10 +53,10 @@ const columns = [
     field: "points",
     render: (val) => (
       <div className="flex flex-col items-center">
-        <span className="font-mono font-black text-brand-primary text-xs">
+        <span className="font-mono font-black text-brand-text text-xs">
           {val?.toLocaleString() || 0}
         </span>
-        <span className="text-[7px] font-bold text-gray-300 uppercase">Patrician Software Pts</span>
+        <span className="text-[7px] font-bold text-brand-text-muted/50 uppercase">Patrician Software Pts</span>
       </div>
     )
   },
@@ -75,7 +75,7 @@ const columns = [
     field: "createdAt",
     format: "date",
     render: (val) => (
-      <span className="text-[9px] text-gray-400 font-bold italic">
+      <span className="text-[9px] text-brand-text-muted font-bold italic">
         {new Date(val).toLocaleDateString('es-AR')}
       </span>
     )

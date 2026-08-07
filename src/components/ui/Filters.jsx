@@ -15,10 +15,10 @@ const GenericFilters = ({ config, onFilterChange, onClear }) => {
   };
 
   return (
-    <div className="flex flex-wrap gap-4 bg-gray-50 p-6 rounded-2xl mb-8 items-end shadow-sm border border-gray-100">
+    <div className="flex flex-wrap gap-4 bg-brand-surface p-6 rounded-2xl mb-8 items-end shadow-xl border border-brand-border">
       {config.map((field, index) => (
         <div key={index} className="flex flex-col gap-1.5 min-w-[150px]">
-          <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
+          <label className="text-[10px] font-black text-brand-text-muted uppercase tracking-widest">
             {field.label}
           </label>
 
@@ -27,7 +27,7 @@ const GenericFilters = ({ config, onFilterChange, onClear }) => {
               name={field.name}
               value={localFilters[field.name] || ''}
               onChange={handleChange}
-              className="border border-gray-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-air-azul outline-none bg-white transition"
+              className="border border-brand-border rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-brand-secondary/40 outline-none bg-brand-bg text-brand-text transition"
             >
               <option value="">Todos</option>
               {field.options.map((opt, i) => (
@@ -41,7 +41,7 @@ const GenericFilters = ({ config, onFilterChange, onClear }) => {
               value={localFilters[field.name] || ''}
               onChange={handleChange}
               placeholder={field.placeholder}
-              className="border border-gray-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-air-azul outline-none bg-white transition"
+              className="border border-brand-border rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-brand-secondary/40 outline-none bg-brand-bg text-brand-text placeholder:text-brand-text-muted/60 transition"
             />
           )}
         </div>
@@ -49,7 +49,7 @@ const GenericFilters = ({ config, onFilterChange, onClear }) => {
 
       <button
         onClick={handleClear}
-        className="text-xs font-bold text-gray-400 hover:text-red-500 transition px-2 py-3"
+        className="text-xs font-bold text-brand-text-muted hover:text-brand-highlight transition px-2 py-3"
       >
         Limpiar filtros
       </button>

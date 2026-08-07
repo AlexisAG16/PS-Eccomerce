@@ -1,8 +1,8 @@
  const ProductDetail = ({ name, price, image }) => {
     return (
-      <div className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center w-full">
+      <div className="bg-brand-surface rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center w-full border border-brand-border">
         {/* Título pequeño en gris */}
-        <h3 className="text-gray-500 text-[10px] md:text-xs text-center h-10 mb-2 overflow-hidden line-clamp-2">
+        <h3 className="text-brand-text-muted text-[10px] md:text-xs text-center h-10 mb-2 overflow-hidden line-clamp-2">
           {name}
         </h3>
         
@@ -16,7 +16,7 @@
         </div>
   
         {/* Precio en violeta Patrician Software */}
-        <p className="text-[#5F5ACB] font-bold text-lg md:text-xl self-start">
+        <p className="text-brand-highlight font-bold text-lg md:text-xl self-start">
           $ {price.toLocaleString('es-AR')}
         </p>
       </div>

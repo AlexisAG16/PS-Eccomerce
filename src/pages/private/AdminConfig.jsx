@@ -83,13 +83,13 @@ const AdminConfig = () => {
     <div className="max-w-5xl mx-auto p-4 md:p-6 animate-fade-in">
 
       {/* Header de la vista */}
-      <div className="flex items-center gap-3 mb-8 border-b border-gray-100 pb-4">
-        <div className="p-3 bg-gray-100 rounded-xl text-slate-700">
+      <div className="flex items-center gap-3 mb-8 border-b border-brand-border pb-4">
+        <div className="p-3 bg-brand-bg rounded-xl text-slate-700">
           <IoSettingsOutline size={26} />
         </div>
         <div>
           <h1 className="text-2xl font-black tracking-tight text-slate-800">Ajustes del Sistema</h1>
-          <p className="text-sm text-gray-500">Personalizá los banners, flyers y el aspecto visual de la tienda principal.</p>
+          <p className="text-sm text-brand-text-muted">Personalizá los banners, flyers y el aspecto visual de la tienda principal.</p>
         </div>
       </div>
 
@@ -99,24 +99,24 @@ const AdminConfig = () => {
         <div className="lg:col-span-1">
           <Card
             title={<span className="font-bold text-slate-700">Nuevo Banner de Inicio</span>}
-            className="shadow-sm rounded-2xl border-gray-100"
+            className="shadow-sm rounded-2xl border-brand-border"
           >
             <Form form={form} layout="vertical" onFinish={onFinish}>
 
               {/* Zona de Arrastre de Imagen */}
-              <Form.Item label={<span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Imagen del Flyer</span>}>
+              <Form.Item label={<span className="text-xs font-bold text-brand-text-muted uppercase tracking-wider">Imagen del Flyer</span>}>
                 <Upload.Dragger
                   name="file"
                   multiple={false}
                   fileList={fileList}
                   beforeUpload={beforeUpload}
                   onRemove={() => setFileList([])}
-                  className="bg-gray-50 rounded-xl p-4 border-dashed hover:border-brand-primary"
+                  className="bg-brand-surface rounded-xl p-4 border-dashed hover:border-brand-primary"
                 >
-                  <div className="flex flex-col items-center justify-center py-2 text-gray-400">
-                    <IoCloudUploadOutline size={32} className="mb-2 text-gray-400" />
-                    <p className="text-xs font-semibold text-gray-600">Hacé click o arrastrá el archivo acá</p>
-                    <p className="text-[10px] text-gray-400 mt-1">Soporta PNG, JPG o WEBP</p>
+                  <div className="flex flex-col items-center justify-center py-2 text-brand-text-muted">
+                    <IoCloudUploadOutline size={32} className="mb-2 text-brand-text-muted" />
+                    <p className="text-xs font-semibold text-brand-text-muted">Hacé click o arrastrá el archivo acá</p>
+                    <p className="text-[10px] text-brand-text-muted mt-1">Soporta PNG, JPG o WEBP</p>
                   </div>
                 </Upload.Dragger>
 
@@ -131,14 +131,14 @@ const AdminConfig = () => {
               {/* Campos opcionales */}
               <Form.Item
                 name="alt"
-                label={<span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Texto Alternativo (SEO)</span>}
+                label={<span className="text-xs font-bold text-brand-text-muted uppercase tracking-wider">Texto Alternativo (SEO)</span>}
               >
                 <Input placeholder="Ej: Promo Zapatillas Patrician Software - 20% OFF" className="rounded-lg h-10" />
               </Form.Item>
 
               <Form.Item
                 name="link"
-                label={<span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Ruta de redirección (Opcional)</span>}
+                label={<span className="text-xs font-bold text-brand-text-muted uppercase tracking-wider">Ruta de redirección (Opcional)</span>}
               >
                 <Input placeholder="Ej: /productos o /admin/descuentos" className="rounded-lg h-10" />
               </Form.Item>
@@ -165,18 +165,18 @@ const AdminConfig = () => {
             title={
               <div className="flex justify-between items-center w-full">
                 <span className="font-bold text-slate-700">Banners Activos actualmente</span>
-                <span className="bg-gray-100 px-2.5 py-1 text-xs rounded-full font-bold text-gray-600">
+                <span className="bg-brand-bg px-2.5 py-1 text-xs rounded-full font-bold text-brand-text-muted">
                   {currentFlyers.length} en carrusel
                 </span>
               </div>
             }
             loading={isLoading}
-            className="shadow-sm rounded-2xl border-gray-100"
+            className="shadow-sm rounded-2xl border-brand-border"
           >
             {currentFlyers.length === 0 ? (
-              <div className="text-center py-12 text-gray-400">
+              <div className="text-center py-12 text-brand-text-muted">
                 <p className="text-sm">No hay flyers dinámicos configurados.</p>
-                <p className="text-xs text-gray-400 mt-1">El slider usará las imágenes por defecto del sistema.</p>
+                <p className="text-xs text-brand-text-muted mt-1">El slider usará las imágenes por defecto del sistema.</p>
               </div>
             ) : (
               <List
@@ -184,7 +184,7 @@ const AdminConfig = () => {
                 dataSource={currentFlyers}
                 renderItem={(item, index) => (
                   <List.Item
-                    className="p-4 hover:bg-gray-50/50 transition-colors rounded-xl mb-2 border border-gray-100"
+                    className="p-4 hover:bg-brand-surface/50 transition-colors rounded-xl mb-2 border border-brand-border"
                     actions={[
                       <Popconfirm
                         key="delete"
@@ -209,14 +209,14 @@ const AdminConfig = () => {
                         <img
                           src={item.url}
                           alt="Preview"
-                          className="w-24 h-14 md:w-32 md:h-18 object-cover rounded-lg shadow-sm border border-gray-100"
+                          className="w-24 h-14 md:w-32 md:h-18 object-cover rounded-lg shadow-sm border border-brand-border"
                         />
                       }
                       title={<span className="font-bold text-slate-700 text-sm">{item.alt || `Flyer #${index + 1}`}</span>}
                       description={
-                        <div className="text-xs text-gray-400 mt-1 space-y-0.5">
-                          <p>🔗 Enlace: <span className="font-mono text-gray-600">{item.link || "Ninguno (Solo imagen)"}</span></p>
-                          <p>📍 Posición en orden: <span className="font-bold text-gray-700">{index + 1}</span></p>
+                        <div className="text-xs text-brand-text-muted mt-1 space-y-0.5">
+                          <p>🔗 Enlace: <span className="font-mono text-brand-text-muted">{item.link || "Ninguno (Solo imagen)"}</span></p>
+                          <p>📍 Posición en orden: <span className="font-bold text-brand-text">{index + 1}</span></p>
                         </div>
                       }
                     />

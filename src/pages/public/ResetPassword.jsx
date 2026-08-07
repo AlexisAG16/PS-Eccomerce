@@ -30,21 +30,21 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="min-h-screen bg-air-crema flex flex-col items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-4xl shadow-2xl p-10 border border-gray-100">
+    <div className="min-h-screen bg-brand-bg flex flex-col items-center justify-center p-4">
+      <div className="max-w-md w-full bg-brand-surface rounded-4xl shadow-2xl p-10 border border-brand-border">
         <div className="flex flex-col items-center mb-8">
-          <img src={logo} alt="Patrician Software" className="w-32 mb-6" />
-          <h2 className="text-2xl font-black text-gray-800 uppercase italic tracking-tighter">Nueva Contraseña</h2>
-          <p className="text-[10px] text-gray-400 uppercase tracking-widest mt-2 text-center">Ingresa tu nueva clave de acceso para Patrician Software</p>
+          <img src="/ps-logo-white.svg" alt="Patrician Software" className="w-32 mb-6 drop-shadow-lg" />
+          <h2 className="text-2xl font-black text-brand-text uppercase italic tracking-tighter">Nueva Contraseña</h2>
+          <p className="text-[10px] text-brand-text-muted uppercase tracking-widest mt-2 text-center">Ingresa tu nueva clave de acceso para Patrician Software</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="text-[9px] font-black uppercase text-gray-400 tracking-widest ml-4 mb-2 block">Nueva Contraseña</label>
+            <label className="text-[9px] font-black uppercase text-brand-highlight tracking-widest ml-4 mb-2 block">Nueva Contraseña</label>
             <input
               type="password"
               required
-              className="w-full px-6 py-4 bg-gray-50 border-none rounded-full text-sm focus:ring-2 focus:ring-air-azul transition-all"
+              className="w-full px-6 py-4 bg-brand-bg border border-brand-border rounded-full text-sm text-brand-text placeholder:text-brand-text-muted focus:ring-2 focus:ring-brand-highlight/40 transition-all outline-none"
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -52,11 +52,11 @@ const ResetPassword = () => {
           </div>
 
           <div>
-            <label className="text-[9px] font-black uppercase text-gray-400 tracking-widest ml-4 mb-2 block">Confirmar Contraseña</label>
+            <label className="text-[9px] font-black uppercase text-brand-highlight tracking-widest ml-4 mb-2 block">Confirmar Contraseña</label>
             <input
               type="password"
               required
-              className="w-full px-6 py-4 bg-gray-50 border-none rounded-full text-sm focus:ring-2 focus:ring-air-azul transition-all"
+              className="w-full px-6 py-4 bg-brand-bg border border-brand-border rounded-full text-sm text-brand-text placeholder:text-brand-text-muted focus:ring-2 focus:ring-brand-highlight/40 transition-all outline-none"
               placeholder="••••••••"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
@@ -66,14 +66,14 @@ const ResetPassword = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-air-azul text-white py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-all shadow-lg disabled:opacity-50"
+            className="w-full bg-brand-primary text-brand-text py-4 rounded-full font-black uppercase tracking-widest hover:bg-brand-accent transition-all shadow-lg disabled:opacity-50 border border-brand-border"
           >
             {loading ? <ClipLoader size={18} color="#fff" /> : "Actualizar Contraseña"}
           </button>
         </form>
 
         <div className="mt-8 text-center">
-          <Link to="/login" className="text-[10px] font-black text-gray-400 uppercase hover:text-air-azul transition-colors">
+          <Link to="/login" className="text-[10px] font-black text-brand-text-muted uppercase hover:text-brand-highlight transition-colors">
             Volver al Inicio de Sesión
           </Link>
         </div>
