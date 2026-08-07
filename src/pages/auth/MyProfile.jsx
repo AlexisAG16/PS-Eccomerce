@@ -69,7 +69,7 @@ const MyProfile = () => {
         <div>
           <nav className="text-[10px] text-brand-text-muted uppercase tracking-[0.2em] mb-2">Mi Cuenta / Perfil</nav>
           <h1 className="text-4xl font-black text-brand-text uppercase italic tracking-tighter flex items-center gap-3">
-            {user.firstName} <span className="text-brand-highlight drop-shadow-sm">{user.lastName}</span>
+            {user.firstName} <span className="text-[#f59e0b] drop-shadow-sm">{user.lastName}</span>
           </h1>
         </div>
 
@@ -140,8 +140,8 @@ const MyProfile = () => {
           {/* SECCIÓN DE MIS CUPONES */}
           <div className="bg-brand-surface p-8 rounded-4xl shadow-sm border border-brand-border relative">
             <h2 className="text-xl font-black text-brand-text uppercase italic tracking-tighter mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-brand-highlight/15 border border-brand-highlight/40 rounded-full flex items-center justify-center">
-                <FaTicketAlt className="text-brand-highlight text-xs" />
+              <span className="w-8 h-8 bg-[#f59e0b]/15 border border-[#f59e0b]/40 rounded-full flex items-center justify-center">
+                <FaTicketAlt className="text-[#f59e0b] text-xs" />
               </span>
               Mis Cupones Canjeados
             </h2>
@@ -184,7 +184,7 @@ const MyProfile = () => {
             ) : (
               <div className="text-center py-6 bg-brand-bg rounded-3xl border-2 border-dashed border-brand-border">
                 <p className="text-brand-text italic text-sm">Aún no tienes cupones activos.</p>
-                <p className="text-[9px] uppercase font-black text-brand-highlight mt-2 tracking-[0.18em]">¡Canjea tus puntos por premios!</p>
+                <p className="text-[9px] uppercase font-black text-[#f59e0b] mt-2 tracking-[0.18em]">¡Canjea tus puntos por premios!</p>
               </div>
             )}
           </div>
